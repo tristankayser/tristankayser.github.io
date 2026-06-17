@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lebenslauf — Tristan Kayser</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23041C1C'/%3E%3Ctext x='4' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='19' fill='%23FFBD38'%3ET%3C/text%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='19' fill='%234aa8d8'%3EK%3C/text%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/mondwest" rel="stylesheet"/>
+<style>
+:root{--bg:#041C1C;--bg2:#072828;--cream:#ffe6cb;--blue:#4aa8d8;--gold:#FFBD38;--dim:rgba(255,230,203,.5);--line:rgba(255,230,203,.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--cream);font-family:'Space Mono',monospace;font-size:14px;line-height:1.75;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--cream);text-decoration:none}
+
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--line);flex-shrink:0}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.back-link{font-family:'Mondwest','Courier Prime','Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);transition:color .2s}
+.back-link:hover{color:var(--cream)}
+
+.wrap{flex:1;display:flex;flex-direction:column;max-width:1200px;width:100%;margin:0 auto;padding:40px 56px 40px}
+
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,4vw,36px);text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px}
+.subtitle{
+  font-family:'Mondwest','Courier Prime','Space Mono',monospace;
+  font-size:10px;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:24px;
+}
+
+.actions{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.dl-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bg);background:var(--blue);
+  border:none;cursor:pointer;transition:background .2s;
+}
+.dl-btn:hover{background:#2d8abf}
+.dl-btn svg{flex-shrink:0}
+.view-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream);background:transparent;
+  border:1px solid rgba(255,230,203,.12);cursor:pointer;transition:background .2s,border-color .2s;
+}
+.view-btn:hover{border-color:rgba(255,230,203,.25);background:rgba(255,230,203,.03)}
+
+/* PDF Embed */
+.pdf-container{
+  flex:1;
+  min-height:500px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:2px;
+  overflow:hidden;
+}
+.pdf-container iframe,.pdf-container embed{
+  width:100%;height:100%;min-height:700px;border:none;display:block;
+}
+
+/* Mobile fallback */
+.mobile-fallback{display:none;padding:40px 0;text-align:center}
+.mobile-fallback p{color:var(--dim);font-size:12px;line-height:1.9;margin-bottom:24px}
+
+footer{padding:24px 56px;border-top:1px solid var(--line);text-align:center;flex-shrink:0}
+footer span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,230,203,.2)}
+footer a{color:rgba(255,230,203,.3);border-bottom:1px solid rgba(255,230,203,.1);padding-bottom:2px;transition:color .2s}
+footer a:hover{color:var(--cream)}
+
+@media(max-width:600px){
+  nav{padding:16px 20px}
+  .wrap{padding:28px 20px}
+  .pdf-container{display:none}
+  .mobile-fallback{display:block}
+  footer{padding:18px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Portfolio</a>
+  <a class="back-link" href="index.html">Zurueck zur Startseite</a>
+</nav>
+
+<div class="wrap">
+  <h1>Tristan Kayser</h1>
+  <div class="subtitle">Lebenslauf</div>
+
+  <div class="actions">
+    <a href="Lebenslauf_Tristan_Kayser.pdf" download class="dl-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF Herunterladen
+    </a>
+    <a href="Lebenslauf_Tristan_Kayser.pdf" target="_blank" class="view-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      In neuem Tab oeffnen
+    </a>
+  </div>
+
+  <div class="pdf-container">
+    <embed src="Lebenslauf_Tristan_Kayser.pdf" type="application/pdf"/>
+  </div>
+
+  <div class="mobile-fallback">
+    <p>PDF-Vorschau ist auf Mobilgeraeten nicht verfuegbar.</p>
+    <a href="Lebenslauf_Tristan_Kayser.pdf" download class="dl-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF Herunterladen
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span><a href="index.html">Portfolio</a> &middot; <a href="impressum.html">Impressum &amp; Datenschutz</a></span>
+</footer>
+</body>
+</html>
