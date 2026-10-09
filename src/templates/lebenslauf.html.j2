@@ -1,0 +1,28 @@
+{% extends "base.html.j2" %}
+{% block body %}
+<header class="page-nav">
+  <a class="nav-logo" href="index-de.html"><span class="tk" aria-hidden="true">T<b>K</b></span><span>Tristan Kayser</span></a>
+  <nav class="lang-switch" aria-label="Portfolio">
+    <a href="./" hreflang="en" lang="en">EN</a><a href="index-de.html" hreflang="de" lang="de">DE</a><a href="index-af.html" hreflang="af" lang="af">AF</a>
+  </nav>
+</header>
+<main id="main" class="page-wrap wide">
+  <h1>Lebenslauf</h1>
+  <div class="pdf-actions">
+    <a href="Lebenslauf_Tristan_Kayser.pdf" download class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF herunterladen</a>
+    <a href="Lebenslauf_Tristan_Kayser.pdf" target="_blank" rel="noopener" class="btn btn-ghost">In neuem Tab öffnen</a>
+  </div>
+  <div class="pdf-container">
+    <embed src="Lebenslauf_Tristan_Kayser.pdf#view=FitH" type="application/pdf" title="Lebenslauf Tristan Kayser (PDF)"/>
+  </div>
+  <p class="mobile-fallback">Die PDF-Vorschau ist auf kleinen Bildschirmen nicht verfügbar – lade die Datei einfach herunter.</p>
+</main>
+<footer class="site-footer">
+  <span>&copy; <span data-year>{{ year }}</span> Tristan Kayser</span>
+  <span class="footer-links"><a href="index-de.html">Portfolio</a><a href="impressum.html">Impressum &amp; Datenschutz</a></span>
+  <span></span>
+</footer>
+<script src="assets/js/main.js?v={{ version }}" defer></script>
+{% endblock %}

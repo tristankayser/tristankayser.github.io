@@ -1,119 +1,65 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="no-js">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Lebenslauf — Tristan Kayser</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23041C1C'/%3E%3Ctext x='4' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='19' fill='%23FFBD38'%3ET%3C/text%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='19' fill='%234aa8d8'%3EK%3C/text%3E%3C/svg%3E"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.cdnfonts.com/css/mondwest" rel="stylesheet"/>
-<style>
-:root{--bg:#041C1C;--bg2:#072828;--cream:#ffe6cb;--blue:#4aa8d8;--gold:#FFBD38;--dim:rgba(255,230,203,.5);--line:rgba(255,230,203,.08)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--cream);font-family:'Space Mono',monospace;font-size:14px;line-height:1.75;min-height:100vh;display:flex;flex-direction:column}
-a{color:var(--cream);text-decoration:none}
+<meta name="description" content="Lebenslauf von Tristan Kayser, Auszubildender Fachinformatiker für Systemintegration (PDF)."/>
+<meta name="author" content="Tristan Kayser"/>
+<meta name="theme-color" content="#041C1C"/>
+<meta name="color-scheme" content="dark"/>
+<link rel="canonical" href="https://tristankayser.com/lebenslauf.html"/><!-- Open Graph / social preview -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Tristan Kayser"/>
+<meta property="og:title" content="Lebenslauf — Tristan Kayser"/>
+<meta property="og:description" content="Lebenslauf von Tristan Kayser, Auszubildender Fachinformatiker für Systemintegration (PDF)."/>
+<meta property="og:url" content="https://tristankayser.com/lebenslauf.html"/><meta property="og:image" content="https://tristankayser.com/assets/img/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Tristan Kayser — Azubi Fachinformatiker für Systemintegration"/>
+<meta property="og:locale" content="de_DE"/>
+<meta name="twitter:card" content="summary_large_image"/>
 
-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 56px;border-bottom:1px solid var(--line);flex-shrink:0}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
-.back-link{font-family:'Mondwest','Courier Prime','Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);transition:color .2s}
-.back-link:hover{color:var(--cream)}
-
-.wrap{flex:1;display:flex;flex-direction:column;max-width:1200px;width:100%;margin:0 auto;padding:40px 56px 40px}
-
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,4vw,36px);text-transform:uppercase;letter-spacing:-.01em;margin-bottom:6px}
-.subtitle{
-  font-family:'Mondwest','Courier Prime','Space Mono',monospace;
-  font-size:10px;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:24px;
-}
-
-.actions{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
-.dl-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 22px;
-  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--bg);background:var(--blue);
-  border:none;cursor:pointer;transition:background .2s;
-}
-.dl-btn:hover{background:#2d8abf}
-.dl-btn svg{flex-shrink:0}
-.view-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 22px;
-  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--cream);background:transparent;
-  border:1px solid rgba(255,230,203,.12);cursor:pointer;transition:background .2s,border-color .2s;
-}
-.view-btn:hover{border-color:rgba(255,230,203,.25);background:rgba(255,230,203,.03)}
-
-/* PDF Embed */
-.pdf-container{
-  flex:1;
-  min-height:500px;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:2px;
-  overflow:hidden;
-}
-.pdf-container iframe,.pdf-container embed{
-  width:100%;height:100%;min-height:700px;border:none;display:block;
-}
-
-/* Mobile fallback */
-.mobile-fallback{display:none;padding:40px 0;text-align:center}
-.mobile-fallback p{color:var(--dim);font-size:12px;line-height:1.9;margin-bottom:24px}
-
-footer{padding:24px 56px;border-top:1px solid var(--line);text-align:center;flex-shrink:0}
-footer span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,230,203,.2)}
-footer a{color:rgba(255,230,203,.3);border-bottom:1px solid rgba(255,230,203,.1);padding-bottom:2px;transition:color .2s}
-footer a:hover{color:var(--cream)}
-
-@media(max-width:600px){
-  nav{padding:16px 20px}
-  .wrap{padding:28px 20px}
-  .pdf-container{display:none}
-  .mobile-fallback{display:block}
-  footer{padding:18px 20px}
-}
-</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"/>
+<link rel="preload" href="assets/fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="assets/fonts/departure-mono.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="assets/css/main.css?v=20261009"/>
+<script>
+/* Set html classes before paint: js / motion preference (OS setting + footer toggle) */
+(function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
+var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
+try{s=localStorage.getItem('tk-motion')}catch(e){}
+c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
+</script>
 </head>
 <body>
-
-<nav>
-  <a class="nav-logo" href="index.html">Portfolio</a>
-  <a class="back-link" href="index.html">Zurueck zur Startseite</a>
-</nav>
-
-<div class="wrap">
-  <h1>Tristan Kayser</h1>
-  <div class="subtitle">Lebenslauf</div>
-
-  <div class="actions">
-    <a href="Lebenslauf_Tristan_Kayser.pdf" download class="dl-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      PDF Herunterladen
-    </a>
-    <a href="Lebenslauf_Tristan_Kayser.pdf" target="_blank" class="view-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      In neuem Tab oeffnen
-    </a>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="grain" aria-hidden="true"></div>
+<header class="page-nav">
+  <a class="nav-logo" href="index-de.html"><span class="tk" aria-hidden="true">T<b>K</b></span><span>Tristan Kayser</span></a>
+  <nav class="lang-switch" aria-label="Portfolio">
+    <a href="./" hreflang="en" lang="en">EN</a><a href="index-de.html" hreflang="de" lang="de">DE</a><a href="index-af.html" hreflang="af" lang="af">AF</a>
+  </nav>
+</header>
+<main id="main" class="page-wrap wide">
+  <h1>Lebenslauf</h1>
+  <div class="pdf-actions">
+    <a href="Lebenslauf_Tristan_Kayser.pdf" download class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF herunterladen</a>
+    <a href="Lebenslauf_Tristan_Kayser.pdf" target="_blank" rel="noopener" class="btn btn-ghost">In neuem Tab öffnen</a>
   </div>
-
   <div class="pdf-container">
-    <embed src="Lebenslauf_Tristan_Kayser.pdf" type="application/pdf"/>
+    <embed src="Lebenslauf_Tristan_Kayser.pdf#view=FitH" type="application/pdf" title="Lebenslauf Tristan Kayser (PDF)"/>
   </div>
-
-  <div class="mobile-fallback">
-    <p>PDF-Vorschau ist auf Mobilgeraeten nicht verfuegbar.</p>
-    <a href="Lebenslauf_Tristan_Kayser.pdf" download class="dl-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      PDF Herunterladen
-    </a>
-  </div>
-</div>
-
-<footer>
-  <span><a href="index.html">Portfolio</a> &middot; <a href="impressum.html">Impressum &amp; Datenschutz</a></span>
+  <p class="mobile-fallback">Die PDF-Vorschau ist auf kleinen Bildschirmen nicht verfügbar – lade die Datei einfach herunter.</p>
+</main>
+<footer class="site-footer">
+  <span>&copy; <span data-year>2026</span> Tristan Kayser</span>
+  <span class="footer-links"><a href="index-de.html">Portfolio</a><a href="impressum.html">Impressum &amp; Datenschutz</a></span>
+  <span></span>
 </footer>
+<script src="assets/js/main.js?v=20261009" defer></script>
 </body>
 </html>

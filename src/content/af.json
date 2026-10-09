@@ -1,0 +1,255 @@
+{
+  "lang": "af",
+  "locale": "af_ZA",
+  "file": "index-af.html",
+  "meta": {
+    "title": "Tristan Kayser — Vakleerling in IT-stelselintegrasie",
+    "description": "Tristan Kayser, vakleerling-Fachinformatiker für Systemintegration naby Stuttgart. Proxmox, netwerke, Windows- en Linux-administrasie, outomatisering en 'n eie homelab.",
+    "og_alt": "Tristan Kayser — vakleerling in IT-stelselintegrasie"
+  },
+  "ui": {
+    "skip": "Spring na inhoud",
+    "menu_open": "Maak kieslys oop",
+    "menu_close": "Maak kieslys toe",
+    "lang_label": "Taal",
+    "to_top": "Terug na bo",
+    "motion_pause": "Onderbreek animasies",
+    "motion_play": "Speel animasies",
+    "scroll": "Rol af",
+    "loading": "Laai tans"
+  },
+  "nav": {
+    "about": "Oor my",
+    "path": "Loopbaan",
+    "log": "Opleidingslog",
+    "projects": "Projekte",
+    "homelab": "Homelab",
+    "skills": "Vaardighede",
+    "cv": "CV",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "badge": "Vakleerling by IT-Works GmbH · sedert 09/2026",
+    "sub": "Fachinformatiker für Systemintegration",
+    "sub2": "IT-stelselintegrasie · Proxmox · Netwerke · Outomatisering",
+    "cta_primary": "Sien my projekte",
+    "cta_secondary": "Kontak my",
+    "stats": [
+      {"num": 2, "sup": "de", "label": "Opleidingsjaar"},
+      {"num": 20, "sup": "+", "label": "Selfgehoste dienste"},
+      {"num": 3, "sup": "", "label": "Tale"}
+    ]
+  },
+  "about": {
+    "label": "Oor my",
+    "headline": "Kode is my<br/><em>kompas</em>,<br/>stelsels my<br/>taal.",
+    "photo_tag": "Tristan Kayser · Eislingen/Fils",
+    "photo_alt": "Portret van Tristan Kayser",
+    "paras": [
+      "Ek het in Windhoek, Namibië, grootgeword en woon nou in Eislingen/Fils naby Stuttgart. Ek word opgelei as Fachinformatiker für Systemintegration — 'n spesialis in IT-stelselintegrasie — en sedert September 2026 is ek in my tweede opleidingsjaar by IT-Works GmbH in Uhingen.",
+      "My eerste jaar by netplay GmbH het my reguit in kliëntewerk gegooi: Proxmox-bedieners en rugsteun, OPNsense-brandmure, Windows-uitrollings, patch-outomatisering en die daaglikse ondersteuningsry. By die huis bedryf ek 'n Proxmox-lab met drie nodes waar ek dinge uittoets voordat ek ooit aan 'n produksiestelsel sou raak.",
+      "Voor IT het ek op Vlak 8 aan kunsgimnastiek deelgeneem en kinders in Windhoek afgerig. Ek vlieg steeds hommeltuie en haal graag ou hardeware uitmekaar om te sien hoe dit werk."
+    ],
+    "facts": [
+      {"k": "Woon in", "v": "Eislingen/Fils, Duitsland"},
+      {"k": "Grootgeword in", "v": "Windhoek, Namibië"},
+      {"k": "Opleiding", "v": "IT-stelselintegrasie · 2de jaar"},
+      {"k": "Lisensies", "v": "Bestuur AM, B, L · Hommeltuig EU A1/A3"}
+    ]
+  },
+  "strip": [
+    {"img": "namibia", "alt": "Sonsondergang oor die rooi duine van Namibië", "cap": "Namibië, waar ek grootgeword het"},
+    {"img": "gymnastics", "alt": "Tydskrifvoorblad met Tristan op die perd met handvatsels", "cap": "Gimnastiek · Vlak 8"},
+    {"img": "drone", "alt": "DJI-hommeltuig in die lug", "cap": "Hommeltuigvlieënier · EU A1/A3"}
+  ],
+  "path": {
+    "label": "Loopbaan",
+    "work_title": "Werk",
+    "edu_title": "Opleiding",
+    "work": [
+      {"date": "Sedert Sep 2026", "title": "Vakleerling, IT-stelselintegrasie (2de jaar)", "org": "IT-Works GmbH · Uhingen", "desc": "Bestuurde IT-dienste vir klein besighede en openbare-sektor-kliënte: Windows Server, Hyper-V, Veeam-rugsteun en sentrale afstandsbestuur.", "current": true},
+      {"date": "Okt 2025 – Aug 2026", "title": "IT-stelselintegrasie-kwekeling (1ste jaar)", "org": "netplay GmbH · Zell u. A.", "desc": "Toetredingskwalifikasiejaar (EQ). Proxmox VE en Backup Server, OPNsense, patch-outomatisering met AWX, dokumentasie van kliënte se infrastruktuur en eerstevlak-ondersteuning."},
+      {"date": "Jun – Okt 2024", "title": "Lidmaatskapadmin en sosiale media", "org": "RGS e.V. · Eislingen", "desc": "Deeltydse werk: lidmaatskapadministrasie, ontvangs en inhoud vir sosiale media."},
+      {"date": "Mrt – Apr 2024", "title": "Ontvangs en sosiale media", "org": "Fitness Forum Eislingen", "desc": "Deeltydse werk: lidmaatskappe, kliëntekontak en inhoud vir die gimnasium se sosiale kanale."},
+      {"date": "Mei 2023 – Feb 2024", "title": "Assistent-gimnastiekafrigter", "org": "Crete Gymnastic Club · Windhoek", "desc": "Kinders en tieners in kunsgimnastiek afgerig en na hulle omgesien."}
+    ],
+    "edu": [
+      {"date": "Sedert Okt 2025", "title": "Beroepskool, IT-stelselintegrasie", "org": "Beroepskool · duale opleiding", "desc": "SQL en ER-modellering, Python, IPv4/IPv6, OSI en TCP/IP, Cisco Packet Tracer, IT-sekuriteitskonsepte en 'n DMZ/brandmuur-projek met kostevergelyking.", "current": true},
+      {"date": "Aug 2024 – Jul 2025", "title": "Rekenaarwetenskap (2 semesters)", "org": "Technische Hochschule Ulm (THU)", "desc": "Programmeringsgrondslae, algoritmes, wiskunde en teoretiese rekenaarwetenskap. Ek het na die vakleerlingskap oorgeslaan omdat ek die beste leer deur self te doen."},
+      {"date": "2016 – 2023", "title": "Abitur (Duitse matriek)", "org": "Deutsche Höhere Privatschule Windhoek", "desc": "Duitse skool in Namibië, insluitend afstandsonderrig tydens COVID-19."}
+    ]
+  },
+  "log": {
+    "label": "Opleidingslog",
+    "intro": "Elf maandelikse opleidingsverslae uit my eerste jaar, saamgevat – plus waar ek nou is. Kliënte se name is doelbewus weggelaat.",
+    "school": "Skool",
+    "entries": [
+      {"m": "2025-10", "t": "Eerste maand", "items": ["Proxmox VE op mini-rekenaars opgestel, plus Proxmox Backup Server en OPNsense", "Roetering tussen twee subnette en 'n UniFi-netwerk gekonfigureer", "Snipe-IT in Docker vir voorraadbeheer geïnstalleer en die opstelgids geskryf"], "school": "Kontraktereg, rekenaaronderdele, ER-modelle en eerste SQL"},
+      {"m": "2025-11", "t": "Ondersteuning en eerste outomatisering", "items": ["Ondersteuningskaartjies hanteer: gebruikers, drukkers, e-pos", "Windows 11-installasies en -opdaterings op maatskappy- en kliënte-skootrekenaars", "Kliënte se PBS-rugsteun nagegaan; eerste treë met Ansible en AWX"], "school": "SQL in die praktyk, hardeware-aanbieding"},
+      {"m": "2025-12", "t": "AWX in gebruik geneem", "items": ["AWX geïnstalleer en Windows 11-VM's sentraal opgedateer", "Netwerkmonitering met NetAlertX", "Skywe met LUKS geënkripteer; 'n PBS-gids geskryf en 'n OPNsense-toestel herstel"], "school": "SQL-eksamen, beskermingsbehoefte-analise"},
+      {"m": "2026-01", "t": "Op terrein", "items": ["Office 2016 → 2024-migrasie; gebruikers vir die 3CX-telefoonstelsel", "On- en offboarding: rekeninge, lisensies, toestelle, 2FA", "Werk op terrein: nuwe brandmuur, mini-rekenaar en internet vir 'n vergaderlokaal"], "school": "Getallestelsels, IT-sekuriteitskonsep, Python-grondbeginsels"},
+      {"m": "2026-02", "t": "Sekuriteitsbewustheid", "items": ["'n Phishing-simulasie gebou en getoets (landingsblad + e-pos)", "'n Mislukte rugsteun opgespoor; 'n ERP-fout ná 'n opdatering reggemaak", "'n Maatskappyfoon en 'n kabelmodem opgestel"], "school": "Python-vertakkings en -lusse, netwerke"},
+      {"m": "2026-03", "t": "Playbooks en brandmure", "items": ["Windows-opdaterings met getoetste AWX-playbooks geoutomatiseer", "Kliënte se OPNsense-brandmuurreëls hersien en gedokumenteer", "Office 2024 uitgerol; voorraad in Homebox"], "school": "DMZ- en brandmuurprojek met kostevergelyking"},
+      {"m": "2026-04", "t": "Nuwe gereedskap", "items": ["'n Nuwe kaartjiestelsel getoets (e-pos na kaartjie en terug)", "'n KI-agentplatform op Debian met PostgreSQL en systemd ontplooi", "'n SEO-projek vir die maatskappy se webwerf begin"], "school": "IPv4/IPv6, RAID, Cisco-take"},
+      {"m": "2026-05", "t": "Dokumentasie-sprint", "items": ["Volledige infrastruktuurdokumentasie vir twee kliënteterreine", "Leesalleen-Proxmox-CLI (qm, pvesm, pvesh) en OPNsense-uitvoere → Excel, PDF en JSON", "'n Vol swap en 'n VM op gedeaktiveerde berging gevind en aangemeld"], "school": "OSI en TCP/IP, Packet Tracer, Python-funksies"},
+      {"m": "2026-06", "t": "Dinge regmaak", "items": ["'n Vol PBS-datastoor met prune en garbage collection vrygemaak", "Skootrekenaarmigrasie met Acronis; 'n VM-selflaaifout reggemaak (AES-CPU-vlag)", "Samba-lêerbediener met groeptoestemmings (setgid); 'n KI-bediener met GPU-passthrough beplan"], "school": "Eksamenvoorbereiding, aanbiedings"},
+      {"m": "2026-07", "t": "Labmaand", "items": ["VLAN-konsep: 802.1Q, access- en trunk-poorte, inter-VLAN-roetering", "Active Directory-lab op ESXi met Server 2025, GPO's en NTFS-shares", "'n ATA-geslote SSD met Secure Erase (hdparm) teruggestel"], "school": "DrehBAR-cocktailmasjien in Python"},
+      {"m": "2026-08", "t": "Oorhandiging", "items": ["Vakansie en einde van my eerste opleidingsjaar by netplay op 31 Augustus"], "school": "Somervakansie"},
+      {"m": "2026-09", "t": "Volgende hoofstuk", "items": ["My tweede opleidingsjaar by IT-Works GmbH in Uhingen begin"], "school": "", "current": true}
+    ]
+  },
+  "projects": {
+    "label": "Projekte",
+    "intro": "Ses dinge wat ek gebou of reggemaak het, uiteengesit soos 'n IHK-projekverslag: beginpunt, wat ek gedoen het, resultaat.",
+    "h_situation": "Beginpunt",
+    "h_action": "Wat ek gedoen het",
+    "h_result": "Resultaat",
+    "open": "Wys besonderhede",
+    "items": [
+      {
+        "id": "awx", "ctx": "Werk", "period": "Nov 2025 – Mrt 2026",
+        "title": "Sentrale Windows-patching met AWX",
+        "situation": "Windows 11-kliënte en -VM's is met die hand opgedateer, een masjien op 'n slag — stadig, en maklik om een te vergeet.",
+        "action": "AWX (die web-UI vir Ansible) geïnstalleer, inventarisse gebou, Windows-gashere oor WinRM gekoppel en job templates en playbooks geskryf. Alles eers in 'n lab getoets voordat dit uitgerol is.",
+        "result": "Opdaterings vir verskeie Windows-masjiene loop vanaf een plek, herhaalbaar en met 'n log van elke lopie.",
+        "stack": ["Ansible", "AWX", "WinRM", "Windows 11"]
+      },
+      {
+        "id": "docs", "ctx": "Werk", "period": "Mei 2026",
+        "title": "Infrastruktuurdokumentasie vir twee kliënteterreine",
+        "situation": "Twee kleinsakekliënte het geen volledige, bygewerkte dokumentasie van hul bedieners en netwerk gehad nie.",
+        "action": "Data leesalleen uit produksie-Proxmox (qm, pvesm, pvesh) en OPNsense versamel: VM's, IP's, berging, VPN, DHCP-huurkontrakte, brandmuur- en NAT-reëls. Dit omgeskakel na gestruktureerde Excel-, PDF- en JSON-lêers.",
+        "result": "Oorhandigingsgereed dokumentasie vir albei terreine. Langs die pad het ek 'n vol swap-partisie en 'n VM op gedeaktiveerde berging gevind en albei aangemeld.",
+        "stack": ["Proxmox VE", "OPNsense", "WireGuard", "Python", "Excel / PDF / JSON"]
+      },
+      {
+        "id": "ad", "ctx": "Lab", "period": "Jul 2026",
+        "title": "Active Directory-lab op VMware ESXi",
+        "situation": "Ek wou Windows-domeine behoorlik verstaan voordat ek by 'n kliënt daaraan werk.",
+        "action": "'n Domeinbeheerder op Windows Server 2025 gebou met OU's en groepe, gedeelde vouers met share- en NTFS-toestemmings, GPO-skyfkarterings en 'n OPNsense-VM vir DHCP en DNS — geïsoleer op eie vSwitches.",
+        "result": "'n Herhaalbare lab wat ek enige tyd kan terugstel. Groot les: waar share- en NTFS-regte bymekaarkom, wen die strengste een.",
+        "stack": ["ESXi 8", "Windows Server 2025", "AD DS", "GPO", "OPNsense"]
+      },
+      {
+        "id": "ai", "ctx": "Homelab", "period": "2026",
+        "title": "Plaaslike KI-stack op ou bedienerhardeware",
+        "situation": "Ek wou privaat KI-gereedskap by die huis hê — op 'n Xeon sonder AVX2 en sonder 'n groot GPU.",
+        "action": "'n Toegewyde LLM-VM gebou met llama.cpp agter llama-swap (agt modelle), LibreChat as front end met SearXNG-websoektogte, en 'n Hermes Agent wat via WhatsApp bereikbaar is. Flash attention, mlock en 'n gekwantiseerde KV-cache ingestel, en 'n skyfuitleg reggemaak wat die meeste van die skyf ongebruik gelaat het.",
+        "result": "Stabiele 7–8 tokens per sekonde op die CPU, heeltemal plaaslik, sonder enige wolkafhanklikheid.",
+        "stack": ["Proxmox", "llama.cpp", "llama-swap", "LibreChat", "SearXNG", "Docker"]
+      },
+      {
+        "id": "phish", "ctx": "Werk", "period": "Jan – Feb 2026",
+        "title": "Phishing-simulasie vir sekuriteitsbewustheid",
+        "situation": "'n Kliënt wou uitvind hoe sy personeel op 'n realistiese phishing-e-pos reageer.",
+        "action": "Die landingsblad en die e-pos vir 'n beheerde simulasie gebou en die hele vloei voor die bekendstelling getoets.",
+        "result": "'n Gereed-om-te-loop bewusmakingsveldtog — en 'n baie skerper oog van my eie vir wat phishing oortuigend maak.",
+        "stack": ["HTML/CSS", "E-pos", "Sekuriteitsbewustheid"]
+      },
+      {
+        "id": "drehbar", "ctx": "Skool", "period": "Jul 2026",
+        "title": "DrehBAR — 'n cocktailmasjien in Python",
+        "situation": "Beroepskoolprojek: beheer 'n cocktailmasjien met 'n draaiende skinkbord.",
+        "action": "Die menglogika in Python geskryf met 'n SQLite-resepdatabasis, draailogika vir die skinkbord, getimede uitdeling met vlakopsporing en geanimeerde tkinter-vorderingstawe. Dokumentasie en 'n toetsprotokol bygevoeg.",
+        "result": "Werkende sagteware met dokumentasie, as spanprojek afgelewer.",
+        "stack": ["Python", "SQLite", "tkinter"]
+      }
+    ]
+  },
+  "homelab": {
+    "label": "Homelab",
+    "intro": "Drie Proxmox-nodes in my kamer. Alles hier loop op my eie hardeware en word elke nag gerugsteun.",
+    "stats": [
+      {"num": "3", "label": "Proxmox-nodes"},
+      {"num": "20+", "label": "Selfgehoste dienste"},
+      {"num": "8", "label": "Plaaslike KI-modelle"},
+      {"num": "VPN", "label": "WireGuard-afstandstoegang"}
+    ],
+    "cluster_label": "Proxmox-kluster",
+    "status_online": "Aanlyn",
+    "nodes": [
+      {"name": "Node 1 — Edge", "role": "Brandmuur, DNS, reverse proxy, monitering", "specs": "4-kern Celeron · 8 GB RAM · 900 GB berging", "tone": "gold"},
+      {"name": "Node 2 — Compute", "role": "KI-inferensie, GPU-werkladings, swaar VM's", "specs": "Dubbele 8-kern Xeon · 40 GB RAM · NVIDIA Quadro P2000", "tone": "blue"},
+      {"name": "Node 3 — Apps", "role": "Outomatisering, CMS, webhosting", "specs": "i3 dubbelkern · 11 GB RAM · 110 GB berging", "tone": "blue"}
+    ],
+    "groups": [
+      {"title": "Netwerke en sekuriteit", "tone": "gold", "items": [
+        {"icon": "shield", "name": "OPNsense", "desc": "Perimeterbrandmuur en roeteerder: stateful filtering, IDS/IPS, DHCP en NAT."},
+        {"icon": "proxy", "name": "Nginx Proxy Manager", "desc": "Sentrale reverse proxy met outomatiese Let's Encrypt-sertifikate."},
+        {"icon": "filter", "name": "Pi-hole", "desc": "Netwerkwye DNS-filter; alle LAN-navrae word daardeur gedwing."},
+        {"icon": "lock", "name": "Vaultwarden", "desc": "Selfgehoste, Bitwarden-versoenbare wagwoordkluis."},
+        {"icon": "globe", "name": "WireGuard", "desc": "Geënkripteerde tonnel vir afstandstoegang tot die hele lab."},
+        {"icon": "eye", "name": "Beszel", "desc": "Gesondheidsmonitering met agente op elke node."}
+      ]},
+      {"title": "KI en outomatisering", "tone": "blue", "items": [
+        {"icon": "chip", "name": "llama.cpp + llama-swap", "desc": "Toegewyde LLM-VM wat agt plaaslike modelle op aanvraag bedien."},
+        {"icon": "chat", "name": "LibreChat", "desc": "Kletskoppelvlak met websoektogte via SearXNG en dokument-RAG."},
+        {"icon": "bot", "name": "Hermes Agent", "desc": "Permanente KI-agent met geheue en vaardighede, bereikbaar via WhatsApp."},
+        {"icon": "bulb", "name": "Ollama", "desc": "Klein instansie op die Quadro P2000 vir embeddings en kompressie."},
+        {"icon": "code", "name": "Firecrawl + SearXNG", "desc": "Selfgehoste scraping en metasoektogte vir die agente."},
+        {"icon": "gear", "name": "n8n", "desc": "Werkvloei-outomatisering wat die dienste koppel."}
+      ]},
+      {"title": "Dokumente en produktiwiteit", "tone": "blue", "items": [
+        {"icon": "doc", "name": "Paperless-ngx", "desc": "Dokumentbestuur met OCR, etikette en volteks-soektogte."},
+        {"icon": "book", "name": "BookStack", "desc": "Wiki vir my eie dokumentasie."},
+        {"icon": "server", "name": "Proxmox Backup Server", "desc": "Inkrementele, gededupliseerde rugsteun met retensie vir alle nodes."},
+        {"icon": "users", "name": "wger", "desc": "Selfgehoste oefen- en voedingsopspoorder."}
+      ]}
+    ],
+    "flow_label": "Netwerkdatavloei",
+    "flow_desc": "Diagram: internetverkeer kom deur OPNsense in en word na drie Proxmox-nodes gerouteer. Node 1 bedryf Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx en PBS. Node 2 bedryf die LLM-VM, LibreChat, Hermes Agent, Ollama en Firecrawl. Node 3 bedryf n8n, BookStack, WordPress, Anubis en RustDesk.",
+    "legend_net": "Netwerk / sekuriteit",
+    "legend_svc": "KI / dienste",
+    "next_label": "Besig met",
+    "next": ["VLAN-segmentering met OPNsense en Proxmox", "KI-node met twee GPU's", "Tweefaktor-aanmelding vir afstandstoegang tot agente"]
+  },
+  "skills": {
+    "label": "Vaardighede",
+    "toolbox": "Gereedskapkis",
+    "groups": [
+      {"title": "Virtualisering en rugsteun", "items": ["Proxmox VE", "Proxmox Backup Server", "VMware ESXi", "Hyper-V", "Veeam", "Docker & Compose"]},
+      {"title": "Netwerk en sekuriteit", "items": ["OPNsense", "VLAN / 802.1Q", "WireGuard", "DNS & DHCP", "NAT & port forwarding", "UniFi", "Nginx Proxy Manager"]},
+      {"title": "Windows en identiteit", "items": ["Windows 11-uitrol", "Active Directory", "Group Policy", "NTFS- en share-toestemmings", "Microsoft 365 / Office", "3CX"]},
+      {"title": "Linux en outomatisering", "items": ["Debian", "systemd", "Bash", "Ansible / AWX", "Samba", "LUKS", "PostgreSQL"]},
+      {"title": "Kode", "items": ["Python", "SQL", "HTML / CSS / JS", "Java (basies)"]},
+      {"title": "Ondersteuning en dokumentasie", "items": ["Kaartjiestelsels", "Afstandsondersteuning", "Snipe-IT / Homebox", "Devolutions RDM", "Tegniese skryfwerk"]}
+    ],
+    "languages_title": "Tale",
+    "languages": [
+      {"name": "Duits", "note": "Eerste taal", "level": 6, "cefr": "Moedertaal"},
+      {"name": "Engels", "note": "Vlot, mondeling en skriftelik", "level": 5, "cefr": "C1"},
+      {"name": "Afrikaans", "note": "Daarmee grootgeword in Namibië", "level": 4, "cefr": "B2"}
+    ],
+    "cefr_hint": "Kolletjies wys die GERF-skaal A1 → C2",
+    "interests_title": "Na werksure",
+    "interests": ["Kunsgimnastiek", "Hommeltuigvlieg", "Vlugsimulasie", "Retro-hardeware en modding", "E-sport", "Kampeer"],
+    "social_title": "Betrokkenheid",
+    "social": ["Kompeterende gimnas, Vlak 8, Namibië", "Afrigting van kinders en tieners", "Werk met sosiaal benadeelde kinders", "Groepleier op skool"]
+  },
+  "contact": {
+    "label": "Kontak",
+    "headline": "Kom ons<br/><span class=\"hl\">gesels</span>",
+    "sub": "Vrae oor my opleiding, 'n projek of die homelab? Skryf vir my — ek antwoord gewoonlik binne 'n dag.",
+    "email_label": "E-pos",
+    "github_label": "GitHub",
+    "cv_label": "CV",
+    "cv_value": "Laai PDF af (Duits)"
+  },
+  "footer": {
+    "imprint": "Regskennisgewing en privaatheid",
+    "cv": "CV",
+    "made": "Met die hand gebou · gehuisves op GitHub Pages"
+  },
+  "cv_page": {
+    "title": "CV",
+    "subtitle": "Curriculum vitae (Duits)",
+    "download": "Laai PDF af",
+    "open": "Maak oop in nuwe oortjie",
+    "mobile": "Die PDF-voorskou is nie op klein skerms beskikbaar nie.",
+    "back": "Terug na portefeulje"
+  },
+  "notfound": {
+    "title": "Sein verloor",
+    "text": "Hierdie bladsy bestaan nie (meer) nie. Kies 'n taal om weer op koers te kom:"
+  }
+}

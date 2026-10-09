@@ -1,0 +1,255 @@
+{
+  "lang": "de",
+  "locale": "de_DE",
+  "file": "index-de.html",
+  "meta": {
+    "title": "Tristan Kayser — Azubi Fachinformatiker für Systemintegration",
+    "description": "Tristan Kayser, Auszubildender Fachinformatiker für Systemintegration im Raum Stuttgart/Göppingen. Proxmox, Netzwerk, Windows- und Linux-Administration, Automatisierung und ein selbst gehostetes Homelab.",
+    "og_alt": "Tristan Kayser — Azubi Fachinformatiker für Systemintegration"
+  },
+  "ui": {
+    "skip": "Zum Inhalt springen",
+    "menu_open": "Menü öffnen",
+    "menu_close": "Menü schließen",
+    "lang_label": "Sprache",
+    "to_top": "Nach oben",
+    "motion_pause": "Animationen pausieren",
+    "motion_play": "Animationen abspielen",
+    "scroll": "Scrollen",
+    "loading": "Lädt"
+  },
+  "nav": {
+    "about": "Über mich",
+    "path": "Werdegang",
+    "log": "Berichtsheft",
+    "projects": "Projekte",
+    "homelab": "Homelab",
+    "skills": "Skills",
+    "cv": "Lebenslauf",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "badge": "Azubi bei der IT-Works GmbH · seit 09/2026",
+    "sub": "Fachinformatiker für Systemintegration",
+    "sub2": "Systemintegration · Proxmox · Netzwerk · Automatisierung",
+    "cta_primary": "Projekte ansehen",
+    "cta_secondary": "Kontakt aufnehmen",
+    "stats": [
+      {"num": 2, "sup": ".", "label": "Ausbildungsjahr"},
+      {"num": 20, "sup": "+", "label": "Selbst gehostete Dienste"},
+      {"num": 3, "sup": "", "label": "Sprachen"}
+    ]
+  },
+  "about": {
+    "label": "Über mich",
+    "headline": "Code ist mein<br/><em>Kompass</em>,<br/>Systeme meine<br/>Sprache.",
+    "photo_tag": "Tristan Kayser · Eislingen/Fils",
+    "photo_alt": "Porträt von Tristan Kayser",
+    "paras": [
+      "Aufgewachsen bin ich in Windhoek, Namibia – heute wohne ich in Eislingen/Fils bei Stuttgart. Ich mache eine Ausbildung zum Fachinformatiker für Systemintegration und bin seit September 2026 im zweiten Ausbildungsjahr bei der IT-Works GmbH in Uhingen.",
+      "Mein erstes Jahr bei der netplay GmbH hat mich direkt in die Kundenarbeit gebracht: Proxmox-Server und Backups, OPNsense-Firewalls, Windows-Rollouts, Update-Automatisierung und der tägliche Support. Zu Hause betreibe ich ein Proxmox-Homelab mit drei Knoten, in dem ich Dinge ausprobiere, bevor ich sie an einem Produktivsystem anfasse.",
+      "Vor der IT habe ich Kunstturnen auf Level 8 betrieben und in Windhoek Kinder trainiert. Heute fliege ich Drohnen und schraube gern alte Hardware auseinander, um zu verstehen, wie sie funktioniert."
+    ],
+    "facts": [
+      {"k": "Wohnort", "v": "Eislingen/Fils"},
+      {"k": "Aufgewachsen", "v": "Windhoek, Namibia"},
+      {"k": "Ausbildung", "v": "FISI · 2. Ausbildungsjahr"},
+      {"k": "Führerscheine", "v": "AM, B, L · Drohne EU A1/A3"}
+    ]
+  },
+  "strip": [
+    {"img": "namibia", "alt": "Sonnenuntergang über den roten Dünen Namibias", "cap": "Namibia, wo ich aufgewachsen bin"},
+    {"img": "gymnastics", "alt": "Magazin-Cover mit Tristan am Pauschenpferd", "cap": "Kunstturnen · Level 8"},
+    {"img": "drone", "alt": "DJI-Drohne im Flug", "cap": "Drohnenpilot · EU A1/A3"}
+  ],
+  "path": {
+    "label": "Werdegang",
+    "work_title": "Beruf",
+    "edu_title": "Bildung",
+    "work": [
+      {"date": "Seit 09/2026", "title": "Auszubildender Fachinformatiker für Systemintegration (2. Jahr)", "org": "IT-Works GmbH · Uhingen", "desc": "IT-Dienstleistungen für kleine Unternehmen und öffentliche Auftraggeber: Windows Server, Hyper-V, Veeam-Backups und zentrale Fernwartung.", "current": true},
+      {"date": "10/2025 – 08/2026", "title": "Fachinformatiker für Systemintegration (1. Jahr, EQ)", "org": "netplay GmbH · Zell u. A.", "desc": "Einstiegsqualifizierung (EQ). Proxmox VE und Backup Server, OPNsense, Update-Automatisierung mit AWX, Infrastruktur-Dokumentation für Kunden und First-Level-Support."},
+      {"date": "06 – 10/2024", "title": "Mitgliederverwaltung & Social Media", "org": "RGS e.V. · Eislingen", "desc": "Minijob: Mitgliederverwaltung, direkter Kundenkontakt und Social-Media-Content."},
+      {"date": "03 – 04/2024", "title": "Empfang & Social Media", "org": "Fitness Forum Eislingen", "desc": "Minijob: Mitgliedschaften, Kundenkontakt und Inhalte für die Social-Media-Kanäle."},
+      {"date": "05/2023 – 02/2024", "title": "Assistenztrainer Kunstturnen", "org": "Crete Gymnastic Club · Windhoek", "desc": "Training und Betreuung von Kindern und Jugendlichen im Kunstturnen."}
+    ],
+    "edu": [
+      {"date": "Seit 10/2025", "title": "Berufsschule, Fachinformatik Systemintegration", "org": "Duale Ausbildung", "desc": "SQL und ER-Modell, Python, IPv4/IPv6, OSI- und TCP/IP-Modell, Cisco Packet Tracer, IT-Sicherheitskonzepte und ein DMZ-/Firewall-Projekt mit Kostenvergleich.", "current": true},
+      {"date": "08/2024 – 07/2025", "title": "Informatik (2 Semester)", "org": "Technische Hochschule Ulm (THU)", "desc": "Programmiergrundlagen, Algorithmik, Mathematik und theoretische Informatik. Gewechselt in die Ausbildung, weil ich am besten in der Praxis lerne."},
+      {"date": "2016 – 2023", "title": "Allgemeine Hochschulreife (Abitur)", "org": "Deutsche Höhere Privatschule Windhoek", "desc": "Deutsche Auslandsschule in Namibia, inklusive Online-Unterricht während Corona."}
+    ]
+  },
+  "log": {
+    "label": "Berichtsheft",
+    "intro": "Elf Ausbildungsnachweise aus meinem ersten Jahr, zusammengefasst – plus wo ich heute stehe. Kundennamen lasse ich bewusst weg.",
+    "school": "Schule",
+    "entries": [
+      {"m": "2025-10", "t": "Der erste Monat", "items": ["Proxmox VE auf Mini-PCs aufgesetzt, dazu Proxmox Backup Server und OPNsense", "Routing zwischen zwei Subnetzen und ein UniFi-Netz eingerichtet", "Snipe-IT per Docker für die Inventarverwaltung installiert und Anleitung geschrieben"], "school": "Vertragsrecht, PC-Komponenten, ER-Modell und erste SQL-Befehle"},
+      {"m": "2025-11", "t": "Support & erste Automatisierung", "items": ["Tickets bearbeitet: Benutzer, Drucker, E-Mail", "Windows-11-Installationen und Updates an Firmen- und Kunden-Laptops", "PBS-Backups bei Kunden kontrolliert; Einstieg in Ansible und AWX"], "school": "SQL in der Praxis, Präsentation Hardware"},
+      {"m": "2025-12", "t": "AWX geht live", "items": ["AWX installiert und Windows-11-VMs zentral aktualisiert", "Netzwerk-Monitoring mit NetAlertX", "Laufwerke mit LUKS verschlüsselt; PBS-Anleitung geschrieben und eine OPNsense repariert"], "school": "SQL-Klassenarbeit, Schutzbedarfsanalyse"},
+      {"m": "2026-01", "t": "Vor Ort", "items": ["Office-Migration 2016 → 2024; Benutzer in der 3CX-Telefonanlage", "On- und Offboarding: Konten, Lizenzen, Geräte, 2FA", "Außeneinsatz: neue Firewall, Mini-PC und Internet für einen Meetingraum"], "school": "Zahlensysteme, IT-Sicherheitskonzept, Python-Grundlagen"},
+      {"m": "2026-02", "t": "Security Awareness", "items": ["Phishing-Simulation (Landing Page + E-Mail) aufgebaut und getestet", "Fehlgeschlagenes Backup untersucht; ERP-Fehler nach Update gelöst", "Firmenhandy und Kabelmodem eingerichtet"], "school": "Python-Verzweigungen und Schleifen, Netzwerktechnik"},
+      {"m": "2026-03", "t": "Playbooks & Firewalls", "items": ["Windows-Updates mit getesteten AWX-Playbooks automatisiert", "OPNsense-Firewallregeln beim Kunden geprüft und dokumentiert", "Office 2024 verteilt; Inventar in Homebox gepflegt"], "school": "Projekt DMZ & Firewall mit Kostenvergleich"},
+      {"m": "2026-04", "t": "Neue Werkzeuge", "items": ["Neues Ticketsystem getestet (E-Mail zu Ticket und zurück)", "KI-Agenten-Plattform auf Debian mit PostgreSQL und systemd installiert", "SEO-Projekt für die Firmenwebsite angelegt"], "school": "IPv4/IPv6, RAID, Cisco-Aufgaben"},
+      {"m": "2026-05", "t": "Dokumentations-Sprint", "items": ["Komplette Infrastruktur-Doku für zwei Kundenstandorte", "Proxmox-CLI nur lesend (qm, pvesm, pvesh) und OPNsense-Exporte → Excel, PDF und JSON", "Vollen Swap und eine VM auf deaktiviertem Storage gefunden und gemeldet"], "school": "OSI- und TCP/IP-Modell, Packet Tracer, Python-Funktionen"},
+      {"m": "2026-06", "t": "Fehler beheben", "items": ["Vollen PBS-Datastore mit Prune und Garbage Collection freigeräumt", "Laptop-Umzug mit Acronis; VM-Startfehler (CPU-Flag AES) behoben", "Samba-Fileserver mit Gruppenrechten (setgid); KI-Server mit GPU-Passthrough geplant"], "school": "Prüfungsvorbereitung, Präsentationen"},
+      {"m": "2026-07", "t": "Labor-Monat", "items": ["VLAN-Konzept: 802.1Q, Access- und Trunk-Ports, Inter-VLAN-Routing", "Active-Directory-Lab auf ESXi mit Server 2025, GPOs und NTFS-Freigaben", "SSD mit ATA-Passwort per Secure Erase zurückgesetzt (hdparm)"], "school": "DrehBAR-Cocktailmaschine in Python"},
+      {"m": "2026-08", "t": "Übergabe", "items": ["Urlaub und Ende meines ersten Ausbildungsjahres bei netplay zum 31. August"], "school": "Sommerferien"},
+      {"m": "2026-09", "t": "Nächstes Kapitel", "items": ["Start ins zweite Ausbildungsjahr bei der IT-Works GmbH in Uhingen"], "school": "", "current": true}
+    ]
+  },
+  "projects": {
+    "label": "Projekte",
+    "intro": "Sechs Dinge, die ich gebaut oder repariert habe – gegliedert wie eine IHK-Projektdokumentation: Ausgangslage, Umsetzung, Ergebnis.",
+    "h_situation": "Ausgangslage",
+    "h_action": "Umsetzung",
+    "h_result": "Ergebnis",
+    "open": "Details anzeigen",
+    "items": [
+      {
+        "id": "awx", "ctx": "Betrieb", "period": "11/2025 – 03/2026",
+        "title": "Zentrales Windows-Patching mit AWX",
+        "situation": "Windows-11-Clients und -VMs wurden von Hand aktualisiert, Gerät für Gerät – langsam, und leicht vergisst man eins.",
+        "action": "AWX (die Weboberfläche für Ansible) installiert, Inventare aufgebaut, Windows-Hosts per WinRM angebunden und Job-Templates sowie Playbooks geschrieben. Alles erst im Testlabor geprüft, dann ausgerollt.",
+        "result": "Updates für mehrere Windows-Rechner laufen von einer Stelle aus – wiederholbar und mit Protokoll jedes Laufs.",
+        "stack": ["Ansible", "AWX", "WinRM", "Windows 11"]
+      },
+      {
+        "id": "docs", "ctx": "Betrieb", "period": "05/2026",
+        "title": "Infrastruktur-Dokumentation für zwei Kunden",
+        "situation": "Zwei kleine Unternehmen hatten keine vollständige, aktuelle Dokumentation ihrer Server und ihres Netzwerks.",
+        "action": "Daten nur lesend aus produktiven Proxmox-Systemen (qm, pvesm, pvesh) und OPNsense erfasst: VMs, IPs, Storage, VPN, DHCP-Leases, Firewall- und NAT-Regeln. Daraus strukturierte Excel-, PDF- und JSON-Dateien erstellt.",
+        "result": "Übergabefertige Doku für beide Standorte. Nebenbei einen vollen Swap und eine VM auf deaktiviertem Storage gefunden und gemeldet.",
+        "stack": ["Proxmox VE", "OPNsense", "WireGuard", "Python", "Excel / PDF / JSON"]
+      },
+      {
+        "id": "ad", "ctx": "Lab", "period": "07/2026",
+        "title": "Active-Directory-Lab auf VMware ESXi",
+        "situation": "Ich wollte Windows-Domänen richtig verstehen, bevor ich bei einem Kunden daran arbeite.",
+        "action": "Domain Controller auf Windows Server 2025 mit OUs und Gruppen, Dateifreigaben mit Freigabe- und NTFS-Rechten, Laufwerkszuordnung per GPO und eine OPNsense-VM für DHCP und DNS aufgebaut – isoliert auf eigenen vSwitches.",
+        "result": "Ein reproduzierbares Lab, das ich jederzeit zurücksetzen kann. Wichtigste Erkenntnis: Treffen Freigabe- und NTFS-Rechte aufeinander, gilt das restriktivere.",
+        "stack": ["ESXi 8", "Windows Server 2025", "AD DS", "GPO", "OPNsense"]
+      },
+      {
+        "id": "ai", "ctx": "Homelab", "period": "2026",
+        "title": "Lokaler KI-Stack auf alter Server-Hardware",
+        "situation": "Ich wollte private KI-Werkzeuge zu Hause – auf einem Xeon ohne AVX2 und ohne große GPU.",
+        "action": "Eigene LLM-VM mit llama.cpp hinter llama-swap (acht Modelle), LibreChat als Oberfläche mit SearXNG-Websuche und ein Hermes Agent, erreichbar über WhatsApp. Flash Attention, mlock und quantisierten KV-Cache optimiert und eine Partitionierung korrigiert, die den Großteil der Disk ungenutzt ließ.",
+        "result": "Stabile 7–8 Token pro Sekunde auf der CPU, komplett lokal, ohne Cloud.",
+        "stack": ["Proxmox", "llama.cpp", "llama-swap", "LibreChat", "SearXNG", "Docker"]
+      },
+      {
+        "id": "phish", "ctx": "Betrieb", "period": "01 – 02/2026",
+        "title": "Phishing-Simulation für Security Awareness",
+        "situation": "Ein Kunde wollte wissen, wie seine Mitarbeitenden auf eine realistische Phishing-Mail reagieren.",
+        "action": "Landing Page und E-Mail für eine kontrollierte Simulation gebaut und den kompletten Ablauf vor dem Start getestet.",
+        "result": "Eine einsatzbereite Awareness-Kampagne – und ein deutlich geschärfter eigener Blick dafür, was Phishing glaubwürdig macht.",
+        "stack": ["HTML/CSS", "E-Mail", "Security Awareness"]
+      },
+      {
+        "id": "drehbar", "ctx": "Schule", "period": "07/2026",
+        "title": "DrehBAR – eine Cocktailmaschine in Python",
+        "situation": "Berufsschulprojekt: eine Cocktailmaschine mit Drehteller steuern.",
+        "action": "Mischlogik in Python mit SQLite-Rezeptdatenbank, Drehteller-Logik, zeitgesteuerter Dosierung mit Füllstandsverfolgung und animierten tkinter-Ladebalken geschrieben. Dazu Dokumentation und Testprotokoll.",
+        "result": "Funktionierende Software mit Dokumentation, abgegeben als Teamprojekt.",
+        "stack": ["Python", "SQLite", "tkinter"]
+      }
+    ]
+  },
+  "homelab": {
+    "label": "Homelab",
+    "intro": "Drei Proxmox-Knoten in meinem Zimmer. Alles hier läuft auf eigener Hardware und wird jede Nacht gesichert.",
+    "stats": [
+      {"num": "3", "label": "Proxmox-Knoten"},
+      {"num": "20+", "label": "Selbst gehostete Dienste"},
+      {"num": "8", "label": "Lokale KI-Modelle"},
+      {"num": "VPN", "label": "WireGuard-Fernzugriff"}
+    ],
+    "cluster_label": "Proxmox-Cluster",
+    "status_online": "Online",
+    "nodes": [
+      {"name": "Knoten 1 — Edge", "role": "Firewall, DNS, Reverse Proxy, Monitoring", "specs": "4-Kern-Celeron · 8 GB RAM · 900 GB Speicher", "tone": "gold"},
+      {"name": "Knoten 2 — Compute", "role": "KI-Inferenz, GPU-Workloads, große VMs", "specs": "Dual-Xeon 8-Kern · 40 GB RAM · NVIDIA Quadro P2000", "tone": "blue"},
+      {"name": "Knoten 3 — Apps", "role": "Automatisierung, CMS, Webhosting", "specs": "i3 Dual-Core · 11 GB RAM · 110 GB Speicher", "tone": "blue"}
+    ],
+    "groups": [
+      {"title": "Netzwerk & Sicherheit", "tone": "gold", "items": [
+        {"icon": "shield", "name": "OPNsense", "desc": "Perimeter-Firewall und Router: Stateful Filtering, IDS/IPS, DHCP und NAT."},
+        {"icon": "proxy", "name": "Nginx Proxy Manager", "desc": "Zentraler Reverse Proxy mit automatischen Let's-Encrypt-Zertifikaten."},
+        {"icon": "filter", "name": "Pi-hole", "desc": "Netzwerkweiter DNS-Filter; alle LAN-Anfragen laufen zwangsweise darüber."},
+        {"icon": "lock", "name": "Vaultwarden", "desc": "Selbst gehosteter, Bitwarden-kompatibler Passwort-Tresor."},
+        {"icon": "globe", "name": "WireGuard", "desc": "Verschlüsselter Tunnel für den Fernzugriff aufs ganze Lab."},
+        {"icon": "eye", "name": "Beszel", "desc": "Monitoring mit Agenten auf jedem Knoten."}
+      ]},
+      {"title": "KI & Automatisierung", "tone": "blue", "items": [
+        {"icon": "chip", "name": "llama.cpp + llama-swap", "desc": "Eigene LLM-VM, die acht lokale Modelle bei Bedarf lädt."},
+        {"icon": "chat", "name": "LibreChat", "desc": "Chat-Oberfläche mit Websuche über SearXNG und Dokumenten-RAG."},
+        {"icon": "bot", "name": "Hermes Agent", "desc": "Persistenter KI-Agent mit Gedächtnis und Skills, erreichbar über WhatsApp."},
+        {"icon": "bulb", "name": "Ollama", "desc": "Kleine Instanz auf der Quadro P2000 für Embeddings und Komprimierung."},
+        {"icon": "code", "name": "Firecrawl + SearXNG", "desc": "Selbst gehostetes Scraping und Metasuche für die Agenten."},
+        {"icon": "gear", "name": "n8n", "desc": "Workflow-Automatisierung, die die Dienste verbindet."}
+      ]},
+      {"title": "Dokumente & Produktivität", "tone": "blue", "items": [
+        {"icon": "doc", "name": "Paperless-ngx", "desc": "Dokumentenverwaltung mit OCR, Tags und Volltextsuche."},
+        {"icon": "book", "name": "BookStack", "desc": "Wiki für meine eigene Dokumentation."},
+        {"icon": "server", "name": "Proxmox Backup Server", "desc": "Inkrementelle, deduplizierte Backups mit Aufbewahrung für alle Knoten."},
+        {"icon": "users", "name": "wger", "desc": "Selbst gehosteter Trainings- und Ernährungstracker."}
+      ]}
+    ],
+    "flow_label": "Netzwerk-Datenfluss",
+    "flow_desc": "Diagramm: Internet-Verkehr kommt über OPNsense herein und wird auf drei Proxmox-Knoten verteilt. Knoten 1 betreibt Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx und PBS. Knoten 2 betreibt die LLM-VM, LibreChat, Hermes Agent, Ollama und Firecrawl. Knoten 3 betreibt n8n, BookStack, WordPress, Anubis und RustDesk.",
+    "legend_net": "Netzwerk / Sicherheit",
+    "legend_svc": "KI / Dienste",
+    "next_label": "Aktuell in Arbeit",
+    "next": ["VLAN-Segmentierung mit OPNsense und Proxmox", "KI-Knoten mit zwei GPUs", "Zwei-Faktor-Login für den Fernzugriff auf die Agenten"]
+  },
+  "skills": {
+    "label": "Skills",
+    "toolbox": "Werkzeugkasten",
+    "groups": [
+      {"title": "Virtualisierung & Backup", "items": ["Proxmox VE", "Proxmox Backup Server", "VMware ESXi", "Hyper-V", "Veeam", "Docker & Compose"]},
+      {"title": "Netzwerk & Sicherheit", "items": ["OPNsense", "VLAN / 802.1Q", "WireGuard", "DNS & DHCP", "NAT & Portweiterleitung", "UniFi", "Nginx Proxy Manager"]},
+      {"title": "Windows & Identität", "items": ["Windows-11-Bereitstellung", "Active Directory", "Gruppenrichtlinien", "NTFS- & Freigaberechte", "Microsoft 365 / Office", "3CX"]},
+      {"title": "Linux & Automatisierung", "items": ["Debian", "systemd", "Bash", "Ansible / AWX", "Samba", "LUKS", "PostgreSQL"]},
+      {"title": "Code", "items": ["Python", "SQL", "HTML / CSS / JS", "Java (Grundlagen)"]},
+      {"title": "Support & Dokumentation", "items": ["Ticketsysteme", "Fernwartung", "Snipe-IT / Homebox", "Devolutions RDM", "Technische Dokumentation"]}
+    ],
+    "languages_title": "Sprachen",
+    "languages": [
+      {"name": "Deutsch", "note": "Erstsprache", "level": 6, "cefr": "Muttersprache"},
+      {"name": "Englisch", "note": "Fließend in Wort und Schrift", "level": 5, "cefr": "C1"},
+      {"name": "Afrikaans", "note": "In Namibia damit aufgewachsen", "level": 4, "cefr": "B2"}
+    ],
+    "cefr_hint": "Punkte zeigen die GER-Skala A1 → C2",
+    "interests_title": "Nach Feierabend",
+    "interests": ["Kunstturnen", "Drohnenflug", "Flugsimulation", "Retro-Hardware & Modding", "E-Sport", "Zelten"],
+    "social_title": "Engagement",
+    "social": ["Leistungsturner, Level 8, Namibia", "Training von Kindern und Jugendlichen", "Arbeit mit sozial benachteiligten Kindern", "Gruppenleiter in der Schule"]
+  },
+  "contact": {
+    "label": "Kontakt",
+    "headline": "Schreib<br/><span class=\"hl\">mir</span>",
+    "sub": "Fragen zu meiner Ausbildung, einem Projekt oder dem Homelab? Ich antworte meist innerhalb eines Tages.",
+    "email_label": "E-Mail",
+    "github_label": "GitHub",
+    "cv_label": "Lebenslauf",
+    "cv_value": "PDF herunterladen"
+  },
+  "footer": {
+    "imprint": "Impressum & Datenschutz",
+    "cv": "Lebenslauf",
+    "made": "Von Hand gebaut · gehostet auf GitHub Pages"
+  },
+  "cv_page": {
+    "title": "Lebenslauf",
+    "subtitle": "Lebenslauf",
+    "download": "PDF herunterladen",
+    "open": "In neuem Tab öffnen",
+    "mobile": "Die PDF-Vorschau ist auf kleinen Bildschirmen nicht verfügbar.",
+    "back": "Zurück zum Portfolio"
+  },
+  "notfound": {
+    "title": "Signal verloren",
+    "text": "Diese Seite gibt es nicht (mehr). Wähle eine Sprache, um zurückzukommen:"
+  }
+}

@@ -1,0 +1,303 @@
+{% extends "base.html.j2" %}
+{% block body %}
+{% set n = t.nav %}
+<div id="loader" aria-hidden="true">
+  <div class="loader-text">{% for ch in "Tristan" %}<span style="animation-delay:{{ '%.2f'|format(0.05 + loop.index0 * 0.045) }}s">{{ ch }}</span>{% endfor %}</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- ─── NAV ─── -->
+<header class="site-nav" id="navbar">
+  <a class="nav-logo" href="#hero"><span class="tk" aria-hidden="true">T<b>K</b></span><span>Tristan Kayser</span></a>
+  <nav aria-label="{{ nav_label }}">
+    <ul class="nav-links">
+      <li><a href="#about"><span class="lbl">{{ n.about }}</span></a></li>
+      <li><a href="#path"><span class="lbl">{{ n.path }}</span></a></li>
+      <li><a href="#log"><span class="lbl">{{ n.log }}</span></a></li>
+      <li><a href="#projects"><span class="lbl">{{ n.projects }}</span></a></li>
+      <li><a href="#homelab" class="gold-link"><span class="lbl">{{ n.homelab }}</span></a></li>
+      <li><a href="#skills"><span class="lbl">{{ n.skills }}</span></a></li>
+      <li><a href="lebenslauf.html"><span class="lbl">{{ n.cv }}</span></a></li>
+      <li class="nav-cta-li"><a href="#contact"><span class="lbl">{{ n.contact }}</span></a></li>
+    </ul>
+  </nav>
+  {{ lang_switch() }}
+  <button class="hamburger" id="hamburger" aria-controls="mobileNav" aria-expanded="false" aria-label="{{ t.ui.menu_open }}" data-open="{{ t.ui.menu_open }}" data-close="{{ t.ui.menu_close }}">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="{{ nav_label }}" inert>
+  <a href="#about"><span class="lbl">{{ n.about }}</span></a>
+  <a href="#path"><span class="lbl">{{ n.path }}</span></a>
+  <a href="#log"><span class="lbl">{{ n.log }}</span></a>
+  <a href="#projects"><span class="lbl">{{ n.projects }}</span></a>
+  <a href="#homelab" class="gold-link"><span class="lbl">{{ n.homelab }}</span></a>
+  <a href="#skills"><span class="lbl">{{ n.skills }}</span></a>
+  <a href="#contact"><span class="lbl">{{ n.contact }}</span></a>
+  <a href="lebenslauf.html"><span class="lbl">{{ n.cv }}</span></a>
+  {{ lang_switch() }}
+</nav>
+
+<main id="main">
+<!-- ─── HERO ─── -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>{{ t.hero.badge }}</p>
+    <h1 class="hero-name" id="hero-title">
+      <span class="name-wrap"><span class="name-line">Tristan</span></span>
+      <span class="name-wrap"><span class="name-line name-outline">Kayser</span></span>
+    </h1>
+    <p class="hero-sub">{{ t.hero.sub }}</p>
+    <p class="hero-sub2">{{ t.hero.sub2 }}</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary magnetic">{{ t.hero.cta_primary }}</a>
+      <a href="#contact" class="btn btn-ghost magnetic">{{ t.hero.cta_secondary }}</a>
+    </div>
+  </div>
+
+  <dl class="hero-stats">
+    {% for s in t.hero.stats %}
+    <div>
+      <dt class="hs-label">{{ s.label }}</dt>
+      <dd class="hs-num"><span class="count" data-target="{{ s.num }}">{{ s.num }}</span>{% if s.sup %}<sup>{{ s.sup }}</sup>{% endif %}</dd>
+    </div>
+    {% endfor %}
+  </dl>
+
+  <div class="scroll-hint" aria-hidden="true"><span>{{ t.ui.scroll }}</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ─── #01 ABOUT ─── -->
+<section id="about" class="section" aria-labelledby="about-h">
+  <div class="section-wrap">
+    <p class="sec-header"><span class="no">#01</span> {{ t.about.label }}</p>
+    <div class="about-grid">
+      <div class="about-photo gs-reveal">
+        <div class="about-photo-img">
+          <img src="assets/img/portrait-800.webp" srcset="assets/img/portrait-480.webp 480w, assets/img/portrait-800.webp 800w"
+               sizes="(max-width:1100px) 440px, 40vw" width="800" height="998" alt="{{ t.about.photo_alt }}" loading="lazy" decoding="async"/>
+        </div>
+        <div class="photo-border" aria-hidden="true"></div>
+        <div class="photo-tag" aria-hidden="true">{{ t.about.photo_tag }}</div>
+      </div>
+      <div class="about-text">
+        <h2 class="gs-reveal" id="about-h">{{ t.about.headline|safe }}</h2>
+        {% for p in t.about.paras %}<p class="gs-reveal">{{ p }}</p>
+        {% endfor %}
+        <dl class="info-grid gs-reveal">
+          {% for f in t.about.facts %}<div class="ib"><dt class="ib-label">{{ f.k }}</dt><dd class="ib-val">{{ f.v }}</dd></div>
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── IMAGE STRIP ─── -->
+<div class="img-strip">
+  {% for im in t.strip %}
+  <figure class="is-item">
+    {% if im.img == 'drone' %}<img src="assets/img/drone-800.webp" width="800" height="512" alt="{{ im.alt }}" loading="lazy" decoding="async"/>
+    {% else %}<img src="assets/img/{{ im.img }}-900.webp" srcset="assets/img/{{ im.img }}-480.webp 480w, assets/img/{{ im.img }}-900.webp 900w" sizes="(max-width:767px) 100vw, 50vw" alt="{{ im.alt }}" loading="lazy" decoding="async"/>{% endif %}
+    <figcaption>{{ im.cap }}</figcaption>
+  </figure>
+  {% endfor %}
+</div>
+
+<!-- ─── #02 PATH ─── -->
+<section id="path" class="section" aria-labelledby="path-h">
+  <div class="section-wrap">
+    <h2 class="sec-header" id="path-h"><span class="no">#02</span> {{ t.path.label }}</h2>
+    <div class="exp-grid">
+      {% for col, title in [(t.path.work, t.path.work_title), (t.path.edu, t.path.edu_title)] %}
+      <div>
+        <h3 class="exp-col-title">{{ title }}</h3>
+        <ol class="timeline">
+          {% for e in col %}
+          <li class="tl-item{% if e.current %} current{% endif %}"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-date">{{ e.date }}</p>
+            <h4 class="tl-title">{{ e.title }}</h4>
+            <p class="tl-org">{{ e.org }}</p>
+            <p class="tl-desc">{{ e.desc }}</p>
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── #03 TRAINING LOG ─── -->
+<section id="log" class="section" aria-labelledby="log-h">
+  <div class="section-wrap">
+    <span class="ghost" aria-hidden="true">{{ t.nav.log.split(' ')[0] }}</span>
+    <h2 class="sec-header gold-hd" id="log-h"><span class="no">#03</span> {{ t.log.label }}</h2>
+    <p class="sec-intro">{{ t.log.intro }}</p>
+    <ol class="log-grid">
+      {% for e in t.log.entries %}
+      <li class="log-cell{% if e.current %} current{% endif %}">
+        <p class="log-m"><time datetime="{{ e.m }}">{{ e.m }}</time>{% if loop.index <= 11 %}<span class="nr" aria-hidden="true">Nr. {{ '%02d'|format(loop.index) }}</span>{% endif %}</p>
+        <h3 class="log-t">{{ e.t }}</h3>
+        <ul class="log-items">{% for it in e['items'] %}<li>{{ it }}</li>{% endfor %}</ul>
+        {% if e.school %}<p class="log-school"><b>{{ t.log.school }}</b>{{ e.school }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- ─── #04 PROJECTS ─── -->
+<section id="projects" class="section" aria-labelledby="proj-h">
+  <div class="section-wrap">
+    <span class="ghost" aria-hidden="true">{{ t.projects.label }}</span>
+    <h2 class="sec-header" id="proj-h"><span class="no">#04</span> {{ t.projects.label }}</h2>
+    <p class="sec-intro">{{ t.projects.intro }}</p>
+    <div class="proj-list">
+      {% for p in t.projects['items'] %}
+      <details class="proj" id="p-{{ p.id }}"{% if loop.first %} open{% endif %}>
+        <summary>
+          <span class="proj-ctx ctx-{{ p.ctx_key }}">{{ p.ctx }}</span>
+          <h3 class="proj-title">{{ p.title }}</h3>
+          <span class="proj-period">{{ p.period }}</span>
+          <span class="proj-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="proj-body">
+          <span class="spacer" aria-hidden="true"></span>
+          <div class="proj-step"><h4>{{ t.projects.h_situation }}</h4><p>{{ p.situation }}</p></div>
+          <div class="proj-step"><h4>{{ t.projects.h_action }}</h4><p>{{ p.action }}</p></div>
+          <div class="proj-step"><h4>{{ t.projects.h_result }}</h4><p>{{ p.result }}</p></div>
+          <ul class="proj-stack">{% for s in p.stack %}<li class="chip">{{ s }}</li>{% endfor %}</ul>
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── IMAGE STRIP 2 ─── -->
+<div class="img-strip two" aria-hidden="true">
+  <figure class="is-item is-dither"><img src="assets/img/proxmox-dither.png" width="334" height="202" alt="" loading="lazy" decoding="async"/><figcaption>Proxmox VE</figcaption></figure>
+  <figure class="is-item"><img src="assets/img/linux-800.webp" width="800" height="500" alt="" loading="lazy" decoding="async"/><figcaption>Linux</figcaption></figure>
+</div>
+
+<!-- ─── #05 HOMELAB ─── -->
+<section id="homelab" class="section" aria-labelledby="hl-h">
+  <div class="section-wrap">
+    <span class="ghost" aria-hidden="true">Homelab</span>
+    <h2 class="sec-header gold-hd" id="hl-h"><span class="no">#05</span> {{ t.homelab.label }}</h2>
+    <p class="sec-intro">{{ t.homelab.intro }}</p>
+
+    <dl class="hl-stats">
+      {% for s in t.homelab.stats %}<div class="hl-stat"><dt class="hl-stat-label">{{ s.label }}</dt><dd class="hl-stat-num">{{ s.num }}</dd></div>
+      {% endfor %}
+    </dl>
+
+    <h3 class="hl-section-label gold">{{ t.homelab.cluster_label }}</h3>
+    <ul class="hl-cluster">
+      {% for nd in t.homelab.nodes %}
+      <li class="hl-node">
+        <p class="hl-node-status">{{ t.homelab.status_online }}</p>
+        <h4 class="hl-node-name tone-{{ nd.tone }}">{{ nd.name }}</h4>
+        <p class="hl-node-role">{{ nd.role }}</p>
+        <p class="hl-node-specs">{{ nd.specs }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% for g in t.homelab.groups %}
+    <h3 class="hl-section-label {{ g.tone }}">{{ g.title }}</h3>
+    <ul class="hl-services">
+      {% for s in g['items'] %}
+      <li class="hl-svc">
+        <span class="hl-svc-icon {{ g.tone }}" aria-hidden="true">{{ icons[s.icon]|safe }}</span>
+        <div><h4 class="hl-svc-name">{{ s.name }}</h4><p class="hl-svc-desc">{{ s.desc }}</p></div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <figure class="hl-flow">
+      <figcaption class="hl-section-label gold">{{ t.homelab.flow_label }}</figcaption>
+      <div class="hl-flow-svg" tabindex="0" role="region" aria-label="{{ t.homelab.flow_label }}">{{ flow_svg|safe }}</div>
+    </figure>
+
+    <div class="hl-next">
+      <h3 class="hl-section-label blue" style="margin:0 12px 0 0">{{ t.homelab.next_label }}</h3>
+      {% for x in t.homelab.next %}<span class="chip">{{ x }}</span>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── #06 SKILLS ─── -->
+<section id="skills" class="section" aria-labelledby="sk-h">
+  <div class="section-wrap">
+    <h2 class="sec-header" id="sk-h"><span class="no">#06</span> {{ t.skills.label }}</h2>
+    <div class="toolbox">
+      {% for g in t.skills.groups %}
+      <div class="tb-group">
+        <h3>{{ g.title }}</h3>
+        <ul>{% for i in g['items'] %}<li class="chip">{{ i }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="skills-grid">
+      <div class="skills-col">
+        <h3>{{ t.skills.languages_title }}</h3>
+        {% for l in t.skills.languages %}
+        <div class="lang-card">
+          <div><p class="lc-name">{{ l.name }}</p><p class="lc-note">{{ l.note }}</p></div>
+          <div class="lc-right">
+            <p class="lc-level">{{ l.cefr }}</p>
+            <div class="pips" role="img" aria-label="{{ l.cefr }}">{% for i in range(6) %}<span class="pip{% if i < l.level %} on{% endif %}"></span>{% endfor %}</div>
+          </div>
+        </div>
+        {% endfor %}
+        <p class="cefr-hint">{{ t.skills.cefr_hint }}</p>
+      </div>
+      <div class="skills-col">
+        <h3>{{ t.skills.interests_title }}</h3>
+        <ul class="pill-cloud">{% for i in t.skills.interests %}<li class="pill">{{ i }}</li>{% endfor %}</ul>
+      </div>
+      <div class="skills-col">
+        <h3>{{ t.skills.social_title }}</h3>
+        <div class="social-box"><ul class="social-list">{% for i in t.skills.social %}<li>{{ i }}</li>{% endfor %}</ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── #07 CONTACT ─── -->
+<section id="contact" class="section" aria-labelledby="ct-h">
+  <div class="contact-bg-img" aria-hidden="true"></div>
+  <div class="contact-overlay" aria-hidden="true"></div>
+  <div class="contact-inner">
+    <p class="sec-header gold-hd"><span class="no">#07</span> {{ t.contact.label }}</p>
+    <div class="gs-reveal">
+      <h2 class="contact-hl" id="ct-h">{{ t.contact.headline|safe }}</h2>
+      <p class="contact-sub">{{ t.contact.sub }}</p>
+    </div>
+    <ul class="contact-list gs-reveal">
+      <li><span class="ct-t">{{ t.contact.email_label }}</span><a class="ct-v" href="mailto:tristankayser1@gmail.com">tristankayser1@gmail.com</a></li>
+      <li><span class="ct-t">{{ t.contact.github_label }}</span><a class="ct-v" href="https://github.com/Intersepter" rel="me noopener">github.com/Intersepter</a></li>
+      <li><span class="ct-t">{{ t.contact.cv_label }}</span><a class="ct-v" href="Lebenslauf_Tristan_Kayser.pdf" download>{{ t.contact.cv_value }}</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<button class="scroll-top" id="scrollTop" aria-label="{{ t.ui.to_top }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+{% include "footer.html.j2" %}
+
+<script src="assets/js/vendor/gsap.min.js?v={{ version }}" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js?v={{ version }}" defer></script>
+<script src="assets/js/vendor/lenis.min.js?v={{ version }}" defer></script>
+<script src="assets/js/main.js?v={{ version }}" defer></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}"/>
+<meta name="author" content="Tristan Kayser"/>
+<meta name="theme-color" content="#041C1C"/>
+<meta name="color-scheme" content="dark"/>
+{% if noindex %}<meta name="robots" content="noindex, follow"/>{% endif %}
+{% if canonical %}<link rel="canonical" href="{{ canonical }}"/>{% endif %}
+{% for alt in alternates %}<link rel="alternate" hreflang="{{ alt.hreflang }}" href="{{ alt.href }}"/>
+{% endfor %}
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="{{ og_type|default('website') }}"/>
+<meta property="og:site_name" content="Tristan Kayser"/>
+<meta property="og:title" content="{{ title }}"/>
+<meta property="og:description" content="{{ description }}"/>
+{% if canonical %}<meta property="og:url" content="{{ canonical }}"/>{% endif %}
+<meta property="og:image" content="{{ site }}/assets/img/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="{{ og_alt }}"/>
+<meta property="og:locale" content="{{ locale }}"/>
+{% for l in og_locale_alt %}<meta property="og:locale:alternate" content="{{ l }}"/>
+{% endfor %}<meta name="twitter:card" content="summary_large_image"/>
+
+<link rel="icon" href="{{ base }}favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="{{ base }}assets/img/apple-touch-icon.png"/>
+<link rel="preload" href="{{ base }}assets/fonts/syne-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="{{ base }}assets/fonts/departure-mono.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="{{ base }}assets/css/main.css?v={{ version }}"/>
+<script>
+/* Set html classes before paint: js / motion preference (OS setting + footer toggle) */
+(function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
+var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
+try{s=localStorage.getItem('tk-motion')}catch(e){}
+c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
+</script>
+{% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
+</head>
+<body>
+<a class="skip-link" href="#main">{{ t.ui.skip }}</a>
+<div class="grain" aria-hidden="true"></div>
+{% block body %}{% endblock %}
+</body>
+</html>
