@@ -42,7 +42,9 @@
     gsap.ticker.lagSmoothing(0);
   }
   function navH() { return parseInt(getComputedStyle(root).getPropertyValue('--nav-h'), 10) || 68; }
+  var holdNav = 0;
   function scrollToEl(el) {
+    holdNav = Date.now() + 1800;
     if (lenis) lenis.scrollTo(el, { offset: -navH() - 12, duration: 1.4 });
     else el.scrollIntoView({ behavior: MOTION ? 'smooth' : 'auto' });
     if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
@@ -86,7 +88,7 @@
   var nav = $('#navbar'), topBtn = $('#scrollTop'), lastY = 0;
   window.addEventListener('scroll', function () {
     var y = window.scrollY;
-    if (nav) nav.classList.toggle('hidden', y > 120 && y > lastY && !document.body.classList.contains('menu-open'));
+    if (nav) nav.classList.toggle('hidden', y > 120 && y > lastY && Date.now() > holdNav && !document.body.classList.contains('menu-open'));
     lastY = y;
     if (topBtn) topBtn.classList.toggle('show', y > 700);
   }, { passive: true });
@@ -216,11 +218,11 @@
   ];
   function termStatic() {
     if (!term) return;
-    term.innerHTML = SCRIPT.map(function (l) { return l[0] ? '<span class="p">$ </span><span class="c">' + esc(l[1]) + '</span>' : fmt(l[1]); }).join('\n');
+    term.innerHTML = SCRIPT.slice(0, 4).map(function (l) { return l[0] ? '<span class="p">$ </span><span class="c">' + esc(l[1]) + '</span>' : fmt(l[1]); }).join('\n');
+    term.scrollTop = 0;
   }
   function fmt(s) { return esc(s).replace(/&lt;ok&gt;/g, '<span class="ok">').replace(/&lt;\/ok&gt;/g, '</span>'); }
   if (term) {
-    termStatic();
     if (MOTION) {
       var tRun = null;
       var typeTerm = function () {
@@ -253,7 +255,7 @@
   if (pveBars.length && MOTION) {
     var pveId = null;
     whenVisible($('.pve'), function () {
-      if (pveId) return;
+      if (pveId || !MOTION) return;
       pveId = loop(function () {
         pveBars.forEach(function (b) {
           var w = parseFloat(b.style.width) || 40;
@@ -276,8 +278,8 @@
       fw.appendChild(li);
       while (fw.children.length > 6) fw.removeChild(fw.firstChild);
     };
-    for (var f0 = 0; f0 < 6; f0++) addRow();
-    if (MOTION) { var fwId = null; whenVisible(fw, function () { if (!fwId) fwId = loop(addRow, 1300); }, function () { clearInterval(fwId); fwId = null; }); }
+    k = 6;
+    if (MOTION) { var fwId = null; whenVisible(fw, function () { if (!fwId && MOTION) fwId = loop(addRow, 1300); }, function () { clearInterval(fwId); fwId = null; }); }
   }
 
   // AD tree: a highlight walks through the OUs and policies
@@ -285,7 +287,7 @@
   if (adRows.length && MOTION) {
     var ai0 = 0, adId = null;
     whenVisible($('.adtree'), function () {
-      if (adId) return;
+      if (adId || !MOTION) return;
       adId = loop(function () {
         adRows.forEach(function (r) { r.classList.remove('hot'); });
         adRows[ai0++ % adRows.length].classList.add('hot');
@@ -297,6 +299,7 @@
   var aiOut = $('#aiOut');
   if (aiOut && MOTION) {
     var full = aiOut.dataset.text, words = full.split(' '), aiId = null, aiBusy = false;
+    aiOut.style.minHeight = aiOut.offsetHeight + 'px';
     var stream = function () {
       if (aiBusy) return; aiBusy = true;
       var w = 0; aiOut.textContent = '';
@@ -308,14 +311,16 @@
       timers.push(aiId);
     };
     var aiOn = false;
-    whenVisible(aiOut, function () { aiOn = true; stream(); }, function () { aiOn = false; });
+    whenVisible(aiOut, function () { if (!MOTION) return; aiOn = true; stream(); }, function () { aiOn = false; });
   }
 
   // ─── COPY E-MAIL ─────────────────────────────────────────
   $$('.ct-copy').forEach(function (b) {
     b.addEventListener('click', function () {
-      var done = function () { b.dataset.state = 'done'; b.dataset.tip = b.dataset.done; setTimeout(function () { b.dataset.state = ''; }, 1600); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.copy).then(done, function () {});
+      var live = $('#copyStatus');
+      var done = function () { b.dataset.state = 'done'; b.dataset.tip = b.dataset.done; if (live) live.textContent = b.dataset.done; setTimeout(function () { b.dataset.state = ''; b.dataset.tip = ''; if (live) live.textContent = ''; }, 1600); };
+      var fallback = function () { var a = b.parentNode.querySelector('.ct-link span'); var r = document.createRange(); r.selectNodeContents(a.lastChild); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.copy).then(done, fallback); else fallback();
     });
   });
 

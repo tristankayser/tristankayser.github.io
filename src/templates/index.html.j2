@@ -103,7 +103,13 @@
       <article class="tile tile-term" data-tile="term">
         <div class="tile-vis win" aria-hidden="true">
           <div class="win-bar"><i></i><i></i><i></i><span>tristan@pve-compute: ~</span></div>
-          <pre class="term" id="termOut"></pre>
+          <pre class="term" id="termOut"><span class="p">$ </span><span class="c">qm list</span>
+  VMID NAME          STATUS
+  101  llm-vm        <span class="ok">running</span>
+  102  librechat     <span class="ok">running</span>
+  110  docker-apps   <span class="ok">running</span>
+<span class="p">$ </span><span class="c">ansible-playbook win11-updates.yml</span>
+PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
         </div>
         <div class="tile-txt"><h3>{{ tl.terminal.title }}</h3><p>{{ tl.terminal.text }}</p></div>
       </article>
@@ -128,7 +134,9 @@
       <article class="tile tile-fw" data-tile="fw">
         <div class="tile-vis win" aria-hidden="true">
           <div class="win-bar"><i></i><i></i><i></i><span>OPNsense · live log</span></div>
-          <ol class="fw" id="fwLog" data-allow="{{ t.stack.fw_allow }}" data-block="{{ t.stack.fw_block }}"></ol>
+          <ol class="fw" id="fwLog" data-allow="{{ t.stack.fw_allow }}" data-block="{{ t.stack.fw_block }}">
+            {% for ok, rt, pt in [(1,'LAN → WAN','443/tcp'),(0,'IoT → LAN','22/tcp'),(1,'VPN → MGMT','8006/tcp'),(1,'LAN → DNS','53/udp'),(0,'WAN → LAN','3389/tcp'),(1,'LAN → NAS','445/tcp')] %}<li><span class="act {{ 'allow' if ok else 'block' }}">{{ t.stack.fw_allow if ok else t.stack.fw_block }}</span><span class="rt">{{ rt }}</span><span class="pt">{{ pt }}</span></li>{% endfor %}
+          </ol>
         </div>
         <div class="tile-txt"><h3>{{ tl.firewall.title }}</h3><p>{{ tl.firewall.text }}</p></div>
       </article>
@@ -196,7 +204,7 @@
 <section id="path" class="section" aria-labelledby="path-h">
   <div class="section-wrap">
     <h2 class="sec-header" id="path-h"><span class="no">#04</span> {{ t.path.label }}</h2>
-    <div class="path-scroll">
+    <div class="path-scroll" tabindex="0" role="region" aria-label="{{ t.path.label }}">
       <span class="path-line" aria-hidden="true"><i></i></span>
       <ol class="path">
         {% for e in t.path['items'] %}
@@ -248,9 +256,10 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
           <span><small>{{ t.contact.email }}</small>tristankayser1@gmail.com</span>
         </a>
-        <button type="button" class="ct-copy" data-copy="tristankayser1@gmail.com" data-label="{{ t.ui.copy }}" data-done="{{ t.ui.copied }}" aria-label="{{ t.ui.copy }}: tristankayser1@gmail.com">
+        <button type="button" class="ct-copy" data-copy="tristankayser1@gmail.com" data-done="{{ t.ui['copied'] }}" aria-label="{{ t.ui['copy'] }}: tristankayser1@gmail.com">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M16 8V4H4v12h4"/></svg>
         </button>
+        <span class="sr-only" aria-live="polite" id="copyStatus"></span>
       </li>
       <li class="ct-item">
         <a href="tel:{{ phone|replace(' ', '') }}" class="ct-link">

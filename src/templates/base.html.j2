@@ -36,7 +36,7 @@
 (function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
 var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
 try{s=localStorage.getItem('tk-motion')}catch(e){}
-c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
+if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
 </script>
 {% if jsonld %}<script type="application/ld+json">{{ jsonld|safe }}</script>{% endif %}
 </head>

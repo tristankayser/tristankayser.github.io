@@ -36,7 +36,7 @@
 (function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
 var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
 try{s=localStorage.getItem('tk-motion')}catch(e){}
-c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
+if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Tristan Kayser", "url": "https://tristankayser.com/", "image": "https://tristankayser.com/assets/img/portrait-800.webp", "jobTitle": "Fachinformatiker für Systemintegration", "description": "Tristan Kayser, apprentice Fachinformatiker für Systemintegration near Stuttgart. Servers, networks, Windows and Linux, automation and a self-hosted homelab.", "worksFor": {"@type": "Organization", "name": "IT-Works GmbH", "address": {"@type": "PostalAddress", "addressLocality": "Uhingen", "addressCountry": "DE"}}, "address": {"@type": "PostalAddress", "addressLocality": "Eislingen/Fils", "addressRegion": "Baden-Württemberg", "addressCountry": "DE"}, "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Technische Hochschule Ulm"}, {"@type": "School", "name": "Deutsche Höhere Privatschule Windhoek"}], "knowsLanguage": ["de", "en", "af"], "knowsAbout": ["Proxmox VE", "OPNsense", "Windows Server", "Active Directory", "Linux", "Ansible", "Networking", "Virtualisation", "Python"], "sameAs": ["https://github.com/Intersepter"]}</script></head>
 <body>
@@ -145,7 +145,13 @@ c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
       <article class="tile tile-term" data-tile="term">
         <div class="tile-vis win" aria-hidden="true">
           <div class="win-bar"><i></i><i></i><i></i><span>tristan@pve-compute: ~</span></div>
-          <pre class="term" id="termOut"></pre>
+          <pre class="term" id="termOut"><span class="p">$ </span><span class="c">qm list</span>
+  VMID NAME          STATUS
+  101  llm-vm        <span class="ok">running</span>
+  102  librechat     <span class="ok">running</span>
+  110  docker-apps   <span class="ok">running</span>
+<span class="p">$ </span><span class="c">ansible-playbook win11-updates.yml</span>
+PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
         </div>
         <div class="tile-txt"><h3>Linux &amp; automation</h3><p>Bash, systemd and Ansible with AWX. One playbook instead of twenty manual updates.</p></div>
       </article>
@@ -174,7 +180,8 @@ c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
       <article class="tile tile-fw" data-tile="fw">
         <div class="tile-vis win" aria-hidden="true">
           <div class="win-bar"><i></i><i></i><i></i><span>OPNsense · live log</span></div>
-          <ol class="fw" id="fwLog" data-allow="allow" data-block="block"></ol>
+          <ol class="fw" id="fwLog" data-allow="allow" data-block="block">
+<li><span class="act allow">allow</span><span class="rt">LAN → WAN</span><span class="pt">443/tcp</span></li><li><span class="act block">block</span><span class="rt">IoT → LAN</span><span class="pt">22/tcp</span></li><li><span class="act allow">allow</span><span class="rt">VPN → MGMT</span><span class="pt">8006/tcp</span></li><li><span class="act allow">allow</span><span class="rt">LAN → DNS</span><span class="pt">53/udp</span></li><li><span class="act block">block</span><span class="rt">WAN → LAN</span><span class="pt">3389/tcp</span></li><li><span class="act allow">allow</span><span class="rt">LAN → NAS</span><span class="pt">445/tcp</span></li>          </ol>
         </div>
         <div class="tile-txt"><h3>Network &amp; security</h3><p>OPNsense, VLANs, WireGuard, DNS and DHCP. I like knowing where every packet goes.</p></div>
       </article>
@@ -296,7 +303,7 @@ c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
 <section id="path" class="section" aria-labelledby="path-h">
   <div class="section-wrap">
     <h2 class="sec-header" id="path-h"><span class="no">#04</span> Path</h2>
-    <div class="path-scroll">
+    <div class="path-scroll" tabindex="0" role="region" aria-label="Path">
       <span class="path-line" aria-hidden="true"><i></i></span>
       <ol class="path">
         <li class="path-item current">
@@ -383,9 +390,10 @@ c.add((s==='on'||(!r&&s!=='off'))?'motion':'no-motion')})(document);
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
           <span><small>E-mail</small>tristankayser1@gmail.com</span>
         </a>
-        <button type="button" class="ct-copy" data-copy="tristankayser1@gmail.com" data-label="&lt;built-in method copy of dict object at 0x7ff8646fcf40&gt;" data-done="Copied" aria-label="&lt;built-in method copy of dict object at 0x7ff8646fcf40&gt;: tristankayser1@gmail.com">
+        <button type="button" class="ct-copy" data-copy="tristankayser1@gmail.com" data-done="Copied" aria-label="Copy: tristankayser1@gmail.com">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M16 8V4H4v12h4"/></svg>
         </button>
+        <span class="sr-only" aria-live="polite" id="copyStatus"></span>
       </li>
       <li class="ct-item">
         <a href="tel:+4915238795449" class="ct-link">
