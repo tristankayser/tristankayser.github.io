@@ -499,7 +499,6 @@
     toggle.setAttribute('aria-pressed', MOTION ? 'false' : 'true');
     toggle.addEventListener('click', function () {
       if (MOTION) {
-        try { localStorage.setItem('tk-motion', 'off'); } catch (e) {}
         root.classList.remove('motion'); root.classList.add('no-motion');
         if (lenis) lenis.destroy();
         if (hasGsap) {
@@ -516,8 +515,7 @@
         MOTION = false;
         toggle.textContent = toggle.dataset.play; toggle.setAttribute('aria-pressed', 'true');
       } else {
-        try { localStorage.setItem('tk-motion', 'on'); } catch (e) {}
-        location.reload();
+        location.reload();   // pause lasts for this visit only — nothing is stored
       }
     });
   }

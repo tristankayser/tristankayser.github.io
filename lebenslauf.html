@@ -27,11 +27,10 @@
 <link rel="preload" href="assets/fonts/departure-mono.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="assets/css/main.css?v=20261010"/>
 <script>
-/* Set html classes before paint: js / motion preference (OS setting + footer toggle) */
+/* Set html classes before paint. Nothing is stored on the device (no cookies, no localStorage). */
 (function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
-var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
-try{s=localStorage.getItem('tk-motion')}catch(e){}
-if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
+var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(r)c.add('os-reduce');c.add(r?'no-motion':'motion')})(document);
 </script>
 </head>
 <body>

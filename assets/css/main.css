@@ -533,3 +533,9 @@ a:hover>.blink-cur,a:focus-visible>.blink-cur{opacity:1;animation:hermBlink 1s s
 /* Marquee: random logo "pings" */
 .marquee-track li.ping{color:var(--cream);border-color:rgba(255,189,56,.7);box-shadow:0 0 18px rgba(255,189,56,.18)}
 .marquee-track li.ping svg{fill:var(--gold)}
+
+/* Legal page */
+.legal-switch{font-family:var(--font-hw);font-size:12px;letter-spacing:.08em;margin:-24px 0 8px}
+.legal-switch a{border:0;color:var(--blue)}
+.legal-en{margin-top:72px;padding-top:8px;border-top:1px solid var(--line2)}
+.site-footer a.no-cookie{border-bottom-style:dashed}

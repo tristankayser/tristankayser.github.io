@@ -27,11 +27,10 @@
 <link rel="preload" href="assets/fonts/departure-mono.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="assets/css/main.css?v=20261010"/>
 <script>
-/* Set html classes before paint: js / motion preference (OS setting + footer toggle) */
+/* Set html classes before paint. Nothing is stored on the device (no cookies, no localStorage). */
 (function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
-var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
-try{s=localStorage.getItem('tk-motion')}catch(e){}
-if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
+var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(r)c.add('os-reduce');c.add(r?'no-motion':'motion')})(document);
 </script>
 </head>
 <body>
@@ -43,15 +42,13 @@ if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
 </header>
 <main id="main" class="page-wrap legal">
   <h1>Impressum &amp; Datenschutz</h1>
-  <p lang="en"><em>English visitors: the legally binding version of this page is German.</em></p>
+  <p class="legal-switch"><a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a> · <a href="#credits">Lizenzen</a> · <a href="#english" lang="en" hreflang="en">English version</a></p>
 
   <h2 id="impressum">Impressum</h2>
   <p><strong>Angaben gemäß § 5 DDG</strong></p>
   <p>Tristan Kayser<br/>Rosenstraße 49<br/>73054 Eislingen/Fils<br/>Deutschland</p>
   <h3>Kontakt</h3>
   <p>E-Mail: <a href="mailto:tristankayser1@gmail.com">tristankayser1@gmail.com</a><br/>Telefon: <a href="tel:+4915238795449">+49 152 3879 5449</a></p>
-  <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
-  <p>Tristan Kayser, Anschrift wie oben.</p>
 
   <h2 id="datenschutz">Datenschutzerklärung</h2>
 
@@ -59,7 +56,7 @@ if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
   <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist Tristan Kayser (Kontaktdaten siehe Impressum).</p>
 
   <h3>2. Das Wichtigste in Kürze</h3>
-  <p>Diese Website ist eine statische Portfolio-Seite. Sie setzt <strong>keine Cookies</strong>, nutzt <strong>kein Tracking und keine Analyse-Tools</strong> und lädt <strong>keine Inhalte von Drittanbietern</strong>: Schriftarten, Skripte und Bilder werden direkt von dieser Website ausgeliefert. Es gibt keine Formulare.</p>
+  <p>Diese Website ist eine statische Portfolio-Seite. Sie setzt <strong>keine Cookies</strong>, speichert <strong>nichts auf deinem Gerät</strong> (kein localStorage o. Ä.), nutzt <strong>kein Tracking und keine Analyse-Tools</strong> und lädt <strong>keine Inhalte von Drittanbietern</strong>: Schriftarten, Skripte und Bilder werden direkt von dieser Website ausgeliefert. Es gibt keine Formulare. Deshalb ist auch kein Cookie-Banner nötig.</p>
 
   <h3>3. Hosting über GitHub Pages</h3>
   <p>Diese Website wird bei GitHub Pages gehostet. Anbieter ist die GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf der Seiten verarbeitet GitHub technisch notwendige Daten in Server-Logfiles, insbesondere:</p>
@@ -72,20 +69,37 @@ if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
   <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in einer sicheren, stabilen und zuverlässigen Bereitstellung der Website. Ich selbst habe keinen Zugriff auf diese Logfiles.</p>
   <p>Dabei können Daten in die USA übermittelt werden. GitHub ist unter dem EU-US Data Privacy Framework zertifiziert; die Übermittlung erfolgt auf Grundlage des Angemessenheitsbeschlusses der EU-Kommission (Art. 45 DSGVO). Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
 
-  <h3>4. Lokale Einstellung „Animationen pausieren“</h3>
-  <p>Wenn du im Footer „Animationen pausieren“ wählst, speichert dein Browser diese Einstellung lokal (localStorage, Schlüssel <code>tk-motion</code>). Die Angabe verlässt dein Gerät nicht und wird nicht an mich übertragen. Die Speicherung ist für die von dir gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG). Du kannst sie jederzeit über die Browser-Einstellungen löschen.</p>
+  <h3>4. Kontakt per E-Mail oder Telefon</h3>
+  <p>Wenn du mir eine E-Mail schreibst oder mich anrufst, verarbeite ich deine Angaben (z. B. Name, E-Mail-Adresse, Telefonnummer, Inhalt der Nachricht) ausschließlich, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO). Mein E-Mail-Postfach wird von Google (Gmail) bereitgestellt. Ich lösche die Angaben, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen. Die Schaltfläche „Kopieren“ legt die E-Mail-Adresse nur in deiner Zwischenablage ab; dabei werden keine Daten übertragen.</p>
 
-  <h3>5. Kontakt per E-Mail</h3>
-  <p>Wenn du mir eine E-Mail schreibst, verarbeite ich deine Angaben ausschließlich, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO). Mein Postfach wird von Google (Gmail) bereitgestellt. Ich lösche die Nachrichten, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
-
-  <h3>6. Externe Links</h3>
+  <h3>5. Externe Links</h3>
   <p>Diese Website enthält Links zu anderen Websites (z. B. GitHub). Beim Anklicken gelten die Datenschutzbestimmungen des jeweiligen Anbieters; vorher werden keine Daten übertragen.</p>
 
-  <h3>7. Deine Rechte</h3>
+  <h3>6. Deine Rechte</h3>
   <p>Du hast das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen (Art. 21 DSGVO). Wende dich dafür einfach per E-Mail an mich.</p>
   <p>Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO), zum Beispiel beim <a href="https://www.baden-wuerttemberg.datenschutz.de/" rel="noopener">Landesbeauftragten für den Datenschutz und die Informationsfreiheit Baden-Württemberg</a>.</p>
 
+  <h2 id="credits">Bildrechte &amp; Lizenzen</h2>
+  <p>Fotos und Texte: Tristan Kayser bzw. mit Zustimmung der jeweiligen Rechteinhaber. Die Logos im Werkzeug-Band sind Marken ihrer jeweiligen Inhaber und dienen nur zur Kennzeichnung der Software, mit der ich arbeite (Icons: <a href="https://simpleicons.org" rel="noopener">Simple Icons</a>, CC0).</p>
+  <ul>
+    <li>Schriften: Unbounded, Geist und Departure Mono – jeweils unter der SIL Open Font License 1.1 (<a href="assets/fonts/LICENSES.txt">Lizenztexte</a>).</li>
+    <li>Animation: GSAP 3 (GreenSock Standard „No Charge“ License) und Lenis (MIT License) – <a href="assets/js/vendor/LICENSES.txt">Lizenztexte</a>.</li>
+  </ul>
+
   <p class="stand">Stand: Oktober 2026</p>
+
+  <section id="english" lang="en" class="legal-en">
+    <h2>English version (for convenience)</h2>
+    <p><strong>Legal notice (§ 5 DDG):</strong> Tristan Kayser, Rosenstraße 49, 73054 Eislingen/Fils, Germany. E-mail: <a href="mailto:tristankayser1@gmail.com">tristankayser1@gmail.com</a>, phone: +49 152 3879 5449.</p>
+    <h3>Privacy in short</h3>
+    <ul>
+      <li>No cookies, nothing stored on your device, no tracking or analytics, no third-party content – fonts, scripts and images are served from this site. That's why there is no cookie banner.</li>
+      <li>Hosting: GitHub Pages (GitHub, Inc., USA). GitHub processes server logs (IP address, time, requested file, referrer, user agent) to deliver the site securely – legal basis Art. 6(1)(f) GDPR; transfers to the USA rely on the EU-US Data Privacy Framework adequacy decision. I have no access to these logs.</li>
+      <li>If you e-mail or call me, I use your details only to answer you (Art. 6(1)(b)/(f) GDPR) and delete them when no longer needed. My mailbox is provided by Google (Gmail).</li>
+      <li>Your rights: access, rectification, erasure, restriction, portability and objection (Art. 15–21 GDPR), plus the right to complain to a supervisory authority (Art. 77 GDPR), e.g. the data protection authority of Baden-Württemberg.</li>
+    </ul>
+    <p>The German text above is the legally binding version.</p>
+  </section>
 </main>
 <footer class="site-footer">
   <span>&copy; <span data-year>2026</span> Tristan Kayser</span>

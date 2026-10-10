@@ -33,11 +33,10 @@
 <link rel="preload" href="assets/fonts/departure-mono.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="assets/css/main.css?v=20261010"/>
 <script>
-/* Set html classes before paint: js / motion preference (OS setting + footer toggle) */
+/* Set html classes before paint. Nothing is stored on the device (no cookies, no localStorage). */
 (function(d){var c=d.documentElement.classList;c.remove('no-js');c.add('js');
-var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,s=null;
-try{s=localStorage.getItem('tk-motion')}catch(e){}
-if(r)c.add('os-reduce');c.add((!r&&s!=='off')?'motion':'no-motion')})(document);
+var r=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(r)c.add('os-reduce');c.add(r?'no-motion':'motion')})(document);
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Tristan Kayser", "url": "https://tristankayser.com/", "image": "https://tristankayser.com/assets/img/portrait-800.webp", "jobTitle": "Fachinformatiker für Systemintegration", "description": "Tristan Kayser, Auszubildender Fachinformatiker für Systemintegration im Raum Stuttgart/Göppingen. Server, Netzwerke, Windows und Linux, Automatisierung und ein eigenes Homelab.", "worksFor": {"@type": "Organization", "name": "IT-Works GmbH", "address": {"@type": "PostalAddress", "addressLocality": "Uhingen", "addressCountry": "DE"}}, "address": {"@type": "PostalAddress", "addressLocality": "Eislingen/Fils", "addressRegion": "Baden-Württemberg", "addressCountry": "DE"}, "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Technische Hochschule Ulm"}, {"@type": "School", "name": "Deutsche Höhere Privatschule Windhoek"}], "knowsLanguage": ["de", "en", "af"], "knowsAbout": ["Proxmox VE", "OPNsense", "Windows Server", "Active Directory", "Linux", "Ansible", "Networking", "Virtualisation", "Python"], "sameAs": ["https://github.com/Intersepter"]}</script></head>
 <body>
@@ -427,6 +426,7 @@ PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
   <span class="footer-links">
     <a href="lebenslauf.html">Lebenslauf</a>
     <a href="impressum.html">Impressum &amp; Datenschutz</a>
+    <a href="impressum.html#datenschutz" class="no-cookie">Keine Cookies · kein Tracking</a>
     <button type="button" class="motion-toggle" id="motionToggle" aria-pressed="false" data-pause="Animationen pausieren" data-play="Animationen abspielen">Animationen pausieren</button>
   </span>
   <span>Von Hand gebaut · gehostet auf GitHub Pages</span>
