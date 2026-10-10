@@ -8,7 +8,7 @@
 
 <!-- ─── NAV ─── -->
 <header class="site-nav" id="navbar">
-  <a class="nav-logo" href="#hero"><span class="tk" aria-hidden="true">T<b>K</b></span><span>Tristan Kayser</span></a>
+  <a class="nav-logo" href="#hero">{{ logo_mark|safe }}<span>Tristan Kayser</span></a>
   <nav aria-label="{{ t.ui.nav_label }}">
     <ul class="nav-links">
       <li><a href="#about"><span class="lbl">{{ n.about }}</span></a></li>
@@ -120,12 +120,12 @@ PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
           <div class="win-bar"><i></i><i></i><i></i><span>Datacenter</span></div>
           <ul class="pve">
             {% for nd, c, r in [('pve-edge', 18, 42), ('pve-compute', 64, 71), ('pve-apps', 27, 55)] %}
-            <li><span class="pve-n"><b></b>{{ nd }}</span>
+            <li data-node="{{ nd }}"><span class="pve-n"><b></b>{{ nd }}</span>
               <span class="bar" title="CPU"><i style="width:{{ c }}%"></i></span>
               <span class="bar ram" title="RAM"><i style="width:{{ r }}%"></i></span></li>
             {% endfor %}
           </ul>
-          <p class="pve-foot"><span>PBS</span> backup ok · 02:00</p>
+          <p class="pve-foot"><span class="pve-ev" id="pveEv"><span>PBS</span> backup vm/101 ok · 02:00</span><i class="pve-prog" id="pveProg"></i></p>
         </div>
         <div class="tile-txt"><h3>{{ tl.proxmox.title }}</h3><p>{{ tl.proxmox.text }}</p></div>
       </article>
@@ -133,7 +133,7 @@ PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
       <!-- Firewall -->
       <article class="tile tile-fw" data-tile="fw">
         <div class="tile-vis win" aria-hidden="true">
-          <div class="win-bar"><i></i><i></i><i></i><span>OPNsense · live log</span></div>
+          <div class="win-bar"><i></i><i></i><i></i><span>OPNsense · live log</span><em class="fw-count" id="fwCount"><b class="ok">✓ 1 284</b> <b class="no">✕ 37</b></em></div>
           <ol class="fw" id="fwLog" data-allow="{{ t.stack.fw_allow }}" data-block="{{ t.stack.fw_block }}">
             {% for ok, rt, pt in [(1,'LAN → WAN','443/tcp'),(0,'IoT → LAN','22/tcp'),(1,'VPN → MGMT','8006/tcp'),(1,'LAN → DNS','53/udp'),(0,'WAN → LAN','3389/tcp'),(1,'LAN → NAS','445/tcp')] %}<li><span class="act {{ 'allow' if ok else 'block' }}">{{ t.stack.fw_allow if ok else t.stack.fw_block }}</span><span class="rt">{{ rt }}</span><span class="pt">{{ pt }}</span></li>{% endfor %}
           </ol>
@@ -145,7 +145,8 @@ PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
       <article class="tile tile-ad" data-tile="ad">
         <div class="tile-vis win" aria-hidden="true">
           <div class="win-bar"><i></i><i></i><i></i><span>Active Directory</span></div>
-<pre class="adtree"><span>▾ corp.local</span><span>  ├─ ▾ OU IT</span><span>  │   ├─ ▪ t.kayser</span><span>  │   └─ ◆ GPO  drive-mapping</span><span>  ├─ ▾ OU Clients</span><span>  │   └─ ▪ 24 × Windows 11</span><span>  └─ ◆ GPO  windows-update</span></pre>
+<pre class="adtree" id="adTree"><span data-k="root">▾ corp.local</span><span data-k="ou-it">  ├─ ▾ OU IT</span><span data-k="user">  │   ├─ ▪ t.kayser</span><span data-k="gpo-drive">  │   └─ ◆ GPO  drive-mapping</span><span data-k="ou-cl">  ├─ ▾ OU Clients</span><span data-k="clients">  │   └─ ▪ <b id="adCount">24</b> × Windows 11</span><span data-k="gpo-wu">  └─ ◆ GPO  windows-update</span></pre>
+          <p class="ad-ev" id="adEv" aria-hidden="true"></p>
         </div>
         <div class="tile-txt"><h3>{{ tl.ad.title }}</h3><p>{{ tl.ad.text }}</p></div>
       </article>
@@ -155,9 +156,9 @@ PLAY RECAP  <span class="ok">ok=14</span>  changed=4  failed=0</pre>
         <div class="tile-vis win" aria-hidden="true">
           <div class="win-bar"><i></i><i></i><i></i><span>LibreChat · local</span></div>
           <div class="chat">
-            <p class="msg me">{{ t.stack.ai_q }}</p>
-            <p class="msg bot" id="aiOut" data-text="{{ t.stack.ai_a }}">{{ t.stack.ai_a }}</p>
-            <p class="chat-foot">llama.cpp · on-prem · ~8 tok/s</p>
+            <p class="msg me" id="aiQ">{{ t.stack.ai_pairs[0].q }}</p>
+            <p class="msg bot" id="aiOut" data-pairs='{{ t.stack.ai_pairs|tojson }}'>{{ t.stack.ai_pairs[0].a }}</p>
+            <p class="chat-foot" id="aiFoot">llama.cpp · glm-4.7-flash · 8.1 tok/s</p>
           </div>
         </div>
         <div class="tile-txt"><h3>{{ tl.ai.title }}</h3><p>{{ tl.ai.text }}</p></div>

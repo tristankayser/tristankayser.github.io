@@ -36,9 +36,21 @@
     "cta_primary": "Sien wat ek doen",
     "cta_secondary": "Kontak my",
     "stats": [
-      {"num": 2, "sup": "de", "label": "Opleidingsjaar"},
-      {"num": 20, "sup": "+", "label": "Selfgehoste dienste"},
-      {"num": 3, "sup": "", "label": "Tale"}
+      {
+        "num": 2,
+        "sup": "de",
+        "label": "Opleidingsjaar"
+      },
+      {
+        "num": 20,
+        "sup": "+",
+        "label": "Selfgehoste dienste"
+      },
+      {
+        "num": 3,
+        "sup": "",
+        "label": "Tale"
+      }
     ]
   },
   "about": {
@@ -50,41 +62,112 @@
       "Ek hou van stelsels wat ek kan uitmekaarhaal, verstaan en weer opbou. By die huis bedryf ek my eie Proxmox-lab met drie nodes en toets alles eers daar."
     ],
     "facts": [
-      {"k": "Woon in", "v": "Eislingen/Fils"},
-      {"k": "Tale", "v": "Duits · Engels · Afrikaans"},
-      {"k": "Opleiding", "v": "2de jaar · FISI"},
-      {"k": "Lisensies", "v": "Rybewys B · Hommeltuig A1/A3"}
+      {
+        "k": "Woon in",
+        "v": "Eislingen/Fils"
+      },
+      {
+        "k": "Tale",
+        "v": "Duits · Engels · Afrikaans"
+      },
+      {
+        "k": "Opleiding",
+        "v": "2de jaar · FISI"
+      },
+      {
+        "k": "Lisensies",
+        "v": "Rybewys B · Hommeltuig A1/A3"
+      }
     ]
   },
   "stack": {
     "label": "Waarmee ek werk",
     "intro": "Die gereedskap wat ek elke dag gebruik — by die werk en in my eie lab.",
     "tiles": {
-      "terminal": {"title": "Linux en outomatisering", "text": "Bash, systemd en Ansible met AWX. Een playbook in plaas van twintig opdaterings met die hand."},
-      "proxmox": {"title": "Virtualisering en rugsteun", "text": "Proxmox VE, VMware ESXi en Hyper-V, met Proxmox Backup Server en Veeam agter hulle."},
-      "firewall": {"title": "Netwerk en sekuriteit", "text": "OPNsense, VLAN's, WireGuard, DNS en DHCP. Ek wil weet waarheen elke pakkie gaan."},
-      "ad": {"title": "Windows en Active Directory", "text": "Domeine, groepbeleide, lêertoestemmings, Windows 11-uitrollings en Microsoft 365."},
-      "ai": {"title": "Plaaslike KI", "text": "Taalmodelle, klets en agente op my eie hardeware — geen wolk nodig nie."}
+      "terminal": {
+        "title": "Linux en outomatisering",
+        "text": "Bash, systemd en Ansible met AWX. Een playbook in plaas van twintig opdaterings met die hand."
+      },
+      "proxmox": {
+        "title": "Virtualisering en rugsteun",
+        "text": "Proxmox VE, VMware ESXi en Hyper-V, met Proxmox Backup Server en Veeam agter hulle."
+      },
+      "firewall": {
+        "title": "Netwerk en sekuriteit",
+        "text": "OPNsense, VLAN's, WireGuard, DNS en DHCP. Ek wil weet waarheen elke pakkie gaan."
+      },
+      "ad": {
+        "title": "Windows en Active Directory",
+        "text": "Domeine, groepbeleide, lêertoestemmings, Windows 11-uitrollings en Microsoft 365."
+      },
+      "ai": {
+        "title": "Plaaslike KI",
+        "text": "Taalmodelle, klets en agente op my eie hardeware — geen wolk nodig nie."
+      }
     },
     "fw_allow": "toelaat",
     "fw_block": "blokkeer",
-    "ai_q": "Hoe maak ek 'n vol PBS-datastoor leeg?",
-    "ai_a": "Laat 'n prune-taak loop om jou retensie toe te pas, dan garbage collection om die chunks werklik vry te maak.",
-    "marquee_label": "Daaglikse gereedskapkis"
+    "marquee_label": "Daaglikse gereedskapkis",
+    "ai_pairs": [
+      {
+        "q": "Hoe maak ek 'n vol PBS-datastoor skoon?",
+        "a": "Doen eers 'n prune-taak vir jou bewaartydperk, dan garbage collection – dít maak die spasie werklik vry."
+      },
+      {
+        "q": "Deel- of NTFS-regte – watter een geld?",
+        "a": "Albei geld en die strengste wen. Laat die deel op volle beheer en beheer toegang met NTFS."
+      },
+      {
+        "q": "Hoekom begin my VM nie ná die skuif nie?",
+        "a": "Kyk na die CPU-tipe: stel dit op x86-64-v2-AES of host sodat vlae soos AES beskikbaar is."
+      },
+      {
+        "q": "Hoe hou ek IoT-toestelle uit my LAN?",
+        "a": "Gee hulle 'n eie VLAN en blokkeer dan IoT → LAN, maar laat IoT → WAN op die brandmuur toe."
+      },
+      {
+        "q": "Vinnige manier om 'n DNS-bediener te toets?",
+        "a": "nslookup example.com 10.0.10.53 – kry jy 'n antwoord, is die bediener en poort 53 reg."
+      }
+    ]
   },
   "homelab": {
     "label": "Homelab",
     "intro": "Drie Proxmox-nodes in my kamer. Alles loop op my eie hardeware en word elke nag gerugsteun.",
     "stats": [
-      {"num": "3", "label": "Proxmox-nodes"},
-      {"num": "20+", "label": "Dienste"},
-      {"num": "8", "label": "Plaaslike KI-modelle"},
-      {"num": "24/7", "label": "Via WireGuard"}
+      {
+        "num": "3",
+        "label": "Proxmox-nodes"
+      },
+      {
+        "num": "20+",
+        "label": "Dienste"
+      },
+      {
+        "num": "8",
+        "label": "Plaaslike KI-modelle"
+      },
+      {
+        "num": "24/7",
+        "label": "Via WireGuard"
+      }
     ],
     "nodes": [
-      {"name": "Edge", "role": "Brandmuur · DNS · Proxy", "tone": "gold"},
-      {"name": "Compute", "role": "KI · GPU · VM's", "tone": "blue"},
-      {"name": "Apps", "role": "Outomatisering · Web", "tone": "blue"}
+      {
+        "name": "Edge",
+        "role": "Brandmuur · DNS · Proxy",
+        "tone": "gold"
+      },
+      {
+        "name": "Compute",
+        "role": "KI · GPU · VM's",
+        "tone": "blue"
+      },
+      {
+        "name": "Apps",
+        "role": "Outomatisering · Web",
+        "tone": "blue"
+      }
     ],
     "flow_label": "Netwerkdatavloei",
     "flow_desc": "Diagram: internetverkeer kom deur OPNsense in en word na drie Proxmox-nodes gerouteer. Node 1 bedryf Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx en PBS. Node 2 bedryf die LLM-VM, LibreChat, Hermes Agent, Ollama en Firecrawl. Node 3 bedryf n8n, BookStack, wger, WordPress, Anubis en RustDesk.",
@@ -94,23 +177,69 @@
   "path": {
     "label": "Loopbaan",
     "items": [
-      {"date": "2026 –", "title": "Vakleerling, IT-stelselintegrasie", "org": "IT-Works GmbH, Uhingen", "current": true},
-      {"date": "2025 – 2026", "title": "IT-stelselintegrasie, 1ste jaar", "org": "netplay GmbH, Zell u. A."},
-      {"date": "2024 – 2025", "title": "Rekenaarwetenskap, 2 semesters", "org": "Technische Hochschule Ulm"},
-      {"date": "2024", "title": "Deeltyds: ontvangs en sosiale media", "org": "RGS e.V. · Fitness Forum Eislingen"},
-      {"date": "2023 – 2024", "title": "Assistent-gimnastiekafrigter", "org": "Crete Gymnastic Club, Windhoek"},
-      {"date": "2016 – 2023", "title": "Abitur (Duitse matriek)", "org": "Deutsche Höhere Privatschule Windhoek"}
+      {
+        "date": "2026 –",
+        "title": "Vakleerling, IT-stelselintegrasie",
+        "org": "IT-Works GmbH, Uhingen",
+        "current": true
+      },
+      {
+        "date": "2025 – 2026",
+        "title": "IT-stelselintegrasie, 1ste jaar",
+        "org": "netplay GmbH, Zell u. A."
+      },
+      {
+        "date": "2024 – 2025",
+        "title": "Rekenaarwetenskap, 2 semesters",
+        "org": "Technische Hochschule Ulm"
+      },
+      {
+        "date": "2024",
+        "title": "Deeltyds: ontvangs en sosiale media",
+        "org": "RGS e.V. · Fitness Forum Eislingen"
+      },
+      {
+        "date": "2023 – 2024",
+        "title": "Assistent-gimnastiekafrigter",
+        "org": "Crete Gymnastic Club, Windhoek"
+      },
+      {
+        "date": "2016 – 2023",
+        "title": "Abitur (Duitse matriek)",
+        "org": "Deutsche Höhere Privatschule Windhoek"
+      }
     ]
   },
   "life": {
     "label": "Na werksure",
     "intro": "Wat my besig hou as die skootrekenaar toe is.",
     "photos": [
-      {"img": "namibia", "alt": "Sonsondergang oor die duine van Namibië", "cap": "Namibië", "sub": "Waar ek grootgeword het"},
-      {"img": "gymnastics", "alt": "Tydskrifvoorblad met Tristan op die saalperd", "cap": "Gimnastiek", "sub": "Op Vlak 8 meegeding"},
-      {"img": "drone", "alt": "DJI-hommeltuig in die lug", "cap": "Hommeltuie", "sub": "EU A1/A3-lisensie"}
+      {
+        "img": "namibia",
+        "alt": "Sonsondergang oor die duine van Namibië",
+        "cap": "Namibië",
+        "sub": "Waar ek grootgeword het"
+      },
+      {
+        "img": "gymnastics",
+        "alt": "Tydskrifvoorblad met Tristan op die saalperd",
+        "cap": "Gimnastiek",
+        "sub": "Op Vlak 8 meegeding"
+      },
+      {
+        "img": "drone",
+        "alt": "DJI-hommeltuig in die lug",
+        "cap": "Hommeltuie",
+        "sub": "EU A1/A3-lisensie"
+      }
     ],
-    "interests": ["Vlugsimulasie", "Retro-hardeware", "E-sport", "Kampeer", "Kinders afrig"]
+    "interests": [
+      "Vlugsimulasie",
+      "Retro-hardeware",
+      "E-sport",
+      "Kampeer",
+      "Kinders afrig"
+    ]
   },
   "contact": {
     "label": "Kontak",

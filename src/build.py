@@ -108,6 +108,50 @@ def logo_svg(slug):
     return raw.replace('<svg role="img"', '<svg aria-hidden="true" focusable="false"', 1)
 
 
+# ─── Logo: pixel monogram "TK_" (terminal-prompt look) on a 20×20 grid ───
+_G = 20
+_T = ["######", "######", "..##..", "..##..", "..##..", "..##..", "..##..", "..##.."]
+_K = ["##..##", "##.##.", "####..", "###...", "###...", "####..", "##.##.", "##..##"]
+
+
+def _pixels():
+    px = []
+    for r, row in enumerate(_T):
+        px += [(2 + c, 6 + r, "t") for c, ch in enumerate(row) if ch == "#"]
+    for r, row in enumerate(_K):
+        px += [(9 + c, 6 + r, "k") for c, ch in enumerate(row) if ch == "#"]
+    px += [(16, 12, "c"), (17, 12, "c"), (16, 13, "c"), (17, 13, "c")]   # the "_" cursor block
+    return px
+
+
+def brand_svg(size=None, cls="logo-mark"):
+    fill = {"t": "#ffe6cb", "k": "#4aa8d8", "c": "#FFBD38"}
+    rects = "".join(
+        f'<rect class="px px-{kind}" x="{x}" y="{y}" width="1" height="1" fill="{fill[kind]}" style="--i:{i}"/>'
+        for i, (x, y, kind) in enumerate(_pixels()))
+    dims = f' width="{size}" height="{size}"' if size else ""
+    return (f'<svg class="{cls}" viewBox="0 0 {_G} {_G}"{dims} aria-hidden="true" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">'
+            f'<rect width="{_G}" height="{_G}" rx="3.5" fill="#072828"/>'
+            f'<rect x=".35" y=".35" width="{_G - .7}" height="{_G - .7}" rx="3.2" fill="none" stroke="#ffe6cb" stroke-opacity=".16" stroke-width=".7"/>'
+            f'{rects}</svg>')
+
+
+def write_icons():
+    (ROOT / "favicon.svg").write_text(brand_svg(cls="favicon"), encoding="utf-8")
+    try:
+        from PIL import Image, ImageDraw
+        s, u = 180, 9               # apple-touch-icon: 20 × 9 px grid on a 180 px tile
+        pad = 0
+        img = Image.new("RGB", (s, s), (7, 40, 40))
+        d = ImageDraw.Draw(img)
+        col = {"t": (255, 230, 203), "k": (74, 168, 216), "c": (255, 189, 56)}
+        for x, y, kind in _pixels():
+            d.rectangle([pad + x * u, pad + y * u, pad + x * u + u - 1, pad + y * u + u - 1], fill=col[kind])
+        img.save(ROOT / "assets" / "img" / "apple-touch-icon.png", optimize=True)
+    except ImportError:
+        pass
+
+
 def url_for(lang):
     return f"{SITE}/{PAGE[lang]}"
 
@@ -143,7 +187,8 @@ def main():
     env = Environment(loader=FileSystemLoader(SRC / "templates"), autoescape=True,
                       trim_blocks=True, lstrip_blocks=True)
     content = {l: json.loads((SRC / "content" / f"{l}.json").read_text(encoding="utf-8")) for l in LANGS}
-    common = dict(site=SITE, year=TODAY.year, version=VERSION, base="", noindex=False, jsonld=None,
+    write_icons()
+    common = dict(logo_mark=Markup(brand_svg()), site=SITE, year=TODAY.year, version=VERSION, base="", noindex=False, jsonld=None,
                   og_type="website", canonical=None, alternates=[])
 
     for lang in LANGS:

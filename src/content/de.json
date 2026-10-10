@@ -36,9 +36,21 @@
     "cta_primary": "Was ich mache",
     "cta_secondary": "Kontakt",
     "stats": [
-      {"num": 2, "sup": ".", "label": "Ausbildungsjahr"},
-      {"num": 20, "sup": "+", "label": "Selbst gehostete Dienste"},
-      {"num": 3, "sup": "", "label": "Sprachen"}
+      {
+        "num": 2,
+        "sup": ".",
+        "label": "Ausbildungsjahr"
+      },
+      {
+        "num": 20,
+        "sup": "+",
+        "label": "Selbst gehostete Dienste"
+      },
+      {
+        "num": 3,
+        "sup": "",
+        "label": "Sprachen"
+      }
     ]
   },
   "about": {
@@ -50,41 +62,112 @@
       "Ich mag Systeme, die ich zerlegen, verstehen und neu aufbauen kann. Zu Hause betreibe ich mein eigenes Proxmox-Lab mit drei Knoten und teste dort alles zuerst."
     ],
     "facts": [
-      {"k": "Wohnort", "v": "Eislingen/Fils"},
-      {"k": "Sprachen", "v": "Deutsch · Englisch · Afrikaans"},
-      {"k": "Ausbildung", "v": "2. Jahr · FISI"},
-      {"k": "Führerscheine", "v": "Klasse B · Drohne A1/A3"}
+      {
+        "k": "Wohnort",
+        "v": "Eislingen/Fils"
+      },
+      {
+        "k": "Sprachen",
+        "v": "Deutsch · Englisch · Afrikaans"
+      },
+      {
+        "k": "Ausbildung",
+        "v": "2. Jahr · FISI"
+      },
+      {
+        "k": "Führerscheine",
+        "v": "Klasse B · Drohne A1/A3"
+      }
     ]
   },
   "stack": {
     "label": "Womit ich arbeite",
     "intro": "Die Werkzeuge, die ich jeden Tag nutze – im Betrieb und in meinem eigenen Lab.",
     "tiles": {
-      "terminal": {"title": "Linux & Automatisierung", "text": "Bash, systemd und Ansible mit AWX. Ein Playbook statt zwanzig Updates von Hand."},
-      "proxmox": {"title": "Virtualisierung & Backup", "text": "Proxmox VE, VMware ESXi und Hyper-V, abgesichert mit Proxmox Backup Server und Veeam."},
-      "firewall": {"title": "Netzwerk & Sicherheit", "text": "OPNsense, VLANs, WireGuard, DNS und DHCP. Ich will wissen, wohin jedes Paket geht."},
-      "ad": {"title": "Windows & Active Directory", "text": "Domänen, Gruppenrichtlinien, Freigaberechte, Windows-11-Rollouts und Microsoft 365."},
-      "ai": {"title": "Lokale KI", "text": "Sprachmodelle, Chat und Agenten auf meiner eigenen Hardware – ganz ohne Cloud."}
+      "terminal": {
+        "title": "Linux & Automatisierung",
+        "text": "Bash, systemd und Ansible mit AWX. Ein Playbook statt zwanzig Updates von Hand."
+      },
+      "proxmox": {
+        "title": "Virtualisierung & Backup",
+        "text": "Proxmox VE, VMware ESXi und Hyper-V, abgesichert mit Proxmox Backup Server und Veeam."
+      },
+      "firewall": {
+        "title": "Netzwerk & Sicherheit",
+        "text": "OPNsense, VLANs, WireGuard, DNS und DHCP. Ich will wissen, wohin jedes Paket geht."
+      },
+      "ad": {
+        "title": "Windows & Active Directory",
+        "text": "Domänen, Gruppenrichtlinien, Freigaberechte, Windows-11-Rollouts und Microsoft 365."
+      },
+      "ai": {
+        "title": "Lokale KI",
+        "text": "Sprachmodelle, Chat und Agenten auf meiner eigenen Hardware – ganz ohne Cloud."
+      }
     },
     "fw_allow": "erlaubt",
     "fw_block": "blockiert",
-    "ai_q": "Wie räume ich einen vollen PBS-Datastore frei?",
-    "ai_a": "Erst einen Prune-Job für die Aufbewahrung laufen lassen, dann die Garbage Collection – die gibt den Speicher wirklich frei.",
-    "marquee_label": "Täglicher Werkzeugkasten"
+    "marquee_label": "Täglicher Werkzeugkasten",
+    "ai_pairs": [
+      {
+        "q": "Wie räume ich einen vollen PBS-Datastore frei?",
+        "a": "Erst einen Prune-Job für die Aufbewahrung, dann die Garbage Collection – die gibt den Speicher wirklich frei."
+      },
+      {
+        "q": "Freigabe- oder NTFS-Rechte – was gilt?",
+        "a": "Beide greifen, das restriktivere gewinnt. Freigabe auf Vollzugriff lassen und den Zugriff über NTFS steuern."
+      },
+      {
+        "q": "Warum bootet meine VM nach dem Umzug nicht?",
+        "a": "CPU-Typ prüfen: auf x86-64-v2-AES oder host stellen, damit Flags wie AES verfügbar sind."
+      },
+      {
+        "q": "Wie halte ich IoT-Geräte aus dem LAN raus?",
+        "a": "Eigenes VLAN, dann auf der Firewall IoT → LAN blockieren und IoT → WAN erlauben."
+      },
+      {
+        "q": "Schnell einen DNS-Server testen?",
+        "a": "nslookup example.com 10.0.10.53 – kommt eine Antwort, passen Server und Port 53."
+      }
+    ]
   },
   "homelab": {
     "label": "Homelab",
     "intro": "Drei Proxmox-Knoten in meinem Zimmer. Alles läuft auf eigener Hardware und wird jede Nacht gesichert.",
     "stats": [
-      {"num": "3", "label": "Proxmox-Knoten"},
-      {"num": "20+", "label": "Dienste"},
-      {"num": "8", "label": "Lokale KI-Modelle"},
-      {"num": "24/7", "label": "Über WireGuard"}
+      {
+        "num": "3",
+        "label": "Proxmox-Knoten"
+      },
+      {
+        "num": "20+",
+        "label": "Dienste"
+      },
+      {
+        "num": "8",
+        "label": "Lokale KI-Modelle"
+      },
+      {
+        "num": "24/7",
+        "label": "Über WireGuard"
+      }
     ],
     "nodes": [
-      {"name": "Edge", "role": "Firewall · DNS · Proxy", "tone": "gold"},
-      {"name": "Compute", "role": "KI · GPU · VMs", "tone": "blue"},
-      {"name": "Apps", "role": "Automatisierung · Web", "tone": "blue"}
+      {
+        "name": "Edge",
+        "role": "Firewall · DNS · Proxy",
+        "tone": "gold"
+      },
+      {
+        "name": "Compute",
+        "role": "KI · GPU · VMs",
+        "tone": "blue"
+      },
+      {
+        "name": "Apps",
+        "role": "Automatisierung · Web",
+        "tone": "blue"
+      }
     ],
     "flow_label": "Netzwerk-Datenfluss",
     "flow_desc": "Diagramm: Internet-Verkehr kommt über OPNsense herein und wird auf drei Proxmox-Knoten verteilt. Knoten 1 betreibt Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx und PBS. Knoten 2 betreibt die LLM-VM, LibreChat, Hermes Agent, Ollama und Firecrawl. Knoten 3 betreibt n8n, BookStack, wger, WordPress, Anubis und RustDesk.",
@@ -94,23 +177,69 @@
   "path": {
     "label": "Werdegang",
     "items": [
-      {"date": "2026 –", "title": "Azubi Fachinformatiker Systemintegration", "org": "IT-Works GmbH, Uhingen", "current": true},
-      {"date": "2025 – 2026", "title": "Fachinformatiker Systemintegration, 1. Jahr", "org": "netplay GmbH, Zell u. A."},
-      {"date": "2024 – 2025", "title": "Informatik, 2 Semester", "org": "Technische Hochschule Ulm"},
-      {"date": "2024", "title": "Minijobs: Empfang & Social Media", "org": "RGS e.V. · Fitness Forum Eislingen"},
-      {"date": "2023 – 2024", "title": "Assistenztrainer Kunstturnen", "org": "Crete Gymnastic Club, Windhoek"},
-      {"date": "2016 – 2023", "title": "Abitur", "org": "Deutsche Höhere Privatschule Windhoek"}
+      {
+        "date": "2026 –",
+        "title": "Azubi Fachinformatiker Systemintegration",
+        "org": "IT-Works GmbH, Uhingen",
+        "current": true
+      },
+      {
+        "date": "2025 – 2026",
+        "title": "Fachinformatiker Systemintegration, 1. Jahr",
+        "org": "netplay GmbH, Zell u. A."
+      },
+      {
+        "date": "2024 – 2025",
+        "title": "Informatik, 2 Semester",
+        "org": "Technische Hochschule Ulm"
+      },
+      {
+        "date": "2024",
+        "title": "Minijobs: Empfang & Social Media",
+        "org": "RGS e.V. · Fitness Forum Eislingen"
+      },
+      {
+        "date": "2023 – 2024",
+        "title": "Assistenztrainer Kunstturnen",
+        "org": "Crete Gymnastic Club, Windhoek"
+      },
+      {
+        "date": "2016 – 2023",
+        "title": "Abitur",
+        "org": "Deutsche Höhere Privatschule Windhoek"
+      }
     ]
   },
   "life": {
     "label": "Nach Feierabend",
     "intro": "Womit ich mich beschäftige, wenn der Laptop zu ist.",
     "photos": [
-      {"img": "namibia", "alt": "Sonnenuntergang über den Dünen Namibias", "cap": "Namibia", "sub": "Hier bin ich aufgewachsen"},
-      {"img": "gymnastics", "alt": "Magazin-Cover mit Tristan am Pauschenpferd", "cap": "Kunstturnen", "sub": "Wettkämpfe auf Level 8"},
-      {"img": "drone", "alt": "DJI-Drohne im Flug", "cap": "Drohnen", "sub": "EU-Kompetenznachweis A1/A3"}
+      {
+        "img": "namibia",
+        "alt": "Sonnenuntergang über den Dünen Namibias",
+        "cap": "Namibia",
+        "sub": "Hier bin ich aufgewachsen"
+      },
+      {
+        "img": "gymnastics",
+        "alt": "Magazin-Cover mit Tristan am Pauschenpferd",
+        "cap": "Kunstturnen",
+        "sub": "Wettkämpfe auf Level 8"
+      },
+      {
+        "img": "drone",
+        "alt": "DJI-Drohne im Flug",
+        "cap": "Drohnen",
+        "sub": "EU-Kompetenznachweis A1/A3"
+      }
     ],
-    "interests": ["Flugsimulation", "Retro-Hardware", "E-Sport", "Zelten", "Kindertraining"]
+    "interests": [
+      "Flugsimulation",
+      "Retro-Hardware",
+      "E-Sport",
+      "Zelten",
+      "Kindertraining"
+    ]
   },
   "contact": {
     "label": "Kontakt",

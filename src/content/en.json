@@ -36,9 +36,21 @@
     "cta_primary": "See what I do",
     "cta_secondary": "Contact me",
     "stats": [
-      {"num": 2, "sup": "nd", "label": "Training year"},
-      {"num": 20, "sup": "+", "label": "Self-hosted services"},
-      {"num": 3, "sup": "", "label": "Languages"}
+      {
+        "num": 2,
+        "sup": "nd",
+        "label": "Training year"
+      },
+      {
+        "num": 20,
+        "sup": "+",
+        "label": "Self-hosted services"
+      },
+      {
+        "num": 3,
+        "sup": "",
+        "label": "Languages"
+      }
     ]
   },
   "about": {
@@ -50,41 +62,112 @@
       "I like systems I can take apart, understand and rebuild. At home I run my own three-node Proxmox lab and test everything there first."
     ],
     "facts": [
-      {"k": "Based in", "v": "Eislingen/Fils"},
-      {"k": "Languages", "v": "German · English · Afrikaans"},
-      {"k": "Training", "v": "2nd year · FISI"},
-      {"k": "Licences", "v": "Driving B · Drone A1/A3"}
+      {
+        "k": "Based in",
+        "v": "Eislingen/Fils"
+      },
+      {
+        "k": "Languages",
+        "v": "German · English · Afrikaans"
+      },
+      {
+        "k": "Training",
+        "v": "2nd year · FISI"
+      },
+      {
+        "k": "Licences",
+        "v": "Driving B · Drone A1/A3"
+      }
     ]
   },
   "stack": {
     "label": "What I work with",
     "intro": "The tools I use every day — at work and in my own lab.",
     "tiles": {
-      "terminal": {"title": "Linux & automation", "text": "Bash, systemd and Ansible with AWX. One playbook instead of twenty manual updates."},
-      "proxmox": {"title": "Virtualisation & backup", "text": "Proxmox VE, VMware ESXi and Hyper-V, with Proxmox Backup Server and Veeam behind them."},
-      "firewall": {"title": "Network & security", "text": "OPNsense, VLANs, WireGuard, DNS and DHCP. I like knowing where every packet goes."},
-      "ad": {"title": "Windows & Active Directory", "text": "Domains, group policies, file permissions, Windows 11 rollouts and Microsoft 365."},
-      "ai": {"title": "Local AI", "text": "Language models, chat and agents running on my own hardware — no cloud needed."}
+      "terminal": {
+        "title": "Linux & automation",
+        "text": "Bash, systemd and Ansible with AWX. One playbook instead of twenty manual updates."
+      },
+      "proxmox": {
+        "title": "Virtualisation & backup",
+        "text": "Proxmox VE, VMware ESXi and Hyper-V, with Proxmox Backup Server and Veeam behind them."
+      },
+      "firewall": {
+        "title": "Network & security",
+        "text": "OPNsense, VLANs, WireGuard, DNS and DHCP. I like knowing where every packet goes."
+      },
+      "ad": {
+        "title": "Windows & Active Directory",
+        "text": "Domains, group policies, file permissions, Windows 11 rollouts and Microsoft 365."
+      },
+      "ai": {
+        "title": "Local AI",
+        "text": "Language models, chat and agents running on my own hardware — no cloud needed."
+      }
     },
     "fw_allow": "allow",
     "fw_block": "block",
-    "ai_q": "How do I free up a full PBS datastore?",
-    "ai_a": "Run a prune job to apply your retention, then garbage collection to actually free the chunks.",
-    "marquee_label": "Daily toolbox"
+    "marquee_label": "Daily toolbox",
+    "ai_pairs": [
+      {
+        "q": "How do I free up a full PBS datastore?",
+        "a": "Run a prune job to apply your retention, then garbage collection to actually free the chunks."
+      },
+      {
+        "q": "Share or NTFS permissions — which one wins?",
+        "a": "Both apply and the more restrictive one wins. Leave the share at Full Control and manage access with NTFS."
+      },
+      {
+        "q": "Why won't my VM boot after moving hosts?",
+        "a": "Check the CPU type. Set it to x86-64-v2-AES or host so flags like AES are available."
+      },
+      {
+        "q": "How do I keep IoT devices off my LAN?",
+        "a": "Give them their own VLAN, then block IoT → LAN and allow IoT → WAN on the firewall."
+      },
+      {
+        "q": "Quick way to test a DNS server?",
+        "a": "nslookup example.com 10.0.10.53 — if it answers, the server and the port 53 path are fine."
+      }
+    ]
   },
   "homelab": {
     "label": "Homelab",
     "intro": "Three Proxmox nodes in my room. Everything runs on my own hardware and is backed up every night.",
     "stats": [
-      {"num": "3", "label": "Proxmox nodes"},
-      {"num": "20+", "label": "Services"},
-      {"num": "8", "label": "Local AI models"},
-      {"num": "24/7", "label": "Via WireGuard"}
+      {
+        "num": "3",
+        "label": "Proxmox nodes"
+      },
+      {
+        "num": "20+",
+        "label": "Services"
+      },
+      {
+        "num": "8",
+        "label": "Local AI models"
+      },
+      {
+        "num": "24/7",
+        "label": "Via WireGuard"
+      }
     ],
     "nodes": [
-      {"name": "Edge", "role": "Firewall · DNS · Proxy", "tone": "gold"},
-      {"name": "Compute", "role": "AI · GPU · VMs", "tone": "blue"},
-      {"name": "Apps", "role": "Automation · Web", "tone": "blue"}
+      {
+        "name": "Edge",
+        "role": "Firewall · DNS · Proxy",
+        "tone": "gold"
+      },
+      {
+        "name": "Compute",
+        "role": "AI · GPU · VMs",
+        "tone": "blue"
+      },
+      {
+        "name": "Apps",
+        "role": "Automation · Web",
+        "tone": "blue"
+      }
     ],
     "flow_label": "Network data flow",
     "flow_desc": "Diagram: internet traffic enters through OPNsense and is routed to three Proxmox nodes. Node 1 runs Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx and PBS. Node 2 runs the LLM VM, LibreChat, Hermes Agent, Ollama and Firecrawl. Node 3 runs n8n, BookStack, wger, WordPress, Anubis and RustDesk.",
@@ -94,23 +177,69 @@
   "path": {
     "label": "Path",
     "items": [
-      {"date": "2026 –", "title": "Apprentice, IT systems integration", "org": "IT-Works GmbH, Uhingen", "current": true},
-      {"date": "2025 – 2026", "title": "IT systems integration, 1st year", "org": "netplay GmbH, Zell u. A."},
-      {"date": "2024 – 2025", "title": "Computer Science, 2 semesters", "org": "Technische Hochschule Ulm"},
-      {"date": "2024", "title": "Mini-jobs: front desk & social media", "org": "RGS e.V. · Fitness Forum Eislingen"},
-      {"date": "2023 – 2024", "title": "Assistant gymnastics coach", "org": "Crete Gymnastic Club, Windhoek"},
-      {"date": "2016 – 2023", "title": "Abitur", "org": "Deutsche Höhere Privatschule Windhoek"}
+      {
+        "date": "2026 –",
+        "title": "Apprentice, IT systems integration",
+        "org": "IT-Works GmbH, Uhingen",
+        "current": true
+      },
+      {
+        "date": "2025 – 2026",
+        "title": "IT systems integration, 1st year",
+        "org": "netplay GmbH, Zell u. A."
+      },
+      {
+        "date": "2024 – 2025",
+        "title": "Computer Science, 2 semesters",
+        "org": "Technische Hochschule Ulm"
+      },
+      {
+        "date": "2024",
+        "title": "Mini-jobs: front desk & social media",
+        "org": "RGS e.V. · Fitness Forum Eislingen"
+      },
+      {
+        "date": "2023 – 2024",
+        "title": "Assistant gymnastics coach",
+        "org": "Crete Gymnastic Club, Windhoek"
+      },
+      {
+        "date": "2016 – 2023",
+        "title": "Abitur",
+        "org": "Deutsche Höhere Privatschule Windhoek"
+      }
     ]
   },
   "life": {
     "label": "Off the clock",
     "intro": "What keeps me busy when the laptop is closed.",
     "photos": [
-      {"img": "namibia", "alt": "Sunset over the dunes of Namibia", "cap": "Namibia", "sub": "Where I grew up"},
-      {"img": "gymnastics", "alt": "Magazine cover showing Tristan on the pommel horse", "cap": "Gymnastics", "sub": "Competed at Level 8"},
-      {"img": "drone", "alt": "DJI drone in flight", "cap": "Drones", "sub": "EU A1/A3 licence"}
+      {
+        "img": "namibia",
+        "alt": "Sunset over the dunes of Namibia",
+        "cap": "Namibia",
+        "sub": "Where I grew up"
+      },
+      {
+        "img": "gymnastics",
+        "alt": "Magazine cover showing Tristan on the pommel horse",
+        "cap": "Gymnastics",
+        "sub": "Competed at Level 8"
+      },
+      {
+        "img": "drone",
+        "alt": "DJI drone in flight",
+        "cap": "Drones",
+        "sub": "EU A1/A3 licence"
+      }
     ],
-    "interests": ["Flight simulation", "Retro hardware", "Esports", "Camping", "Coaching kids"]
+    "interests": [
+      "Flight simulation",
+      "Retro hardware",
+      "Esports",
+      "Camping",
+      "Coaching kids"
+    ]
   },
   "contact": {
     "label": "Contact",

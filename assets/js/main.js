@@ -198,120 +198,280 @@
   }
 
   // ─── APP TILES ───────────────────────────────────────────
-  // Each tile has a static final state (no JS / reduced motion) and a loop that only runs while visible.
+  // Every tile shows a static state without JS / with reduced motion. With motion, each runs its own
+  // randomised event loop — only while it is on screen — so the dashboard never repeats exactly.
   function whenVisible(el, start, stop) {
     if (!el || !('IntersectionObserver' in window)) return;
-    new IntersectionObserver(function (en) { en[0].isIntersecting ? start() : stop(); }, { threshold: .25 }).observe(el);
+    new IntersectionObserver(function (en) { en[0].isIntersecting ? start() : stop(); }, { threshold: .2 }).observe(el);
   }
-  function loop(fn, ms) { var id = setInterval(fn, ms); timers.push(id); return id; }
-  function esc(s) { return s.replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+  function later(fn, ms) {
+    var id = setTimeout(function () { var i = timers.indexOf(id); if (i > -1) timers.splice(i, 1); fn(); }, ms);
+    timers.push(id); return id;
+  }
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function ri(a, b) { return Math.floor(rnd(a, b + 1)); }
+  function pick(a) { return a[(Math.random() * a.length) | 0]; }
+  function chance(p) { return Math.random() < p; }
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+  function pad(s, n) { s = String(s); while (s.length < n) s += ' '; return s; }
+  function hhmm() { var d = new Date(); return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  // <ok>…</ok> = blue, <w>…</w> = gold warning
+  function fmt(s) { return esc(s).replace(/&lt;(\/?)(ok|w)&gt;/g, function (_, c, t) { return c ? '</span>' : '<span class="' + (t === 'ok' ? 'ok' : 'p') + '">'; }); }
 
-  // Terminal: types commands, prints output
-  var term = $('#termOut');
-  var SCRIPT = [
-    ['$ ', 'qm list'],
-    ['', '  VMID NAME          STATUS\n  101  llm-vm        <ok>running</ok>\n  102  librechat     <ok>running</ok>\n  110  docker-apps   <ok>running</ok>'],
-    ['$ ', 'ansible-playbook win11-updates.yml'],
-    ['', 'PLAY RECAP  <ok>ok=14</ok>  changed=4  failed=0'],
-    ['$ ', 'proxmox-backup-client snapshot list'],
-    ['', '  vm/101  2026-10-10T02:00  <ok>verified</ok>']
-  ];
-  function termStatic() {
-    if (!term) return;
-    term.innerHTML = SCRIPT.slice(0, 4).map(function (l) { return l[0] ? '<span class="p">$ </span><span class="c">' + esc(l[1]) + '</span>' : fmt(l[1]); }).join('\n');
-    term.scrollTop = 0;
-  }
-  function fmt(s) { return esc(s).replace(/&lt;ok&gt;/g, '<span class="ok">').replace(/&lt;\/ok&gt;/g, '</span>'); }
-  if (term) {
-    if (MOTION) {
-      var tRun = null;
-      var typeTerm = function () {
-        var html = '', i = 0, ch = 0;
-        clearInterval(tRun);
-        tRun = setInterval(function () {
-          if (!MOTION) { clearInterval(tRun); termStatic(); return; }
-          var line = SCRIPT[i];
-          if (!line) { clearInterval(tRun); setTimeout(function () { if (MOTION && termOn) typeTerm(); }, 2600); return; }
-          if (line[0]) {             // typed command
-            ch++;
-            term.innerHTML = html + '<span class="p">$ </span><span class="c">' + esc(line[1].slice(0, ch)) + '</span><span class="cur"></span>';
-            term.scrollTop = term.scrollHeight;
-            if (ch >= line[1].length) { html += '<span class="p">$ </span><span class="c">' + esc(line[1]) + '</span>\n'; i++; ch = 0; }
-          } else {                    // output appears at once
-            html += fmt(line[1]) + '\n'; i++;
-            term.innerHTML = html + '<span class="cur"></span>';
-            term.scrollTop = term.scrollHeight;
-          }
-        }, 45);
-        timers.push(tRun);
-      };
-      var termOn = false;
-      whenVisible(term, function () { if (!termOn && MOTION) { termOn = true; typeTerm(); } }, function () { termOn = false; clearInterval(tRun); termStatic(); });
+  // ── Terminal: random commands with live-looking output ──
+  var term = $('#termOut'), termStaticHTML = term ? term.innerHTML : '';
+  var VMS = ['llm-vm', 'librechat', 'docker-apps', 'n8n', 'pbs', 'win11-lab', 'pihole', 'bookstack'];
+  var SESS = [
+    function () {
+      var rows = VMS.slice().sort(function () { return Math.random() - .5; }).slice(0, 4).map(function (n, i) {
+        var up = chance(.85);
+        return '  ' + pad(100 + ri(1, 30), 5) + pad(n, 14) + (up ? '<ok>running</ok>' : '<w>stopped</w>');
+      });
+      return ['qm list', '  VMID NAME          STATUS'].concat(rows);
+    },
+    function () {
+      var ch = ri(0, 9), un = chance(.2);
+      return ['ansible-playbook win11-updates.yml', 'TASK [win_updates] ' + '*'.repeat(10),
+        'PLAY RECAP  <ok>ok=' + ri(10, 18) + '</ok>  changed=' + ch + '  ' + (un ? '<w>unreachable=1</w>' : 'failed=0')];
+    },
+    function () {
+      return ['systemctl status llama-swap --no-pager', '● llama-swap.service - LLM proxy',
+        '   Active: <ok>active (running)</ok> since ' + ri(2, 19) + ' days', '   Memory: ' + rnd(12, 21).toFixed(1) + 'G'];
+    },
+    function () {
+      var c = ['searxng', 'firecrawl', 'librechat', 'mongodb', 'meilisearch', 'rag-api', 'vaultwarden', 'paperless'];
+      return ['docker ps --format "{{.Names}}  {{.Status}}"'].concat(c.sort(function () { return Math.random() - .5; }).slice(0, 4)
+        .map(function (n) { return '  ' + pad(n, 13) + '<ok>Up ' + ri(1, 23) + (chance(.5) ? ' hours' : ' days') + '</ok>'; }));
+    },
+    function () {
+      return ['wg show wg0 latest-handshakes', '  phone     <ok>' + ri(3, 59) + ' seconds ago</ok>', '  laptop    <ok>' + ri(1, 9) + ' minutes ago</ok>',
+        '  tablet    ' + (chance(.3) ? '<w>' + ri(2, 6) + ' hours ago</w>' : '<ok>' + ri(10, 50) + ' seconds ago</ok>')];
+    },
+    function () {
+      var t = function () { return rnd(.3, 2.4).toFixed(2); };
+      return ['ping -c 3 10.0.10.1', '64 bytes: icmp_seq=1 ttl=64 time=' + t() + ' ms', '64 bytes: icmp_seq=2 ttl=64 time=' + t() + ' ms',
+        '3 packets transmitted, 3 received, <ok>0% packet loss</ok>'];
+    },
+    function () {
+      var u = ri(41, 93);
+      return ['df -h /mnt/model-storage', 'Size  Used  Avail  Use%', ' 88G  ' + Math.round(88 * u / 100) + 'G   ' + Math.round(88 * (100 - u) / 100) + 'G  ' + (u > 85 ? '<w>' + u + '%</w>' : '<ok>' + u + '%</ok>')];
+    },
+    function () {
+      return ['pvesh get /nodes --output-format text'].concat(['pve-edge', 'pve-compute', 'pve-apps'].map(function (n) {
+        return '  ' + pad(n, 13) + '<ok>online</ok>  cpu ' + ri(3, 88) + '%';
+      }));
+    },
+    function () {
+      return ['nslookup github.com 10.0.10.53', 'Server:   10.0.10.53 (pi-hole)', 'Name:     github.com', 'Address:  <ok>140.82.121.' + ri(2, 6) + '</ok>'];
+    },
+    function () {
+      return ['proxmox-backup-client snapshot list --repository pbs', '  vm/10' + ri(1, 9) + '  ' + new Date().toISOString().slice(0, 10) + 'T02:00  <ok>verified</ok>',
+        '  ct/1' + ri(10, 30) + '  ' + new Date().toISOString().slice(0, 10) + 'T02:15  <ok>verified</ok>'];
+    },
+    function () {
+      return ['journalctl -u pihole-FTL -n 2 --no-pager', 'query[A] ' + pick(['github.com', 'debian.org', 'proxmox.com', 'ollama.com']) + ' from 10.0.10.' + ri(20, 90),
+        'gravity blocked <w>' + pick(['ads.tracker.net', 'telemetry.example', 'doubleclick.net']) + '</w>'];
     }
+  ];
+  if (term && MOTION) {
+    var termOn = false, termGen = 0, lastS = -1, hist = '';
+    var runTerm = function (gen) {
+      if (!termOn || gen !== termGen || !MOTION) return;
+      var si; do { si = (Math.random() * SESS.length) | 0; } while (si === lastS); lastS = si;
+      var lines = SESS[si](), cmd = lines[0], out = lines.slice(1), ch = 0;
+      var trim = function () { var parts = hist.split('\n'); if (parts.length > 40) hist = parts.slice(-40).join('\n'); };
+      var show = function (tail) { term.innerHTML = hist + (tail || ''); term.scrollTop = term.scrollHeight; };
+      (function typeCmd() {
+        if (!termOn || gen !== termGen || !MOTION) return;
+        ch++;
+        show('<span class="p">$ </span><span class="c">' + esc(cmd.slice(0, ch)) + '</span><span class="cur"></span>');
+        if (ch < cmd.length) { later(typeCmd, rnd(22, chance(.08) ? 260 : 70)); return; }   // occasional hesitation
+        hist += '<span class="p">$ </span><span class="c">' + esc(cmd) + '</span>\n';
+        var li = 0;
+        later(function printOut() {
+          if (!termOn || gen !== termGen || !MOTION) return;
+          if (li < out.length) { hist += fmt(out[li++]) + '\n'; trim(); show('<span class="cur"></span>'); later(printOut, rnd(40, 160)); return; }
+          if (chance(.12)) later(function () { hist = ''; show('<span class="cur"></span>'); later(function () { runTerm(gen); }, 500); }, rnd(1200, 2000));  // "clear"
+          else later(function () { runTerm(gen); }, rnd(900, 2600));
+        }, rnd(200, 650));
+      })();
+    };
+    whenVisible(term, function () { if (!termOn && MOTION) { termOn = true; termGen++; hist = ''; runTerm(termGen); } },
+      function () { termOn = false; termGen++; });
+  }
+  function termStatic() { if (term) { term.innerHTML = termStaticHTML; term.scrollTop = 0; } }
+
+  // ── Proxmox: load drifts, random cluster events in the task log ──
+  var pve = $('.pve'), pveEv = $('#pveEv'), pveProg = $('#pveProg');
+  if (pve && MOTION) {
+    var nodes = $$('.pve li'), pveOn = false, pveGen = 0;
+    var setBar = function (li, which, v) { var b = $$('.bar i', li)[which]; if (b) b.style.width = Math.max(4, Math.min(97, v)).toFixed(0) + '%'; };
+    var drift = function (gen) {
+      if (!pveOn || gen !== pveGen) return;
+      nodes.forEach(function (li) {
+        if (li.classList.contains('hot')) return;
+        $$('.bar i', li).forEach(function (b) { var w = parseFloat(b.style.width) || 40; b.style.width = Math.max(6, Math.min(90, w + rnd(-14, 14))).toFixed(0) + '%'; });
+      });
+      later(function () { drift(gen); }, rnd(900, 1800));
+    };
+    var say = function (html) {
+      pveEv.classList.add('swap');
+      later(function () { pveEv.innerHTML = html; pveEv.classList.remove('swap'); }, 300);
+    };
+    var node = function (n) { return pve.querySelector('[data-node="' + n + '"]'); };
+    var progress = function (ms, done) {
+      var t0 = performance.now();
+      (function step() {
+        var p = Math.min(1, (performance.now() - t0) / ms);
+        pveProg.style.width = (p * 100).toFixed(1) + '%';
+        if (p < 1 && pveOn) later(step, 120); else later(function () { pveProg.style.width = '0'; if (done) done(); }, 500);
+      })();
+    };
+    var EVENTS = [
+      function () { var v = 'vm/10' + ri(1, 9), gb = rnd(1.2, 9.8).toFixed(1); var n = node('pve-compute'); n.classList.add('busy');
+        say('<span>PBS</span> backup ' + v + ' → pbs · running'); progress(rnd(2600, 4200), function () { n.classList.remove('busy'); say('<span>PBS</span> backup ' + v + ' · ' + gb + ' GB · <b class="ok">OK</b>'); }); },
+      function () { var a = pick(['pve-apps', 'pve-edge']), b = a === 'pve-apps' ? 'pve-edge' : 'pve-apps', id = 'ct/1' + ri(10, 40);
+        node(a).classList.add('busy'); node(b).classList.add('busy'); say('<span>HA</span> live migration ' + id + ' ' + a + ' → ' + b);
+        progress(rnd(2200, 3600), function () { node(a).classList.remove('busy'); node(b).classList.remove('busy'); say('<span>HA</span> ' + id + ' migrated · <b class="ok">0 s downtime</b>'); }); },
+      function () { var n = node('pve-compute'); n.classList.add('hot'); setBar(n, 0, rnd(88, 97));
+        say('<span>LOAD</span> pve-compute ' + ri(88, 97) + '% · llm-vm inference');
+        later(function () { n.classList.remove('hot'); setBar(n, 0, rnd(30, 55)); }, rnd(2400, 3800)); },
+      function () { say('<span>VM</span> ' + (100 + ri(1, 30)) + ' (' + pick(VMS) + ') ' + pick(['started', 'snapshot "pre-update" created', 'resized disk +' + ri(4, 32) + 'G'])); },
+      function () { var n = pick(nodes); n.classList.add('busy'); say('<span>APT</span> ' + n.dataset.node + ': ' + ri(2, 14) + ' updates installed');
+        later(function () { n.classList.remove('busy'); }, 2000); },
+      function () { say('<span>ZFS</span> scrub rpool · ' + ri(0, 0) + ' errors · <b class="ok">healthy</b>'); },
+      function () { say('<span>REPL</span> job 1' + ri(10, 30) + '-0 finished · ' + hhmm()); }
+    ];
+    var lastE = -1;
+    var eventLoop = function (gen) {
+      if (!pveOn || gen !== pveGen) return;
+      var e; do { e = (Math.random() * EVENTS.length) | 0; } while (e === lastE); lastE = e;
+      EVENTS[e]();
+      later(function () { eventLoop(gen); }, rnd(4200, 7000));
+    };
+    whenVisible(pve, function () { if (pveOn || !MOTION) return; pveOn = true; pveGen++; drift(pveGen); later(function () { eventLoop(pveGen); }, 1500); },
+      function () { pveOn = false; pveGen++; });
   }
 
-  // Proxmox: CPU / RAM bars drift like a live dashboard
-  var pveBars = $$('.pve .bar i');
-  if (pveBars.length && MOTION) {
-    var pveId = null;
-    whenVisible($('.pve'), function () {
-      if (pveId || !MOTION) return;
-      pveId = loop(function () {
-        pveBars.forEach(function (b) {
-          var w = parseFloat(b.style.width) || 40;
-          b.style.width = Math.max(8, Math.min(92, w + (Math.random() * 24 - 12))).toFixed(0) + '%';
-        });
-      }, 1400);
-    }, function () { clearInterval(pveId); pveId = null; });
-  }
-
-  // Firewall: live log of allowed / blocked connections
-  var fw = $('#fwLog');
-  if (fw) {
-    var A = fw.dataset.allow, B = fw.dataset.block;
-    var RULES = [[1, 'LAN → WAN', '443/tcp'], [0, 'IoT → LAN', '22/tcp'], [1, 'VPN → MGMT', '8006/tcp'], [1, 'LAN → DNS', '53/udp'],
-                 [0, 'WAN → LAN', '3389/tcp'], [1, 'LAN → NAS', '445/tcp'], [0, 'Guest → MGMT', '443/tcp'], [1, 'WG → LAN', '51820/udp']];
-    var k = 0;
-    var addRow = function () {
-      var r = RULES[k++ % RULES.length], li = document.createElement('li');
-      li.innerHTML = '<span class="act ' + (r[0] ? 'allow' : 'block') + '">' + (r[0] ? A : B) + '</span><span class="rt">' + r[1] + '</span><span class="pt">' + r[2] + '</span>';
+  // ── Firewall: random traffic, port-scan bursts, IDS alerts, live counters ──
+  var fw = $('#fwLog'), fwCount = $('#fwCount');
+  if (fw && MOTION) {
+    var A = fw.dataset.allow, B = fw.dataset.block, okN = 1284, noN = 37, fwOn = false, fwGen = 0;
+    var ZONES = { LAN: 1, VPN: 1, WG: 1, IoT: 0, Guest: 0, WAN: 0 };
+    var DST = ['WAN', 'LAN', 'DNS', 'NAS', 'MGMT', 'DMZ'];
+    var PORTS = ['443/tcp', '80/tcp', '53/udp', '22/tcp', '445/tcp', '3389/tcp', '8006/tcp', '51820/udp', '123/udp', '1883/tcp', '8443/tcp'];
+    var fmtN = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
+    var count = function () { if (fwCount) fwCount.innerHTML = '<b class="ok">✓ ' + fmtN(okN) + '</b> <b class="no">✕ ' + fmtN(noN) + '</b>'; };
+    var push = function (cls, act, rt, pt, liCls) {
+      var li = document.createElement('li'); if (liCls) li.className = liCls;
+      li.innerHTML = '<span class="act ' + cls + '">' + act + '</span><span class="rt">' + rt + '</span><span class="pt">' + pt + '</span>';
       fw.appendChild(li);
       while (fw.children.length > 6) fw.removeChild(fw.firstChild);
     };
-    k = 6;
-    if (MOTION) { var fwId = null; whenVisible(fw, function () { if (!fwId && MOTION) fwId = loop(addRow, 1300); }, function () { clearInterval(fwId); fwId = null; }); }
-  }
-
-  // AD tree: a highlight walks through the OUs and policies
-  var adRows = $$('.adtree span');
-  if (adRows.length && MOTION) {
-    var ai0 = 0, adId = null;
-    whenVisible($('.adtree'), function () {
-      if (adId || !MOTION) return;
-      adId = loop(function () {
-        adRows.forEach(function (r) { r.classList.remove('hot'); });
-        adRows[ai0++ % adRows.length].classList.add('hot');
-      }, 900);
-    }, function () { clearInterval(adId); adId = null; });
-  }
-
-  // Local AI: answer streams in token by token
-  var aiOut = $('#aiOut');
-  if (aiOut && MOTION) {
-    var full = aiOut.dataset.text, words = full.split(' '), aiId = null, aiBusy = false;
-    aiOut.style.minHeight = aiOut.offsetHeight + 'px';
-    var stream = function () {
-      if (aiBusy) return; aiBusy = true;
-      var w = 0; aiOut.textContent = '';
-      aiId = setInterval(function () {
-        if (!MOTION) { clearInterval(aiId); aiOut.textContent = full; return; }
-        aiOut.textContent = words.slice(0, ++w).join(' ');
-        if (w >= words.length) { clearInterval(aiId); setTimeout(function () { aiBusy = false; if (aiOn) stream(); }, 3200); }
-      }, 110);
-      timers.push(aiId);
+    var normal = function () {
+      var src = pick(Object.keys(ZONES)), dst = pick(DST.filter(function (d) { return d !== src; }));
+      var trusted = ZONES[src] === 1, toInside = /LAN|MGMT|NAS/.test(dst);
+      var allow = trusted || (!toInside && src !== 'WAN') || (src === 'WAN' && dst === 'DMZ');
+      allow ? okN += ri(3, 40) : noN++;
+      push(allow ? 'allow' : 'block', allow ? A : B, src + ' → ' + dst, pick(PORTS));
     };
-    var aiOn = false;
-    whenVisible(aiOut, function () { if (!MOTION) return; aiOn = true; stream(); }, function () { aiOn = false; });
+    var scan = function (gen, left, port) {
+      if (!fwOn || gen !== fwGen) return;
+      noN++; push('block', B, 'WAN → LAN', port + '/tcp', 'scan'); count();
+      if (left > 1) later(function () { scan(gen, left - 1, port + ri(1, 3)); }, rnd(110, 220));
+    };
+    var fwLoop = function (gen) {
+      if (!fwOn || gen !== fwGen) return;
+      var r = Math.random();
+      if (r < .1) scan(gen, ri(3, 5), ri(20, 25));
+      else if (r < .17) { noN++; push('alert', 'IDS', 'ET SCAN ' + pick(['Nmap', 'Masscan', 'SSH brute force']), 'WAN', 'ids'); }
+      else normal();
+      count();
+      later(function () { fwLoop(gen); }, r < .1 ? rnd(1800, 2600) : rnd(550, 1700));
+    };
+    whenVisible(fw, function () { if (fwOn || !MOTION) return; fwOn = true; fwGen++; fwLoop(fwGen); }, function () { fwOn = false; fwGen++; });
+  }
+
+  // ── Active Directory: random admin events with matching tree changes ──
+  var adTree = $('#adTree'), adEv = $('#adEv'), adCount = $('#adCount');
+  if (adTree && MOTION) {
+    var adOn = false, adGen = 0, row = function (k) { return adTree.querySelector('[data-k="' + k + '"]'); };
+    var NAMES = ['j.mueller', 'l.schmidt', 'a.weber', 'm.fischer', 's.becker', 'n.wagner', 'k.hoffmann', 'p.schulz'];
+    var flash = function (el, cls, ms) { if (!el) return; el.classList.add(cls); later(function () { el.classList.remove(cls); }, ms || 1800); };
+    var toast = function (txt, warn) {
+      adEv.classList.remove('show', 'warn');
+      later(function () { adEv.textContent = txt; adEv.classList.toggle('warn', !!warn); adEv.classList.add('show'); }, 220);
+    };
+    var AD_EVENTS = [
+      function () { var n = pick(NAMES), el = document.createElement('span'); el.className = 'new'; el.dataset.k = 'tmp';
+        el.textContent = '  │   ├─ ▪ ' + n; row('user').after(el); toast('New-ADUser ' + n + ' → OU IT');
+        later(function () { el.remove(); }, 3600); },
+      function () { flash(row('user'), 'hot'); toast('Password reset · t.kayser · must change at logon'); },
+      function () { var n = pick(NAMES); flash(row('ou-it'), 'warn', 2400); toast('Account locked · ' + n + ' (5 failed logins)', true); },
+      function () { var c = parseInt(adCount.textContent, 10) + 1; adCount.textContent = c; flash(row('clients'), 'hot');
+        toast('W11-' + ('00' + ri(1, 99)).slice(-3) + ' joined domain corp.local'); },
+      function () { flash(row('gpo-drive'), 'hot'); toast('gpupdate /force · drive-mapping applied · ' + ri(18, 31) + ' clients'); },
+      function () { flash(row('gpo-wu'), 'hot'); toast('GPO windows-update · ring "pilot" · ' + ri(3, 8) + ' devices'); },
+      function () { var c = Math.max(20, parseInt(adCount.textContent, 10) - 1); adCount.textContent = c; flash(row('clients'), 'warn');
+        toast('W11-' + ('00' + ri(1, 99)).slice(-3) + ' disabled · offboarding', true); },
+      function () { flash(row('root'), 'hot'); toast('Replication DC01 ↔ DC02 · ' + ri(0, 0) + ' errors'); }
+    ];
+    var lastA = -1;
+    var adLoop = function (gen) {
+      if (!adOn || gen !== adGen) return;
+      var e; do { e = (Math.random() * AD_EVENTS.length) | 0; } while (e === lastA); lastA = e;
+      AD_EVENTS[e]();
+      later(function () { adLoop(gen); }, rnd(2600, 4600));
+    };
+    whenVisible(adTree, function () { if (adOn || !MOTION) return; adOn = true; adGen++; later(function () { adLoop(adGen); }, 800); },
+      function () { adOn = false; adGen++; });
+  }
+
+  // ── Local AI: random question, "typing…", answer streams at a varying speed ──
+  var aiOut = $('#aiOut'), aiQ = $('#aiQ'), aiFoot = $('#aiFoot'), aiPairs = [];
+  try { aiPairs = JSON.parse(aiOut.getAttribute('data-pairs')); } catch (e) {}
+  var aiFirst = aiPairs[0] || null;
+  if (aiOut && aiQ && aiPairs.length && MOTION) {
+    var aiOn = false, aiGen = 0, lastQ = 0;
+    var MODELS = ['glm-4.7-flash', 'qwen3.8-27b', 'mistral-small-3.2', 'devstral-small-2', 'phi-4-mini'];
+    aiOut.style.minHeight = '4.6em';
+    var ask = function (gen) {
+      if (!aiOn || gen !== aiGen) return;
+      var q; do { q = (Math.random() * aiPairs.length) | 0; } while (q === lastQ && aiPairs.length > 1); lastQ = q;
+      var pair = aiPairs[q], words = pair.a.split(' '), model = pick(MODELS), tps = rnd(6.8, 9.4);
+      aiQ.classList.add('out');
+      later(function () {
+        aiQ.textContent = pair.q; aiQ.classList.remove('out');
+        aiOut.innerHTML = '<span class="dots"><i></i><i></i><i></i></span>';
+        aiFoot.textContent = 'llama.cpp · ' + model + ' · thinking…';
+        later(function () {
+          var w = 0;
+          (function tok() {
+            if (!aiOn || gen !== aiGen) return;
+            aiOut.textContent = words.slice(0, ++w).join(' ');
+            aiFoot.textContent = 'llama.cpp · ' + model + ' · ' + (tps + rnd(-.4, .4)).toFixed(1) + ' tok/s';
+            if (w < words.length) later(tok, rnd(45, chance(.06) ? 320 : 150));
+            else later(function () { ask(gen); }, rnd(3800, 5600));
+          })();
+        }, rnd(600, 1500));
+      }, 350);
+    };
+    whenVisible(aiOut, function () { if (aiOn || !MOTION) return; aiOn = true; aiGen++; later(function () { ask(aiGen); }, 2500); },
+      function () { aiOn = false; aiGen++; });
+  }
+  function aiStatic() { if (aiOut && aiFirst) { aiQ.textContent = aiFirst.q; aiQ.classList.remove('out'); aiOut.textContent = aiFirst.a; } }
+
+  // ── Marquee: a random tool lights up now and then ──
+  var mq = $$('.marquee-track li:not([aria-hidden])');
+  if (mq.length && MOTION) {
+    var mqOn = false, mqGen = 0;
+    var ping = function (gen) {
+      if (!mqOn || gen !== mqGen) return;
+      var li = pick(mq); li.classList.add('ping');
+      later(function () { li.classList.remove('ping'); }, 1300);
+      later(function () { ping(gen); }, rnd(700, 1900));
+    };
+    whenVisible($('.tile-marquee'), function () { if (mqOn || !MOTION) return; mqOn = true; mqGen++; ping(mqGen); }, function () { mqOn = false; mqGen++; });
   }
 
   // ─── COPY E-MAIL ─────────────────────────────────────────
@@ -348,7 +508,10 @@
         }
         $$('.sec-header').forEach(function (h) { h.classList.add('vis'); });
         timers.forEach(clearInterval);
-        termStatic(); if (aiOut) aiOut.textContent = aiOut.dataset.text;
+        termStatic(); aiStatic();
+        $$('.pve li, .adtree span, .marquee-track li').forEach(function (el) { el.classList.remove('busy', 'hot', 'warn', 'ping'); });
+        $$('.adtree span.new').forEach(function (el) { el.remove(); });
+        if (pveProg) pveProg.style.width = '0';
         pauseSvg();
         MOTION = false;
         toggle.textContent = toggle.dataset.play; toggle.setAttribute('aria-pressed', 'true');
