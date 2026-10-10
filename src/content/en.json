@@ -4,7 +4,7 @@
   "file": "index.html",
   "meta": {
     "title": "Tristan Kayser — IT Systems Integration Apprentice",
-    "description": "Tristan Kayser, apprentice Fachinformatiker für Systemintegration near Stuttgart. Proxmox, networking, Windows and Linux administration, automation and a self-hosted homelab.",
+    "description": "Tristan Kayser, apprentice Fachinformatiker für Systemintegration near Stuttgart. Servers, networks, Windows and Linux, automation and a self-hosted homelab.",
     "og_alt": "Tristan Kayser — IT systems integration apprentice"
   },
   "ui": {
@@ -16,24 +16,25 @@
     "motion_pause": "Pause animations",
     "motion_play": "Play animations",
     "scroll": "Scroll",
-    "loading": "Loading"
+    "copy": "Copy",
+    "copied": "Copied",
+    "nav_label": "Main"
   },
   "nav": {
     "about": "About",
-    "path": "Path",
-    "log": "Training log",
-    "projects": "Projects",
+    "stack": "Skills",
     "homelab": "Homelab",
-    "skills": "Skills",
+    "path": "Path",
+    "life": "Life",
     "cv": "CV",
     "contact": "Contact"
   },
   "hero": {
     "badge": "Apprentice at IT-Works GmbH · since 09/2026",
     "sub": "Fachinformatiker für Systemintegration",
-    "sub2": "IT systems integration · Proxmox · Networking · Automation",
-    "cta_primary": "See my projects",
-    "cta_secondary": "Get in touch",
+    "line": "I keep servers, networks and Windows clients running — and automate whatever I can.",
+    "cta_primary": "See what I do",
+    "cta_secondary": "Contact me",
     "stats": [
       {"num": 2, "sup": "nd", "label": "Training year"},
       {"num": 20, "sup": "+", "label": "Self-hosted services"},
@@ -43,213 +44,85 @@
   "about": {
     "label": "About",
     "headline": "Code is my<br/><em>compass</em>,<br/>systems my<br/>language.",
-    "photo_tag": "Tristan Kayser · Eislingen/Fils",
     "photo_alt": "Portrait of Tristan Kayser",
     "paras": [
-      "I grew up in Windhoek, Namibia, and now live in Eislingen/Fils near Stuttgart. I'm training as a Fachinformatiker für Systemintegration — an IT systems integration specialist — and since September 2026 I'm in my second training year at IT-Works GmbH in Uhingen.",
-      "My first year at netplay GmbH put me straight into client work: Proxmox servers and backups, OPNsense firewalls, Windows rollouts, patch automation and the daily support queue. At home I run a three-node Proxmox lab where I try things out before I'd ever touch them on a production system.",
-      "Before IT I competed in artistic gymnastics at Level 8 and coached kids in Windhoek. I still fly drones and enjoy taking old hardware apart to see how it works."
+      "I grew up in Windhoek, Namibia, and now live near Stuttgart. I'm training as an IT systems integration specialist and in my second year at IT-Works GmbH in Uhingen.",
+      "I like systems I can take apart, understand and rebuild. At home I run my own three-node Proxmox lab and test everything there first."
     ],
     "facts": [
-      {"k": "Based in", "v": "Eislingen/Fils, Germany"},
-      {"k": "Grew up in", "v": "Windhoek, Namibia"},
-      {"k": "Training", "v": "IT systems integration · 2nd year"},
-      {"k": "Licences", "v": "Driving AM, B, L · Drone EU A1/A3"}
+      {"k": "Based in", "v": "Eislingen/Fils"},
+      {"k": "Languages", "v": "German · English · Afrikaans"},
+      {"k": "Training", "v": "2nd year · FISI"},
+      {"k": "Licences", "v": "Driving B · Drone A1/A3"}
     ]
   },
-  "strip": [
-    {"img": "namibia", "alt": "Sunset over the red dunes of Namibia", "cap": "Namibia, where I grew up"},
-    {"img": "gymnastics", "alt": "Magazine cover showing Tristan on the pommel horse", "cap": "Gymnastics · Level 8"},
-    {"img": "drone", "alt": "DJI drone in flight", "cap": "Drone pilot · EU A1/A3"}
-  ],
-  "path": {
-    "label": "Path",
-    "work_title": "Work",
-    "edu_title": "Education",
-    "work": [
-      {"date": "Since Sep 2026", "title": "Apprentice, IT systems integration (2nd year)", "org": "IT-Works GmbH · Uhingen", "desc": "Managed IT services for small businesses and public-sector clients: Windows Server, Hyper-V, Veeam backups and central remote management.", "current": true},
-      {"date": "Oct 2025 – Aug 2026", "title": "IT systems integration trainee (1st year)", "org": "netplay GmbH · Zell u. A.", "desc": "Entry qualification year (EQ). Proxmox VE and Backup Server, OPNsense, patch automation with AWX, client infrastructure documentation and first-level support."},
-      {"date": "Jun – Oct 2024", "title": "Membership admin & social media", "org": "RGS e.V. · Eislingen", "desc": "Mini-job: membership administration, front-desk contact and social media content."},
-      {"date": "Mar – Apr 2024", "title": "Reception & social media", "org": "Fitness Forum Eislingen", "desc": "Mini-job: memberships, customer contact and content for the gym's social channels."},
-      {"date": "May 2023 – Feb 2024", "title": "Assistant gymnastics coach", "org": "Crete Gymnastic Club · Windhoek", "desc": "Trained and looked after children and teenagers in artistic gymnastics."}
-    ],
-    "edu": [
-      {"date": "Since Oct 2025", "title": "Vocational school, IT systems integration", "org": "Berufsschule · dual training", "desc": "SQL and ER modelling, Python, IPv4/IPv6, OSI and TCP/IP, Cisco Packet Tracer, IT security concepts and a DMZ/firewall project with cost comparison.", "current": true},
-      {"date": "Aug 2024 – Jul 2025", "title": "Computer Science (2 semesters)", "org": "Technische Hochschule Ulm (THU)", "desc": "Programming fundamentals, algorithms, mathematics and theoretical computer science. I switched to the apprenticeship because I learn best hands-on."},
-      {"date": "2016 – 2023", "title": "Abitur (German university entrance qualification)", "org": "Deutsche Höhere Privatschule Windhoek", "desc": "German school abroad in Namibia, including remote learning during COVID-19."}
-    ]
-  },
-  "log": {
-    "label": "Training log",
-    "intro": "Eleven monthly training reports from my first year, condensed — plus where I am now. Client names are left out on purpose.",
-    "school": "School",
-    "entries": [
-      {"m": "2025-10", "t": "First month", "items": ["Set up Proxmox VE on mini-PCs, plus Proxmox Backup Server and OPNsense", "Configured routing between two subnets and a UniFi network", "Installed Snipe-IT in Docker for inventory and wrote the setup guide"], "school": "Contract law, PC components, ER models and first SQL"},
-      {"m": "2025-11", "t": "Support & first automation", "items": ["Handled support tickets: users, printers, e-mail", "Windows 11 installs and updates on company and client laptops", "Checked client PBS backups; first steps with Ansible and AWX"], "school": "SQL in practice, hardware presentation"},
-      {"m": "2025-12", "t": "AWX goes live", "items": ["Installed AWX and patched Windows 11 VMs centrally", "Network monitoring with NetAlertX", "Encrypted drives with LUKS; wrote a PBS guide and repaired an OPNsense box"], "school": "SQL exam, protection-needs analysis"},
-      {"m": "2026-01", "t": "On site", "items": ["Office 2016 → 2024 migration; 3CX phone system users", "On- and offboarding: accounts, licences, devices, 2FA", "On-site job: new firewall, mini-PC and internet for a meeting room"], "school": "Number systems, IT security concept, Python basics"},
-      {"m": "2026-02", "t": "Security awareness", "items": ["Built and tested a phishing simulation (landing page + e-mail)", "Traced a failed backup; fixed an ERP error after an update", "Set up a company phone and a cable modem"], "school": "Python branches and loops, networking"},
-      {"m": "2026-03", "t": "Playbooks & firewalls", "items": ["Automated Windows updates with tested AWX playbooks", "Reviewed and documented client OPNsense firewall rules", "Rolled out Office 2024; inventory in Homebox"], "school": "DMZ & firewall project with cost comparison"},
-      {"m": "2026-04", "t": "New tools", "items": ["Tested a new ticket system (e-mail to ticket and back)", "Deployed an AI-agent platform on Debian with PostgreSQL and systemd", "Started an SEO project for the company website"], "school": "IPv4/IPv6, RAID, Cisco tasks"},
-      {"m": "2026-05", "t": "Documentation sprint", "items": ["Full infrastructure documentation for two client sites", "Read-only Proxmox CLI (qm, pvesm, pvesh) and OPNsense exports → Excel, PDF and JSON", "Found and reported a full swap and a VM on a disabled storage"], "school": "OSI and TCP/IP, Packet Tracer, Python functions"},
-      {"m": "2026-06", "t": "Fixing things", "items": ["Freed a full PBS datastore with prune and garbage collection", "Laptop migration with Acronis; fixed a VM boot error (AES CPU flag)", "Samba file server with group permissions (setgid); planned a GPU-passthrough AI server"], "school": "Exam preparation, presentations"},
-      {"m": "2026-07", "t": "Lab month", "items": ["VLAN concept: 802.1Q, access and trunk ports, inter-VLAN routing", "Active Directory lab on ESXi with Server 2025, GPOs and NTFS shares", "Reset an ATA-locked SSD with Secure Erase (hdparm)"], "school": "DrehBAR cocktail machine in Python"},
-      {"m": "2026-08", "t": "Handover", "items": ["Holiday and end of my first training year at netplay on 31 August"], "school": "Summer holidays"},
-      {"m": "2026-09", "t": "Next chapter", "items": ["Started my second training year at IT-Works GmbH in Uhingen"], "school": "", "current": true}
-    ]
-  },
-  "projects": {
-    "label": "Projects",
-    "intro": "Six things I built or fixed, written the way an IHK project report is structured: starting point, what I did, result.",
-    "h_situation": "Starting point",
-    "h_action": "What I did",
-    "h_result": "Result",
-    "open": "Show details",
-    "items": [
-      {
-        "id": "awx", "ctx": "Work", "period": "Nov 2025 – Mar 2026",
-        "title": "Central Windows patching with AWX",
-        "situation": "Windows 11 clients and VMs were updated by hand, one machine at a time — slow, and easy to forget one.",
-        "action": "Installed AWX (the web UI for Ansible), built inventories, connected Windows hosts over WinRM and wrote job templates and playbooks. Tested everything in a lab before rolling it out.",
-        "result": "Updates for several Windows machines run from one place, repeatably and with a log of every run.",
-        "stack": ["Ansible", "AWX", "WinRM", "Windows 11"]
-      },
-      {
-        "id": "docs", "ctx": "Work", "period": "May 2026",
-        "title": "Infrastructure documentation for two client sites",
-        "situation": "Two small-business clients had no complete, current documentation of their servers and network.",
-        "action": "Collected data read-only from production Proxmox (qm, pvesm, pvesh) and OPNsense: VMs, IPs, storage, VPN, DHCP leases, firewall and NAT rules. Turned it into structured Excel, PDF and JSON files.",
-        "result": "Handover-ready documentation for both sites. On the way I found a full swap partition and a VM on a disabled storage and reported both.",
-        "stack": ["Proxmox VE", "OPNsense", "WireGuard", "Python", "Excel / PDF / JSON"]
-      },
-      {
-        "id": "ad", "ctx": "Lab", "period": "Jul 2026",
-        "title": "Active Directory lab on VMware ESXi",
-        "situation": "I wanted to understand Windows domains properly before working on them at a client.",
-        "action": "Built a domain controller on Windows Server 2025 with OUs and groups, file shares with share and NTFS permissions, GPO drive mappings, and an OPNsense VM for DHCP and DNS — isolated on its own vSwitches.",
-        "result": "A reproducible lab I can reset any time. Key lesson: when share and NTFS rights meet, the more restrictive one wins.",
-        "stack": ["ESXi 8", "Windows Server 2025", "AD DS", "GPO", "OPNsense"]
-      },
-      {
-        "id": "ai", "ctx": "Homelab", "period": "2026",
-        "title": "Local AI stack on old server hardware",
-        "situation": "I wanted private AI tools at home — on a Xeon without AVX2 and no big GPU.",
-        "action": "Built a dedicated LLM VM with llama.cpp behind llama-swap (eight models), LibreChat as the front end with SearXNG web search, and a Hermes Agent reachable via WhatsApp. Tuned flash attention, mlock and a quantised KV cache, and fixed a disk layout that left most of the disk unused.",
-        "result": "Stable 7–8 tokens per second on CPU, fully local, no cloud dependency.",
-        "stack": ["Proxmox", "llama.cpp", "llama-swap", "LibreChat", "SearXNG", "Docker"]
-      },
-      {
-        "id": "phish", "ctx": "Work", "period": "Jan – Feb 2026",
-        "title": "Phishing simulation for security awareness",
-        "situation": "A client wanted to find out how its staff react to a realistic phishing e-mail.",
-        "action": "Built the landing page and the e-mail for a controlled simulation and tested the whole flow before launch.",
-        "result": "A ready-to-run awareness campaign — and a much better eye of my own for what makes phishing convincing.",
-        "stack": ["HTML/CSS", "E-mail", "Security awareness"]
-      },
-      {
-        "id": "drehbar", "ctx": "School", "period": "Jul 2026",
-        "title": "DrehBAR — a cocktail machine in Python",
-        "situation": "Vocational-school project: control a cocktail machine with a rotating tray.",
-        "action": "Wrote the mixing logic in Python with an SQLite recipe database, tray-rotation logic, timed dispensing with fill-level tracking and animated tkinter progress bars. Added documentation and a test protocol.",
-        "result": "Working software with documentation, delivered as a team project.",
-        "stack": ["Python", "SQLite", "tkinter"]
-      }
-    ]
+  "stack": {
+    "label": "What I work with",
+    "intro": "The tools I use every day — at work and in my own lab.",
+    "tiles": {
+      "terminal": {"title": "Linux & automation", "text": "Bash, systemd and Ansible with AWX. One playbook instead of twenty manual updates."},
+      "proxmox": {"title": "Virtualisation & backup", "text": "Proxmox VE, VMware ESXi and Hyper-V, with Proxmox Backup Server and Veeam behind them."},
+      "firewall": {"title": "Network & security", "text": "OPNsense, VLANs, WireGuard, DNS and DHCP. I like knowing where every packet goes."},
+      "ad": {"title": "Windows & Active Directory", "text": "Domains, group policies, file permissions, Windows 11 rollouts and Microsoft 365."},
+      "ai": {"title": "Local AI", "text": "Language models, chat and agents running on my own hardware — no cloud needed."}
+    },
+    "fw_allow": "allow",
+    "fw_block": "block",
+    "ai_q": "How do I free up a full PBS datastore?",
+    "ai_a": "Run a prune job to apply your retention, then garbage collection to actually free the chunks.",
+    "marquee_label": "Daily toolbox"
   },
   "homelab": {
     "label": "Homelab",
-    "intro": "Three Proxmox nodes in my room. Everything here runs on my own hardware and gets backed up nightly.",
+    "intro": "Three Proxmox nodes in my room. Everything runs on my own hardware and is backed up every night.",
     "stats": [
       {"num": "3", "label": "Proxmox nodes"},
-      {"num": "20+", "label": "Self-hosted services"},
+      {"num": "20+", "label": "Services"},
       {"num": "8", "label": "Local AI models"},
-      {"num": "VPN", "label": "WireGuard remote access"}
+      {"num": "24/7", "label": "Via WireGuard"}
     ],
-    "cluster_label": "Proxmox cluster",
-    "status_online": "Online",
     "nodes": [
-      {"name": "Node 1 — Edge", "role": "Firewall, DNS, reverse proxy, monitoring", "specs": "4-core Celeron · 8 GB RAM · 900 GB storage", "tone": "gold"},
-      {"name": "Node 2 — Compute", "role": "AI inference, GPU workloads, heavy VMs", "specs": "Dual Xeon 8-core · 40 GB RAM · NVIDIA Quadro P2000", "tone": "blue"},
-      {"name": "Node 3 — Apps", "role": "Automation, CMS, web hosting", "specs": "i3 dual-core · 11 GB RAM · 110 GB storage", "tone": "blue"}
-    ],
-    "groups": [
-      {"title": "Networking & security", "tone": "gold", "items": [
-        {"icon": "shield", "name": "OPNsense", "desc": "Perimeter firewall and router: stateful filtering, IDS/IPS, DHCP and NAT."},
-        {"icon": "proxy", "name": "Nginx Proxy Manager", "desc": "Central reverse proxy with automatic Let's Encrypt certificates."},
-        {"icon": "filter", "name": "Pi-hole", "desc": "Network-wide DNS filter; all LAN queries are forced through it."},
-        {"icon": "lock", "name": "Vaultwarden", "desc": "Self-hosted, Bitwarden-compatible password vault."},
-        {"icon": "globe", "name": "WireGuard", "desc": "Encrypted tunnel for remote access to the whole lab."},
-        {"icon": "eye", "name": "Beszel", "desc": "Health monitoring with agents on every node."}
-      ]},
-      {"title": "AI & automation", "tone": "blue", "items": [
-        {"icon": "chip", "name": "llama.cpp + llama-swap", "desc": "Dedicated LLM VM serving eight local models on demand."},
-        {"icon": "chat", "name": "LibreChat", "desc": "Chat front end with web search via SearXNG and document RAG."},
-        {"icon": "bot", "name": "Hermes Agent", "desc": "Persistent AI agent with memory and skills, reachable via WhatsApp."},
-        {"icon": "bulb", "name": "Ollama", "desc": "Small instance on the Quadro P2000 for embeddings and compression."},
-        {"icon": "code", "name": "Firecrawl + SearXNG", "desc": "Self-hosted scraping and meta search for the agents."},
-        {"icon": "gear", "name": "n8n", "desc": "Workflow automation connecting the services."}
-      ]},
-      {"title": "Documents & productivity", "tone": "blue", "items": [
-        {"icon": "doc", "name": "Paperless-ngx", "desc": "Document management with OCR, tags and full-text search."},
-        {"icon": "book", "name": "BookStack", "desc": "Wiki for my own documentation."},
-        {"icon": "server", "name": "Proxmox Backup Server", "desc": "Incremental, deduplicated backups with retention for all nodes."},
-        {"icon": "users", "name": "wger", "desc": "Self-hosted training and nutrition tracker."}
-      ]}
+      {"name": "Edge", "role": "Firewall · DNS · Proxy", "tone": "gold"},
+      {"name": "Compute", "role": "AI · GPU · VMs", "tone": "blue"},
+      {"name": "Apps", "role": "Automation · Web", "tone": "blue"}
     ],
     "flow_label": "Network data flow",
-    "flow_desc": "Diagram: internet traffic enters through OPNsense and is routed to three Proxmox nodes. Node 1 runs Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx and PBS. Node 2 runs the LLM VM, LibreChat, Hermes Agent, Ollama and Firecrawl. Node 3 runs n8n, BookStack, WordPress, Anubis and RustDesk.",
+    "flow_desc": "Diagram: internet traffic enters through OPNsense and is routed to three Proxmox nodes. Node 1 runs Nginx Proxy Manager, Pi-hole, Vaultwarden, Beszel, Paperless-ngx and PBS. Node 2 runs the LLM VM, LibreChat, Hermes Agent, Ollama and Firecrawl. Node 3 runs n8n, BookStack, wger, WordPress, Anubis and RustDesk.",
     "legend_net": "Network / security",
-    "legend_svc": "AI / services",
-    "next_label": "Working on",
-    "next": ["VLAN segmentation with OPNsense and Proxmox", "Dual-GPU AI node", "Two-factor login for remote agent access"]
+    "legend_svc": "AI / services"
   },
-  "skills": {
-    "label": "Skills",
-    "toolbox": "Toolbox",
-    "groups": [
-      {"title": "Virtualisation & backup", "items": ["Proxmox VE", "Proxmox Backup Server", "VMware ESXi", "Hyper-V", "Veeam", "Docker & Compose"]},
-      {"title": "Network & security", "items": ["OPNsense", "VLAN / 802.1Q", "WireGuard", "DNS & DHCP", "NAT & port forwarding", "UniFi", "Nginx Proxy Manager"]},
-      {"title": "Windows & identity", "items": ["Windows 11 deployment", "Active Directory", "Group Policy", "NTFS & share permissions", "Microsoft 365 / Office", "3CX"]},
-      {"title": "Linux & automation", "items": ["Debian", "systemd", "Bash", "Ansible / AWX", "Samba", "LUKS", "PostgreSQL"]},
-      {"title": "Code", "items": ["Python", "SQL", "HTML / CSS / JS", "Java (basics)"]},
-      {"title": "Support & documentation", "items": ["Ticketing", "Remote support", "Snipe-IT / Homebox", "Devolutions RDM", "Technical writing"]}
+  "path": {
+    "label": "Path",
+    "items": [
+      {"date": "2026 –", "title": "Apprentice, IT systems integration", "org": "IT-Works GmbH, Uhingen", "current": true},
+      {"date": "2025 – 2026", "title": "IT systems integration, 1st year", "org": "netplay GmbH, Zell u. A."},
+      {"date": "2024 – 2025", "title": "Computer Science, 2 semesters", "org": "Technische Hochschule Ulm"},
+      {"date": "2024", "title": "Mini-jobs: front desk & social media", "org": "RGS e.V. · Fitness Forum Eislingen"},
+      {"date": "2023 – 2024", "title": "Assistant gymnastics coach", "org": "Crete Gymnastic Club, Windhoek"},
+      {"date": "2016 – 2023", "title": "Abitur", "org": "Deutsche Höhere Privatschule Windhoek"}
+    ]
+  },
+  "life": {
+    "label": "Off the clock",
+    "intro": "What keeps me busy when the laptop is closed.",
+    "photos": [
+      {"img": "namibia", "alt": "Sunset over the dunes of Namibia", "cap": "Namibia", "sub": "Where I grew up"},
+      {"img": "gymnastics", "alt": "Magazine cover showing Tristan on the pommel horse", "cap": "Gymnastics", "sub": "Competed at Level 8"},
+      {"img": "drone", "alt": "DJI drone in flight", "cap": "Drones", "sub": "EU A1/A3 licence"}
     ],
-    "languages_title": "Languages",
-    "languages": [
-      {"name": "German", "note": "First language", "level": 6, "cefr": "Native"},
-      {"name": "English", "note": "Fluent, spoken and written", "level": 5, "cefr": "C1"},
-      {"name": "Afrikaans", "note": "Grew up with it in Namibia", "level": 4, "cefr": "B2"}
-    ],
-    "cefr_hint": "Dots show the CEFR scale A1 → C2",
-    "interests_title": "Off the clock",
-    "interests": ["Artistic gymnastics", "Drone flying", "Flight simulation", "Retro hardware & modding", "Esports", "Camping"],
-    "social_title": "Engagement",
-    "social": ["Competitive gymnast, Level 8, Namibia", "Coaching children and teenagers", "Work with socially disadvantaged kids", "Group leader at school"]
+    "interests": ["Flight simulation", "Retro hardware", "Esports", "Camping", "Coaching kids"]
   },
   "contact": {
     "label": "Contact",
-    "headline": "Get in<br/><span class=\"hl\">touch</span>",
-    "sub": "Questions about my training, a project or the homelab? Write me — I usually reply within a day.",
-    "email_label": "E-mail",
-    "github_label": "GitHub",
-    "cv_label": "CV",
-    "cv_value": "Download PDF (German)"
+    "headline": "Get in <span class=\"hl\">touch</span>",
+    "sub": "Questions about my training or the homelab? I usually reply within a day.",
+    "email": "E-mail",
+    "phone": "Phone",
+    "github": "GitHub",
+    "cv": "CV (PDF)"
   },
   "footer": {
     "imprint": "Legal notice & privacy",
-    "cv": "CV",
     "made": "Built by hand · hosted on GitHub Pages"
-  },
-  "cv_page": {
-    "title": "CV",
-    "subtitle": "Curriculum vitae (German)",
-    "download": "Download PDF",
-    "open": "Open in new tab",
-    "mobile": "The PDF preview isn't available on small screens.",
-    "back": "Back to portfolio"
-  },
-  "notfound": {
-    "title": "Signal lost",
-    "text": "This page doesn't exist (anymore). Pick a language to get back on track:"
   }
 }

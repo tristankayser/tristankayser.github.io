@@ -9,15 +9,13 @@
 <!-- ─── NAV ─── -->
 <header class="site-nav" id="navbar">
   <a class="nav-logo" href="#hero"><span class="tk" aria-hidden="true">T<b>K</b></span><span>Tristan Kayser</span></a>
-  <nav aria-label="{{ nav_label }}">
+  <nav aria-label="{{ t.ui.nav_label }}">
     <ul class="nav-links">
       <li><a href="#about"><span class="lbl">{{ n.about }}</span></a></li>
-      <li><a href="#path"><span class="lbl">{{ n.path }}</span></a></li>
-      <li><a href="#log"><span class="lbl">{{ n.log }}</span></a></li>
-      <li><a href="#projects"><span class="lbl">{{ n.projects }}</span></a></li>
+      <li><a href="#stack"><span class="lbl">{{ n.stack }}</span></a></li>
       <li><a href="#homelab" class="gold-link"><span class="lbl">{{ n.homelab }}</span></a></li>
-      <li><a href="#skills"><span class="lbl">{{ n.skills }}</span></a></li>
-      <li><a href="lebenslauf.html"><span class="lbl">{{ n.cv }}</span></a></li>
+      <li><a href="#path"><span class="lbl">{{ n.path }}</span></a></li>
+      <li><a href="#life"><span class="lbl">{{ n.life }}</span></a></li>
       <li class="nav-cta-li"><a href="#contact"><span class="lbl">{{ n.contact }}</span></a></li>
     </ul>
   </nav>
@@ -27,13 +25,12 @@
   </button>
 </header>
 
-<nav class="mobile-nav" id="mobileNav" aria-label="{{ nav_label }}" inert>
+<nav class="mobile-nav" id="mobileNav" aria-label="{{ t.ui.nav_label }}" inert>
   <a href="#about"><span class="lbl">{{ n.about }}</span></a>
-  <a href="#path"><span class="lbl">{{ n.path }}</span></a>
-  <a href="#log"><span class="lbl">{{ n.log }}</span></a>
-  <a href="#projects"><span class="lbl">{{ n.projects }}</span></a>
+  <a href="#stack"><span class="lbl">{{ n.stack }}</span></a>
   <a href="#homelab" class="gold-link"><span class="lbl">{{ n.homelab }}</span></a>
-  <a href="#skills"><span class="lbl">{{ n.skills }}</span></a>
+  <a href="#path"><span class="lbl">{{ n.path }}</span></a>
+  <a href="#life"><span class="lbl">{{ n.life }}</span></a>
   <a href="#contact"><span class="lbl">{{ n.contact }}</span></a>
   <a href="lebenslauf.html"><span class="lbl">{{ n.cv }}</span></a>
   {{ lang_switch() }}
@@ -54,239 +51,225 @@
       <span class="name-wrap"><span class="name-line name-outline">Kayser</span></span>
     </h1>
     <p class="hero-sub">{{ t.hero.sub }}</p>
-    <p class="hero-sub2">{{ t.hero.sub2 }}</p>
+    <p class="hero-line">{{ t.hero.line }}</p>
     <div class="hero-ctas">
-      <a href="#projects" class="btn btn-primary magnetic">{{ t.hero.cta_primary }}</a>
+      <a href="#stack" class="btn btn-primary magnetic">{{ t.hero.cta_primary }}</a>
       <a href="#contact" class="btn btn-ghost magnetic">{{ t.hero.cta_secondary }}</a>
     </div>
   </div>
 
   <dl class="hero-stats">
     {% for s in t.hero.stats %}
-    <div>
-      <dt class="hs-label">{{ s.label }}</dt>
-      <dd class="hs-num"><span class="count" data-target="{{ s.num }}">{{ s.num }}</span>{% if s.sup %}<sup>{{ s.sup }}</sup>{% endif %}</dd>
-    </div>
+    <div><dt class="hs-label">{{ s.label }}</dt><dd class="hs-num"><span class="count" data-target="{{ s.num }}">{{ s.num }}</span>{% if s.sup %}<sup>{{ s.sup }}</sup>{% endif %}</dd></div>
     {% endfor %}
   </dl>
-
   <div class="scroll-hint" aria-hidden="true"><span>{{ t.ui.scroll }}</span><div class="scroll-line"></div></div>
 </section>
 
 <!-- ─── #01 ABOUT ─── -->
 <section id="about" class="section" aria-labelledby="about-h">
-  <div class="section-wrap">
-    <p class="sec-header"><span class="no">#01</span> {{ t.about.label }}</p>
-    <div class="about-grid">
-      <div class="about-photo gs-reveal">
-        <div class="about-photo-img">
-          <img src="assets/img/portrait-800.webp" srcset="assets/img/portrait-480.webp 480w, assets/img/portrait-800.webp 800w"
-               sizes="(max-width:1100px) 440px, 40vw" width="800" height="998" alt="{{ t.about.photo_alt }}" loading="lazy" decoding="async"/>
-        </div>
-        <div class="photo-border" aria-hidden="true"></div>
-        <div class="photo-tag" aria-hidden="true">{{ t.about.photo_tag }}</div>
+  <div class="section-wrap about-grid">
+    <figure class="about-photo">
+      <div class="about-photo-img reveal-img">
+        <img src="assets/img/portrait-800.webp" srcset="assets/img/portrait-480.webp 480w, assets/img/portrait-800.webp 800w"
+             sizes="(max-width:900px) 80vw, 34vw" width="800" height="998" alt="{{ t.about.photo_alt }}" loading="lazy" decoding="async"/>
       </div>
-      <div class="about-text">
-        <h2 class="gs-reveal" id="about-h">{{ t.about.headline|safe }}</h2>
-        {% for p in t.about.paras %}<p class="gs-reveal">{{ p }}</p>
-        {% endfor %}
-        <dl class="info-grid gs-reveal">
-          {% for f in t.about.facts %}<div class="ib"><dt class="ib-label">{{ f.k }}</dt><dd class="ib-val">{{ f.v }}</dd></div>
-          {% endfor %}
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── IMAGE STRIP ─── -->
-<div class="img-strip">
-  {% for im in t.strip %}
-  <figure class="is-item">
-    {% if im.img == 'drone' %}<img src="assets/img/drone-800.webp" width="800" height="512" alt="{{ im.alt }}" loading="lazy" decoding="async"/>
-    {% else %}<img src="assets/img/{{ im.img }}-900.webp" srcset="assets/img/{{ im.img }}-480.webp 480w, assets/img/{{ im.img }}-900.webp 900w" sizes="(max-width:767px) 100vw, 50vw" alt="{{ im.alt }}" loading="lazy" decoding="async"/>{% endif %}
-    <figcaption>{{ im.cap }}</figcaption>
-  </figure>
-  {% endfor %}
-</div>
-
-<!-- ─── #02 PATH ─── -->
-<section id="path" class="section" aria-labelledby="path-h">
-  <div class="section-wrap">
-    <h2 class="sec-header" id="path-h"><span class="no">#02</span> {{ t.path.label }}</h2>
-    <div class="exp-grid">
-      {% for col, title in [(t.path.work, t.path.work_title), (t.path.edu, t.path.edu_title)] %}
-      <div>
-        <h3 class="exp-col-title">{{ title }}</h3>
-        <ol class="timeline">
-          {% for e in col %}
-          <li class="tl-item{% if e.current %} current{% endif %}"><span class="tl-dot" aria-hidden="true"></span>
-            <p class="tl-date">{{ e.date }}</p>
-            <h4 class="tl-title">{{ e.title }}</h4>
-            <p class="tl-org">{{ e.org }}</p>
-            <p class="tl-desc">{{ e.desc }}</p>
-          </li>
-          {% endfor %}
-        </ol>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- ─── #03 TRAINING LOG ─── -->
-<section id="log" class="section" aria-labelledby="log-h">
-  <div class="section-wrap">
-    <span class="ghost" aria-hidden="true">{{ t.nav.log.split(' ')[0] }}</span>
-    <h2 class="sec-header gold-hd" id="log-h"><span class="no">#03</span> {{ t.log.label }}</h2>
-    <p class="sec-intro">{{ t.log.intro }}</p>
-    <ol class="log-grid">
-      {% for e in t.log.entries %}
-      <li class="log-cell{% if e.current %} current{% endif %}">
-        <p class="log-m"><time datetime="{{ e.m }}">{{ e.m }}</time>{% if loop.index <= 11 %}<span class="nr" aria-hidden="true">Nr. {{ '%02d'|format(loop.index) }}</span>{% endif %}</p>
-        <h3 class="log-t">{{ e.t }}</h3>
-        <ul class="log-items">{% for it in e['items'] %}<li>{{ it }}</li>{% endfor %}</ul>
-        {% if e.school %}<p class="log-school"><b>{{ t.log.school }}</b>{{ e.school }}</p>{% endif %}
-      </li>
-      {% endfor %}
-    </ol>
-  </div>
-</section>
-
-<!-- ─── #04 PROJECTS ─── -->
-<section id="projects" class="section" aria-labelledby="proj-h">
-  <div class="section-wrap">
-    <span class="ghost" aria-hidden="true">{{ t.projects.label }}</span>
-    <h2 class="sec-header" id="proj-h"><span class="no">#04</span> {{ t.projects.label }}</h2>
-    <p class="sec-intro">{{ t.projects.intro }}</p>
-    <div class="proj-list">
-      {% for p in t.projects['items'] %}
-      <details class="proj" id="p-{{ p.id }}"{% if loop.first %} open{% endif %}>
-        <summary>
-          <span class="proj-ctx ctx-{{ p.ctx_key }}">{{ p.ctx }}</span>
-          <h3 class="proj-title">{{ p.title }}</h3>
-          <span class="proj-period">{{ p.period }}</span>
-          <span class="proj-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="proj-body">
-          <span class="spacer" aria-hidden="true"></span>
-          <div class="proj-step"><h4>{{ t.projects.h_situation }}</h4><p>{{ p.situation }}</p></div>
-          <div class="proj-step"><h4>{{ t.projects.h_action }}</h4><p>{{ p.action }}</p></div>
-          <div class="proj-step"><h4>{{ t.projects.h_result }}</h4><p>{{ p.result }}</p></div>
-          <ul class="proj-stack">{% for s in p.stack %}<li class="chip">{{ s }}</li>{% endfor %}</ul>
-        </div>
-      </details>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- ─── IMAGE STRIP 2 ─── -->
-<div class="img-strip two" aria-hidden="true">
-  <figure class="is-item is-dither"><img src="assets/img/proxmox-dither.png" width="334" height="202" alt="" loading="lazy" decoding="async"/><figcaption>Proxmox VE</figcaption></figure>
-  <figure class="is-item"><img src="assets/img/linux-800.webp" width="800" height="500" alt="" loading="lazy" decoding="async"/><figcaption>Linux</figcaption></figure>
-</div>
-
-<!-- ─── #05 HOMELAB ─── -->
-<section id="homelab" class="section" aria-labelledby="hl-h">
-  <div class="section-wrap">
-    <span class="ghost" aria-hidden="true">Homelab</span>
-    <h2 class="sec-header gold-hd" id="hl-h"><span class="no">#05</span> {{ t.homelab.label }}</h2>
-    <p class="sec-intro">{{ t.homelab.intro }}</p>
-
-    <dl class="hl-stats">
-      {% for s in t.homelab.stats %}<div class="hl-stat"><dt class="hl-stat-label">{{ s.label }}</dt><dd class="hl-stat-num">{{ s.num }}</dd></div>
-      {% endfor %}
-    </dl>
-
-    <h3 class="hl-section-label gold">{{ t.homelab.cluster_label }}</h3>
-    <ul class="hl-cluster">
-      {% for nd in t.homelab.nodes %}
-      <li class="hl-node">
-        <p class="hl-node-status">{{ t.homelab.status_online }}</p>
-        <h4 class="hl-node-name tone-{{ nd.tone }}">{{ nd.name }}</h4>
-        <p class="hl-node-role">{{ nd.role }}</p>
-        <p class="hl-node-specs">{{ nd.specs }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-
-    {% for g in t.homelab.groups %}
-    <h3 class="hl-section-label {{ g.tone }}">{{ g.title }}</h3>
-    <ul class="hl-services">
-      {% for s in g['items'] %}
-      <li class="hl-svc">
-        <span class="hl-svc-icon {{ g.tone }}" aria-hidden="true">{{ icons[s.icon]|safe }}</span>
-        <div><h4 class="hl-svc-name">{{ s.name }}</h4><p class="hl-svc-desc">{{ s.desc }}</p></div>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endfor %}
-
-    <figure class="hl-flow">
-      <figcaption class="hl-section-label gold">{{ t.homelab.flow_label }}</figcaption>
-      <div class="hl-flow-svg" tabindex="0" role="region" aria-label="{{ t.homelab.flow_label }}">{{ flow_svg|safe }}</div>
+      <div class="photo-border" aria-hidden="true"></div>
     </figure>
-
-    <div class="hl-next">
-      <h3 class="hl-section-label blue" style="margin:0 12px 0 0">{{ t.homelab.next_label }}</h3>
-      {% for x in t.homelab.next %}<span class="chip">{{ x }}</span>{% endfor %}
+    <div class="about-text">
+      <p class="sec-header"><span class="no">#01</span> {{ t.about.label }}</p>
+      <h2 class="about-h gs-reveal" id="about-h">{{ t.about.headline|safe }}</h2>
+      {% for p in t.about.paras %}<p class="about-p gs-reveal">{{ p }}</p>
+      {% endfor %}
+      <dl class="facts gs-reveal">
+        {% for f in t.about.facts %}<div><dt>{{ f.k }}</dt><dd>{{ f.v }}</dd></div>
+        {% endfor %}
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- ─── #06 SKILLS ─── -->
-<section id="skills" class="section" aria-labelledby="sk-h">
+<!-- ─── #02 STACK (animated app tiles) ─── -->
+{% set tl = t.stack.tiles %}
+<section id="stack" class="section" aria-labelledby="stack-h">
   <div class="section-wrap">
-    <h2 class="sec-header" id="sk-h"><span class="no">#06</span> {{ t.skills.label }}</h2>
-    <div class="toolbox">
-      {% for g in t.skills.groups %}
-      <div class="tb-group">
-        <h3>{{ g.title }}</h3>
-        <ul>{% for i in g['items'] %}<li class="chip">{{ i }}</li>{% endfor %}</ul>
-      </div>
-      {% endfor %}
+    <div class="sec-top">
+      <h2 class="sec-header" id="stack-h"><span class="no">#02</span> {{ t.stack.label }}</h2>
+      <p class="sec-intro">{{ t.stack.intro }}</p>
     </div>
-    <div class="skills-grid">
-      <div class="skills-col">
-        <h3>{{ t.skills.languages_title }}</h3>
-        {% for l in t.skills.languages %}
-        <div class="lang-card">
-          <div><p class="lc-name">{{ l.name }}</p><p class="lc-note">{{ l.note }}</p></div>
-          <div class="lc-right">
-            <p class="lc-level">{{ l.cefr }}</p>
-            <div class="pips" role="img" aria-label="{{ l.cefr }}">{% for i in range(6) %}<span class="pip{% if i < l.level %} on{% endif %}"></span>{% endfor %}</div>
+
+    <div class="bento">
+      <!-- Terminal -->
+      <article class="tile tile-term" data-tile="term">
+        <div class="tile-vis win" aria-hidden="true">
+          <div class="win-bar"><i></i><i></i><i></i><span>tristan@pve-compute: ~</span></div>
+          <pre class="term" id="termOut"></pre>
+        </div>
+        <div class="tile-txt"><h3>{{ tl.terminal.title }}</h3><p>{{ tl.terminal.text }}</p></div>
+      </article>
+
+      <!-- Proxmox -->
+      <article class="tile tile-pve" data-tile="pve">
+        <div class="tile-vis win" aria-hidden="true">
+          <div class="win-bar"><i></i><i></i><i></i><span>Datacenter</span></div>
+          <ul class="pve">
+            {% for nd, c, r in [('pve-edge', 18, 42), ('pve-compute', 64, 71), ('pve-apps', 27, 55)] %}
+            <li><span class="pve-n"><b></b>{{ nd }}</span>
+              <span class="bar" title="CPU"><i style="width:{{ c }}%"></i></span>
+              <span class="bar ram" title="RAM"><i style="width:{{ r }}%"></i></span></li>
+            {% endfor %}
+          </ul>
+          <p class="pve-foot"><span>PBS</span> backup ok · 02:00</p>
+        </div>
+        <div class="tile-txt"><h3>{{ tl.proxmox.title }}</h3><p>{{ tl.proxmox.text }}</p></div>
+      </article>
+
+      <!-- Firewall -->
+      <article class="tile tile-fw" data-tile="fw">
+        <div class="tile-vis win" aria-hidden="true">
+          <div class="win-bar"><i></i><i></i><i></i><span>OPNsense · live log</span></div>
+          <ol class="fw" id="fwLog" data-allow="{{ t.stack.fw_allow }}" data-block="{{ t.stack.fw_block }}"></ol>
+        </div>
+        <div class="tile-txt"><h3>{{ tl.firewall.title }}</h3><p>{{ tl.firewall.text }}</p></div>
+      </article>
+
+      <!-- Active Directory -->
+      <article class="tile tile-ad" data-tile="ad">
+        <div class="tile-vis win" aria-hidden="true">
+          <div class="win-bar"><i></i><i></i><i></i><span>Active Directory</span></div>
+<pre class="adtree"><span>▾ corp.local</span><span>  ├─ ▾ OU IT</span><span>  │   ├─ ▪ t.kayser</span><span>  │   └─ ◆ GPO  drive-mapping</span><span>  ├─ ▾ OU Clients</span><span>  │   └─ ▪ 24 × Windows 11</span><span>  └─ ◆ GPO  windows-update</span></pre>
+        </div>
+        <div class="tile-txt"><h3>{{ tl.ad.title }}</h3><p>{{ tl.ad.text }}</p></div>
+      </article>
+
+      <!-- Local AI -->
+      <article class="tile tile-ai" data-tile="ai">
+        <div class="tile-vis win" aria-hidden="true">
+          <div class="win-bar"><i></i><i></i><i></i><span>LibreChat · local</span></div>
+          <div class="chat">
+            <p class="msg me">{{ t.stack.ai_q }}</p>
+            <p class="msg bot" id="aiOut" data-text="{{ t.stack.ai_a }}">{{ t.stack.ai_a }}</p>
+            <p class="chat-foot">llama.cpp · on-prem · ~8 tok/s</p>
           </div>
         </div>
+        <div class="tile-txt"><h3>{{ tl.ai.title }}</h3><p>{{ tl.ai.text }}</p></div>
+      </article>
+
+      <!-- Logo marquee -->
+      <div class="tile tile-marquee" aria-label="{{ t.stack.marquee_label }}" role="group">
+        {% for row in [logos[:13], logos[13:]] %}
+        <div class="marquee{% if loop.index == 2 %} rev{% endif %}">
+          <ul class="marquee-track">
+            {% for _ in range(2) %}{% set outer = loop.index %}{% for lg in row %}
+            <li{% if outer == 2 %} aria-hidden="true"{% endif %}>{{ lg.svg|safe }}<span>{{ lg.name }}</span></li>
+            {% endfor %}{% endfor %}
+          </ul>
+        </div>
         {% endfor %}
-        <p class="cefr-hint">{{ t.skills.cefr_hint }}</p>
-      </div>
-      <div class="skills-col">
-        <h3>{{ t.skills.interests_title }}</h3>
-        <ul class="pill-cloud">{% for i in t.skills.interests %}<li class="pill">{{ i }}</li>{% endfor %}</ul>
-      </div>
-      <div class="skills-col">
-        <h3>{{ t.skills.social_title }}</h3>
-        <div class="social-box"><ul class="social-list">{% for i in t.skills.social %}<li>{{ i }}</li>{% endfor %}</ul></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── #07 CONTACT ─── -->
+<!-- ─── #03 HOMELAB ─── -->
+<section id="homelab" class="section" aria-labelledby="hl-h">
+  <div class="section-wrap hl-grid">
+    <div class="hl-side">
+      <h2 class="sec-header gold-hd" id="hl-h"><span class="no">#03</span> {{ t.homelab.label }}</h2>
+      <p class="sec-intro">{{ t.homelab.intro }}</p>
+      <dl class="hl-stats">
+        {% for s in t.homelab.stats %}<div class="hl-stat"><dt>{{ s.label }}</dt><dd>{{ s.num }}</dd></div>
+        {% endfor %}
+      </dl>
+      <ul class="hl-nodes">
+        {% for nd in t.homelab.nodes %}<li class="tone-{{ nd.tone }}"><b>{{ nd.name }}</b><span>{{ nd.role }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <figure class="hl-flow">
+      <div class="hl-flow-svg" tabindex="0" role="region" aria-label="{{ t.homelab.flow_label }}">{{ flow_svg|safe }}</div>
+    </figure>
+  </div>
+</section>
+
+<!-- ─── #04 PATH ─── -->
+<section id="path" class="section" aria-labelledby="path-h">
+  <div class="section-wrap">
+    <h2 class="sec-header" id="path-h"><span class="no">#04</span> {{ t.path.label }}</h2>
+    <div class="path-scroll">
+      <span class="path-line" aria-hidden="true"><i></i></span>
+      <ol class="path">
+        {% for e in t.path['items'] %}
+        <li class="path-item{% if e.current %} current{% endif %}">
+          <span class="path-dot" aria-hidden="true"></span>
+          <p class="path-date">{{ e.date }}</p>
+          <h3 class="path-title">{{ e.title }}</h3>
+          <p class="path-org">{{ e.org }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ─── #05 LIFE ─── -->
+<section id="life" class="section" aria-labelledby="life-h">
+  <div class="section-wrap">
+    <div class="sec-top">
+      <h2 class="sec-header" id="life-h"><span class="no">#05</span> {{ t.life.label }}</h2>
+      <p class="sec-intro">{{ t.life.intro }}</p>
+    </div>
+    <div class="gallery">
+      {% for ph in t.life.photos %}
+      <figure class="g-item">
+        <div class="g-img reveal-img">
+          {% if ph.img == 'drone' %}<img src="assets/img/drone-800.webp" width="800" height="512" alt="{{ ph.alt }}" loading="lazy" decoding="async"/>
+          {% else %}<img src="assets/img/{{ ph.img }}-900.webp" srcset="assets/img/{{ ph.img }}-480.webp 480w, assets/img/{{ ph.img }}-900.webp 900w" sizes="(max-width:767px) 90vw, 33vw" alt="{{ ph.alt }}" loading="lazy" decoding="async"/>{% endif %}
+        </div>
+        <figcaption><b>{{ ph.cap }}</b><span>{{ ph.sub }}</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    <ul class="interests">{% for i in t.life.interests %}<li>{{ i }}</li>{% endfor %}</ul>
+  </div>
+</section>
+
+<!-- ─── #06 CONTACT ─── -->
 <section id="contact" class="section" aria-labelledby="ct-h">
-  <div class="contact-bg-img" aria-hidden="true"></div>
+  <div class="contact-bg-img" id="contactBg" aria-hidden="true"></div>
   <div class="contact-overlay" aria-hidden="true"></div>
   <div class="contact-inner">
-    <p class="sec-header gold-hd"><span class="no">#07</span> {{ t.contact.label }}</p>
-    <div class="gs-reveal">
-      <h2 class="contact-hl" id="ct-h">{{ t.contact.headline|safe }}</h2>
-      <p class="contact-sub">{{ t.contact.sub }}</p>
-    </div>
-    <ul class="contact-list gs-reveal">
-      <li><span class="ct-t">{{ t.contact.email_label }}</span><a class="ct-v" href="mailto:tristankayser1@gmail.com">tristankayser1@gmail.com</a></li>
-      <li><span class="ct-t">{{ t.contact.github_label }}</span><a class="ct-v" href="https://github.com/Intersepter" rel="me noopener">github.com/Intersepter</a></li>
-      <li><span class="ct-t">{{ t.contact.cv_label }}</span><a class="ct-v" href="Lebenslauf_Tristan_Kayser.pdf" download>{{ t.contact.cv_value }}</a></li>
+    <p class="sec-header gold-hd"><span class="no">#06</span> {{ t.contact.label }}</p>
+    <h2 class="contact-hl gs-reveal" id="ct-h">{{ t.contact.headline|safe }}</h2>
+    <p class="contact-sub gs-reveal">{{ t.contact.sub }}</p>
+    <ul class="contact-row gs-reveal">
+      <li class="ct-item">
+        <a href="mailto:tristankayser1@gmail.com" class="ct-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+          <span><small>{{ t.contact.email }}</small>tristankayser1@gmail.com</span>
+        </a>
+        <button type="button" class="ct-copy" data-copy="tristankayser1@gmail.com" data-label="{{ t.ui.copy }}" data-done="{{ t.ui.copied }}" aria-label="{{ t.ui.copy }}: tristankayser1@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M16 8V4H4v12h4"/></svg>
+        </button>
+      </li>
+      <li class="ct-item">
+        <a href="tel:{{ phone|replace(' ', '') }}" class="ct-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 006 6L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg>
+          <span><small>{{ t.contact.phone }}</small>{{ phone }}</span>
+        </a>
+      </li>
+      <li class="ct-item">
+        <a href="https://github.com/Intersepter" class="ct-link" rel="me noopener">
+          {{ github_svg|safe }}
+          <span><small>{{ t.contact.github }}</small>Intersepter</span>
+        </a>
+      </li>
+      <li class="ct-item">
+        <a href="lebenslauf.html" class="ct-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>
+          <span><small>{{ t.contact.cv }}</small>{{ n.cv }}</span>
+        </a>
+      </li>
     </ul>
   </div>
 </section>

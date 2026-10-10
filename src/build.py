@@ -7,6 +7,7 @@ Usage:   pip install jinja2  &&  python3 src/build.py
 Edit text in src/content/{en,de,af}.json, layout in src/templates/, styles in assets/css/main.css.
 """
 import json
+import re
 import datetime as dt
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
@@ -17,9 +18,16 @@ SRC = ROOT / "src"
 SITE = "https://tristankayser.com"
 LANGS = ["en", "de", "af"]
 PAGE = {"en": "", "de": "index-de.html", "af": "index-af.html"}   # en lives at "/"
-NAV_LABEL = {"en": "Main", "de": "Hauptnavigation", "af": "Hoofnavigasie"}
-CTX_KEYS = ["Work", "Work", "Lab", "Homelab", "Work", "School"]   # colour key per project (by order)
-PHONE = "+49 152 3879 5449"   # shown only in the Impressum — please confirm it's current
+PHONE = "+49 152 3879 5449"   # contact row + Impressum — please confirm it's current
+# Tool logos for the marquee (Simple Icons, CC0) — files in src/icons/
+LOGOS = [("proxmox", "Proxmox"), ("opnsense", "OPNsense"), ("docker", "Docker"), ("linux", "Linux"), ("debian", "Debian"),
+         ("ansible", "Ansible"), ("wireguard", "WireGuard"), ("vmware", "VMware ESXi"), ("windows", "Windows Server"), ("python", "Python"),
+         ("gnubash", "Bash"), ("pihole", "Pi-hole"), ("nginxproxymanager", "Nginx Proxy Manager"),
+         ("ubuntu", "Ubuntu"), ("vaultwarden", "Vaultwarden"), ("n8n", "n8n"), ("ollama", "Ollama"), ("cisco", "Cisco"), ("postgresql", "PostgreSQL"),
+         ("sqlite", "SQLite"), ("git", "Git"), ("github", "GitHub"), ("ubiquiti", "UniFi"), ("paperlessngx", "Paperless-ngx"), ("searxng", "SearXNG"), ("bookstack", "BookStack")]
+# generic four-pane window glyph (no official logo in Simple Icons)
+WINDOWS_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h8v7H3zM13 4h8v7h-8zM3 13h8v7H3zM13 13h8v7h-8z"/></svg>'
+
 TODAY = dt.date.today()
 VERSION = TODAY.strftime("%Y%m%d")
 
@@ -55,7 +63,7 @@ def flow_svg(t):
     """Animated network diagram (SMIL). Paused automatically for reduced motion."""
     col = {"g": GOLD, "b": BLUE}
     rgba = {"g": "255,189,56", "b": "74,168,216"}
-    o = [f'<svg class="flow" viewBox="0 0 940 580" role="img" aria-labelledby="flowT flowD" xmlns="http://www.w3.org/2000/svg" style="font-family:\'Space Mono\',monospace">',
+    o = [f'<svg class="flow" viewBox="20 30 880 550" role="img" aria-labelledby="flowT flowD" xmlns="http://www.w3.org/2000/svg" style="font-family:\'Space Mono\',monospace">',
          f'<title id="flowT">{t["flow_label"]}</title><desc id="flowD">{t["flow_desc"]}</desc>']
     trunk = ["M110,290 C160,290 190,290 220,290", "M300,290 C340,290 360,290 380,290"]
     for d in trunk:
@@ -69,7 +77,7 @@ def flow_svg(t):
         for i, (name, st) in enumerate(svcs):
             sy = y - (n - 1) * 13 + i * 26
             o.append(f'<path d="M590,{y} C620,{y} 645,{sy} 680,{sy}" stroke="rgba({rgba[st]},.2)" stroke-width=".7" fill="none"/>')
-            o.append(f'<circle cx="688" cy="{sy}" r="3" fill="{col[st]}" opacity=".75"/><text x="700" y="{sy + 3.5}" fill="{col[st]}" font-size="10">{name}</text>')
+            o.append(f'<circle cx="688" cy="{sy}" r="3" fill="{col[st]}" opacity=".75"/><text x="700" y="{sy + 3.5}" fill="{col[st]}" font-size="13">{name}</text>')
     # animated packets
     for i, (d, dur, beg) in enumerate([(trunk[0], 2.5, 0), (trunk[1], 2, .6)] + [(b, 2.4, 1 + i * .4) for i, b in enumerate(branches)]):
         r = 2.6 if i < 2 else 2
@@ -80,16 +88,24 @@ def flow_svg(t):
              f'<text x="75" y="294" text-anchor="middle" fill="{GOLD}" font-family="Syne,sans-serif" font-weight="700" font-size="11" letter-spacing="1">WAN</text>')
     o.append(f'<rect x="220" y="266" width="80" height="48" rx="4" fill="rgba(255,189,56,.06)" stroke="rgba(255,189,56,.5)"/>'
              f'<path transform="translate(252 272) scale(.66)" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="{GOLD}" stroke-width="1.5"/>'
-             f'<text x="260" y="306" text-anchor="middle" fill="{CREAM}" font-size="9">OPNsense</text>')
+             f'<text x="260" y="308" text-anchor="middle" fill="{CREAM}" font-size="11">OPNsense</text>')
     for label, sub, y, tone, _ in FLOW_NODES:
         o.append(f'<rect x="510" y="{y - 22}" width="80" height="44" rx="4" fill="rgba({rgba[tone]},.06)" stroke="rgba({rgba[tone]},.5)"/>'
                  f'<circle cx="521" cy="{y - 12}" r="3" fill="{col[tone]}"/>'
-                 f'<text x="552" y="{y - 1}" text-anchor="middle" fill="{col[tone]}" font-family="Syne,sans-serif" font-weight="700" font-size="11" letter-spacing=".5">{label}</text>'
-                 f'<text x="550" y="{y + 13}" text-anchor="middle" fill="{CREAM}" font-size="8">{sub}</text>')
-    o.append(f'<circle cx="40" cy="560" r="3.5" fill="{GOLD}"/><text x="50" y="564" fill="{CREAM}" font-size="10">{t["legend_net"]}</text>'
-             f'<circle cx="230" cy="560" r="3.5" fill="{BLUE}"/><text x="240" y="564" fill="{CREAM}" font-size="10">{t["legend_svc"]}</text>')
+                 f'<text x="552" y="{y - 1}" text-anchor="middle" fill="{col[tone]}" font-family="Syne,sans-serif" font-weight="700" font-size="12" letter-spacing=".5">{label}</text>'
+                 f'<text x="550" y="{y + 13}" text-anchor="middle" fill="{CREAM}" font-size="9.5">{sub}</text>')
+    o.append(f'<circle cx="40" cy="560" r="3.5" fill="{GOLD}"/><text x="50" y="564" fill="{CREAM}" font-size="12">{t["legend_net"]}</text>'
+             f'<circle cx="260" cy="560" r="3.5" fill="{BLUE}"/><text x="270" y="564" fill="{CREAM}" font-size="12">{t["legend_svc"]}</text>')
     o.append("</svg>")
     return "".join(o)
+
+
+def logo_svg(slug):
+    if slug == "windows":
+        return WINDOWS_SVG
+    raw = (SRC / "icons" / f"{slug}.svg").read_text(encoding="utf-8")
+    raw = re.sub(r"<title>.*?</title>", "", raw)
+    return raw.replace('<svg role="img"', '<svg aria-hidden="true" focusable="false"', 1)
 
 
 def url_for(lang):
@@ -132,8 +148,6 @@ def main():
 
     for lang in LANGS:
         t = content[lang]
-        for p, key in zip(t["projects"]["items"], CTX_KEYS):
-            p["ctx_key"] = key
 
         def lang_switch(_lang=lang):
             cur = ' aria-current="page"'
@@ -146,8 +160,9 @@ def main():
             **{**common, **dict(canonical=url_for(lang), alternates=alternates(), jsonld=person_jsonld(t))}, t=t, lang=lang, locale=t["locale"],
             og_locale_alt=[content[l]["locale"] for l in LANGS if l != lang],
             title=t["meta"]["title"], description=t["meta"]["description"], og_alt=t["meta"]["og_alt"],
-            icons={k: Markup(v) for k, v in ICONS.items()}, flow_svg=Markup(flow_svg(t["homelab"])),
-            lang_switch=lang_switch, nav_label=NAV_LABEL[lang])
+            flow_svg=Markup(flow_svg(t["homelab"])), lang_switch=lang_switch, phone=PHONE,
+            logos=[{"name": nm, "svg": Markup(logo_svg(sl))} for sl, nm in LOGOS],
+            github_svg=Markup(logo_svg("github").replace('<svg ', '<svg class="gh" ', 1)))
         out = "index.html" if lang == "en" else PAGE[lang]
         (ROOT / out).write_text(html, encoding="utf-8")
         print("✓", out)
