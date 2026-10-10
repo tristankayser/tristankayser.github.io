@@ -89,10 +89,14 @@ def og_image():
         dr.line([(gx, 0), (gx, H)], fill=(18, 44, 42))
     for gy in range(0, H, 80):
         dr.line([(0, gy), (W, gy)], fill=(18, 44, 42))
-    syne = ROOT / "assets" / "fonts" / "syne-latin-800-normal.woff2"
-    mono = ROOT / "assets" / "fonts" / "space-mono-latin-400-normal.woff2"
+    syne = ROOT / "assets" / "fonts" / "unbounded.woff2"
+    mono = ROOT / "assets" / "fonts" / "departure-mono.woff2"
     try:
-        f_big = ImageFont.truetype(str(syne), 120)
+        f_big = ImageFont.truetype(str(syne), 104)
+        try:
+            f_big.set_variation_by_axes([800])
+        except Exception:
+            pass
         f_small = ImageFont.truetype(str(mono), 26)
     except OSError:
         f_big = ImageFont.load_default()

@@ -63,7 +63,7 @@ def flow_svg(t):
     """Animated network diagram (SMIL). Paused automatically for reduced motion."""
     col = {"g": GOLD, "b": BLUE}
     rgba = {"g": "255,189,56", "b": "74,168,216"}
-    o = [f'<svg class="flow" viewBox="20 30 880 550" role="img" aria-labelledby="flowT flowD" xmlns="http://www.w3.org/2000/svg" style="font-family:\'Space Mono\',monospace">',
+    o = [f'<svg class="flow" viewBox="20 30 880 550" role="img" aria-labelledby="flowT flowD" xmlns="http://www.w3.org/2000/svg" style="font-family:\'Departure Mono\',monospace">',
          f'<title id="flowT">{t["flow_label"]}</title><desc id="flowD">{t["flow_desc"]}</desc>']
     trunk = ["M110,290 C160,290 190,290 220,290", "M300,290 C340,290 360,290 380,290"]
     for d in trunk:
@@ -85,14 +85,14 @@ def flow_svg(t):
                  f'<animate attributeName="opacity" values="0;.9;.9;0" dur="{dur}s" begin="{beg}s" repeatCount="indefinite"/></circle>')
     # WAN + firewall
     o.append(f'<rect x="40" y="272" width="70" height="36" rx="18" fill="rgba(255,189,56,.07)" stroke="rgba(255,189,56,.45)"/>'
-             f'<text x="75" y="294" text-anchor="middle" fill="{GOLD}" font-family="Syne,sans-serif" font-weight="700" font-size="11" letter-spacing="1">WAN</text>')
+             f'<text x="75" y="294" text-anchor="middle" fill="{GOLD}" font-family="Unbounded,sans-serif" font-weight="600" font-size="11" letter-spacing="1">WAN</text>')
     o.append(f'<rect x="220" y="266" width="80" height="48" rx="4" fill="rgba(255,189,56,.06)" stroke="rgba(255,189,56,.5)"/>'
              f'<path transform="translate(252 272) scale(.66)" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="{GOLD}" stroke-width="1.5"/>'
              f'<text x="260" y="308" text-anchor="middle" fill="{CREAM}" font-size="11">OPNsense</text>')
     for label, sub, y, tone, _ in FLOW_NODES:
         o.append(f'<rect x="510" y="{y - 22}" width="80" height="44" rx="4" fill="rgba({rgba[tone]},.06)" stroke="rgba({rgba[tone]},.5)"/>'
                  f'<circle cx="521" cy="{y - 12}" r="3" fill="{col[tone]}"/>'
-                 f'<text x="552" y="{y - 1}" text-anchor="middle" fill="{col[tone]}" font-family="Syne,sans-serif" font-weight="700" font-size="12" letter-spacing=".5">{label}</text>'
+                 f'<text x="552" y="{y - 1}" text-anchor="middle" fill="{col[tone]}" font-family="Unbounded,sans-serif" font-weight="600" font-size="12" letter-spacing=".5">{label}</text>'
                  f'<text x="550" y="{y + 13}" text-anchor="middle" fill="{CREAM}" font-size="9.5">{sub}</text>')
     o.append(f'<circle cx="40" cy="560" r="3.5" fill="{GOLD}"/><text x="50" y="564" fill="{CREAM}" font-size="12">{t["legend_net"]}</text>'
              f'<circle cx="260" cy="560" r="3.5" fill="{BLUE}"/><text x="270" y="564" fill="{CREAM}" font-size="12">{t["legend_svc"]}</text>')
